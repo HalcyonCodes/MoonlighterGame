@@ -1,0 +1,74 @@
+name: moonlighter
+description: "A moonlight carrier."
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0-27.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  fluro:
+    path: ../fluro
+  dio: ^5.3.1
+  flutter_svg: ^2.0.7
+
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - Svg/terminal_nav.svg
+    - Svg/code_nav.svg
+    - Svg/robot_nav.svg
+    - Svg/angle_down_search.svg
+    - Svg/play_list.svg
+    - Svg/stop_list.svg
+    - Svg/pause_list.svg
+    - Svg/search_search.svg
+    - Svg/account_tool.svg
+    - Svg/edit_tool.svg
+    - Svg/tag_tool.svg
+    - Svg/robot_tool.svg
+    - Svg/log_tool.svg
+    - Svg/role_tool.svg
+    - Svg/container_tool.svg
+    - Svg/order_tool.svg
+    - Svg/item_tool.svg
+    - Svg/artisan_tool.svg
+    - Svg/shelf_tool.svg
+    - Svg/bill_tool.svg
+    - Svg/material_tool.svg
+    - Svg/company_tool.svg
+    - Svg/delect_tool.svg
+    - Svg/tool_tool.svg
+    - Svg/close_card.svg
+    - Svg/minus_card.svg
+    - Svg/next_card.svg
+    - Svg/plus_card.svg
+    - Svg/pre_card.svg
+
+
+  fonts:
+    - family: MiSans
+      fonts:
+        - asset: fonts/MiSans-Bold.ttf
+        - asset: fonts/MiSans-Medium.ttf
+        - asset: fonts/MiSans-Normal.ttf
+
+  
