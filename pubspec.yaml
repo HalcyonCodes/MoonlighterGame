@@ -16,6 +16,8 @@ dependencies:
     path: ../fluro
   dio: ^5.3.1
   flutter_svg: ^2.0.7
+  accordion: ^2.5.1
+
 
 
   cupertino_icons: ^1.0.2
@@ -47,7 +49,7 @@ flutter:
     - Svg/robot_tool.svg
     - Svg/log_tool.svg
     - Svg/role_tool.svg
-    - Svg/container_tool.svg
+    - Svg/retainer_tool.svg
     - Svg/order_tool.svg
     - Svg/item_tool.svg
     - Svg/artisan_tool.svg
@@ -62,6 +64,9 @@ flutter:
     - Svg/next_card.svg
     - Svg/plus_card.svg
     - Svg/pre_card.svg
+    - Svg/up_card.svg
+    - Svg/down_card.svg
+    - Svg/angle_down_tool.svg
 
 
   fonts:

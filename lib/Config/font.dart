@@ -130,4 +130,13 @@ class KFont {
       decoration: TextDecoration.none,
       height: 25 / 18);
 
+  //折叠标题中的字体
+   static TextStyle expansionHeadStyle = const TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+      decoration: TextDecoration.none,
+      height: 22 / 18);
+
 }

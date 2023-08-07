@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Components/Tools/SettingRetainer/setting_retainer.dart';
 import '../../../PublicWidgets/ToolTitle/title_tool.dart';
 import '../../../Config/index.dart';
 import 'button_tool.dart';
@@ -7,6 +8,7 @@ import './CreateAccount/create_account.dart';
 import './EditAccount/edit_account.dart';
 import './SettingTag/setting_tag.dart';
 import './SettingRobot/setting_robot.dart';
+import './SettingRole/setting_role.dart';
 
 class Tool extends StatefulWidget {
   const Tool({super.key});
@@ -53,7 +55,7 @@ class _ToolState extends State<Tool> {
               ToolButton(isSelect: index == 3 ? true : false, onTap: (){ index = 3; refreshUi();}, path: 'Svg/robot_tool.svg', name: KString.robot),
               ToolButton(isSelect: index == 4 ? true : false, onTap: (){ index = 4; refreshUi();}, path: 'Svg/log_tool.svg', name: KString.log),
               ToolButton(isSelect: index == 5 ? true : false, onTap: (){ index = 5; refreshUi();}, path: 'Svg/role_tool.svg', name: KString.role),
-              ToolButton(isSelect: index == 6 ? true : false, onTap: (){ index = 6; refreshUi();}, path: 'Svg/container_tool.svg', name: KString.container),
+              ToolButton(isSelect: index == 6 ? true : false, onTap: (){ index = 6; refreshUi();}, path: 'Svg/retainer_tool.svg', name: KString.container),
               ToolButton(isSelect: index == 7 ? true : false, onTap: (){ index = 7; refreshUi();}, path: 'Svg/order_tool.svg', name: KString.order),
               ToolButton(isSelect: index == 8 ? true : false, onTap: (){ index = 8; refreshUi();}, path: 'Svg/item_tool.svg', name: KString.item),
               ToolButton(isSelect: index == 9 ? true : false, onTap: (){ index = 9; refreshUi();}, path: 'Svg/artisan_tool.svg', name: KString.artisan),
@@ -69,7 +71,10 @@ class _ToolState extends State<Tool> {
           index == 1 ? EditAccount() : 
           index == 2 ? SettingTag() : 
           index == 3 ? SettingRobot():
-          index == 4 ? SizedBox() : SizedBox()
+          index == 4 ? SizedBox() : 
+          index == 5 ? SettingRole(roleCount: '5'):
+          index == 6 ? SettingRetainer() :
+          SizedBox()
 
     
     

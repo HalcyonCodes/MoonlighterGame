@@ -31,4 +31,6 @@ class KString {
   static String settingRobot = '设置机器人';
   static String bindingCount = '绑定数量';
   static String scripCount = '脚本数量';
+  static String settingRole = '设置角色';
+  static String settingRetainer = '设置雇员';
 }
