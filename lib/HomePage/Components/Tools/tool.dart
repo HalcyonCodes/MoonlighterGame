@@ -9,6 +9,9 @@ import './EditAccount/edit_account.dart';
 import './SettingTag/setting_tag.dart';
 import './SettingRobot/setting_robot.dart';
 import './SettingRole/setting_role.dart';
+import '../Util/util_tools.dart';
+import './ItemBrowsing/Item_browsing.dart';
+
 
 class Tool extends StatefulWidget {
   const Tool({super.key});
@@ -19,6 +22,7 @@ class Tool extends StatefulWidget {
 
 class _ToolState extends State<Tool> {
 
+  ToolUtil toolUtil = ToolUtil();
 
   int? index;
 
@@ -73,7 +77,9 @@ class _ToolState extends State<Tool> {
           index == 3 ? SettingRobot():
           index == 4 ? SizedBox() : 
           index == 5 ? SettingRole(roleCount: '5'):
-          index == 6 ? SettingRetainer() :
+          index == 6 ? SettingRetainer(toolUtil: toolUtil,):
+          index == 7 ? SizedBox():
+          index == 8 ? ItemBrowsing(toolUtil: toolUtil):
           SizedBox()
 
     

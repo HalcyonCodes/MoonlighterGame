@@ -1,4 +1,5 @@
 class ListUtil {
+
   //设置选中状态的方法的列表
   List<Function()>? _listFuncCancelSelected;
   List<Function()>? get listFuncCancelSelected => _listFuncCancelSelected;
@@ -14,4 +15,7 @@ class ListUtil {
   void removeListFuncCancelSelected(Function() i) {
     _listFuncCancelSelected!.remove(i);
   }
+
+
+
 }

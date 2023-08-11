@@ -1,40 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:moonlighter/HomePage/Components/Tools/SettingRetainer/uesr_expansion_head.dart';
-import 'card_retainer.dart';
+import 'card_retainer_item.dart';
 import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
+import './uesr_expansion_head_item.dart';
 
-//整个角色雇员折叠部件
-class ExpansionRetainer extends StatefulWidget {
+//角色-雇员手风琴单元
+class ItemExpansionRetainer extends StatefulWidget {
   final String? roleChannel;
   final String? roleName;
   final String? roleId;
-  final ToolUtil util;
+  final ToolUtil toolUtil;
   final Function? headTap;
 
-  const ExpansionRetainer({
+  const ItemExpansionRetainer({
     super.key,
     required this.roleId,
     required this.roleName,
     required this.roleChannel,
-    required this.util,
+    required this.toolUtil,
     required this.headTap,
   });
 
   @override
-  State<ExpansionRetainer> createState() => _ExpansionRetainerState();
+  State<ItemExpansionRetainer> createState() => _ItemExpansionRetainerState();
 }
 
-class _ExpansionRetainerState extends State<ExpansionRetainer> {
+class _ItemExpansionRetainerState extends State<ItemExpansionRetainer> {
   Util? util = Util();
   bool? isExpande;
   String? roleName;
   String? roleId;
   String? channelName;
-
   List<Widget>? listItems;
-
-
 
   //test
   List<String> names = ['111', '222', '333', '444', '555', '666', '777', '888'];
@@ -46,25 +43,20 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
     roleName = widget.roleName;
     roleId = widget.roleId;
     channelName = widget.roleChannel;
-    
   }
 
   @override
   Widget build(BuildContext context) {
     listItems = List.generate(names.length, (index) {
-      return RetainerCard(
+      //widget.toolUtil.addIemRetainerCardIndex();
+      return ItemRetainerCard(
         retainerName: names[index],
-        lastUseDate: '2023/8/7',
+        itemUpdate: '2023/8/7',
         id: 'A-1230-B-1234',
         profile: '第1个角色第1个雇员',
-        downOnTap: () {
-          onDownTap(index);
-        },
-        upOnTap: () {
-          onUpTap(index);
-        },
-        removeOnTap: () {
-          onRemoveTap(index);
+        toolUtil: widget.toolUtil,
+        onTap: () {
+          onTap(index);
         },
       );
     });
@@ -81,57 +73,31 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
         ),
       ),
       headBottomMargin: 16,
-      userHead: UserExpansionHead(
+      userHead: ItemUserExpansionHead(
         onTap: widget.headTap,
         util: util,
         channelName: channelName,
         roleName: roleName,
         roleId: roleId,
-        toolUtil: widget.util,
+        toolUtil: widget.toolUtil,
       ),
       util: util,
     );
   }
 
-
-  void onUpTap(int index) {
-    if (index != 0) {
-      Widget temp = listItems![index - 1];
-      listItems![index - 1] = listItems![index];
-      listItems![index] = temp;
-      //test
-      String stringTemp = names![index - 1];
-      names![index - 1] = names![index];
-      names![index] = stringTemp;
-
-      refreshUi();
+  void onTap(index) {
+    for (int i = 0;
+        i <=
+            widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected!
+                    .length -
+                1;
+        i++) {
+      widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected![i](false);
     }
+    //widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected![index](true);
   }
 
-  void onDownTap(int index) {
-    if (index != listItems!.length - 1) {
-      Widget temp = listItems![index + 1];
-      listItems![index + 1] = listItems![index];
-      listItems![index] = temp;
-      //test
-      String stringTemp = names![index + 1];
-      names![index + 1] = names![index];
-      names![index] = stringTemp;
-
-      refreshUi();
-    }
-  }
-
-  void onRemoveTap(int index) {
-    listItems!.removeAt(index);
-    names!.removeAt(index);
-    refreshUi();
-  }
-
-
-  void refreshUi(){
-    setState(() {
-      
-    });
+  void refreshUi() {
+    setState(() {});
   }
 }

@@ -17,6 +17,8 @@ dependencies:
   dio: ^5.3.1
   flutter_svg: ^2.0.7
   accordion: ^2.5.1
+  whip_sword:
+    path: ../whip_sword
 
 
 

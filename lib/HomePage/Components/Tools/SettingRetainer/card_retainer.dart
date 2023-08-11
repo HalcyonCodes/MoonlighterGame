@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../Config/index.dart';
 
+
+//折叠部件的body的卡片
 class RetainerCard extends StatelessWidget {
-  final String? containerName;
+  final String? retainerName;
   final String? lastUseDate;
   final String? id;
   final String? profile;
@@ -13,7 +15,7 @@ class RetainerCard extends StatelessWidget {
 
   const RetainerCard({
     super.key,
-    required this.containerName,
+    required this.retainerName,
     required this.lastUseDate,
     required this.id,
     required this.profile,
@@ -29,6 +31,7 @@ class RetainerCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width <= 1920
           ? ((1920 - 24) / 24 * 7) - 24 - 24 - 24
           : ((1920 - 24) / 24 * 7) - 24 - 24 - 24,
+      height: 115,
       decoration: KDecoration.cardDecoration,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -49,7 +52,7 @@ class RetainerCard extends StatelessWidget {
                   ),
                   const Expanded(child: SizedBox()),
                   Text(
-                    lastUseDate!,
+                    '上次打开时间： ${lastUseDate!}',
                     style: KFont.cardProfileStyle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -72,7 +75,7 @@ class RetainerCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            containerName!,
+                            retainerName!,
                             style: KFont.cardTitleStyle,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

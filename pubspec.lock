@@ -295,6 +295,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.4-beta"
+  whip_sword:
+    dependency: "direct main"
+    description:
+      path: "../whip_sword"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   xml:
     dependency: transitive
     description:

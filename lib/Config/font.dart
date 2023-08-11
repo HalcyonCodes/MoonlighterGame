@@ -130,12 +130,21 @@ class KFont {
       decoration: TextDecoration.none,
       height: 25 / 18);
 
-  //折叠标题中的字体
-   static TextStyle expansionHeadStyle = const TextStyle(
+  //折叠标题中的选中时的字体
+   static TextStyle expansionHeadSelectedStyle = const TextStyle(
       fontFamily: 'MiSans',
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: Colors.white,
+      decoration: TextDecoration.none,
+      height: 22 / 18);
+
+  //折叠标题中的未选中时的字体
+   static TextStyle expansionHeadUnSelectStyle = const TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+      color: Colors.black,
       decoration: TextDecoration.none,
       height: 22 / 18);
 

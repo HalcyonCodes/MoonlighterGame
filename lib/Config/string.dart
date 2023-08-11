@@ -33,4 +33,7 @@ class KString {
   static String scripCount = '脚本数量';
   static String settingRole = '设置角色';
   static String settingRetainer = '设置雇员';
+  static String roleRetainer = '角色雇员';
+  static String sellItem = '在售道具';
+  static String storeItem = '仓库道具';
 }
