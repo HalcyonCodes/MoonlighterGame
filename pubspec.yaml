@@ -69,6 +69,13 @@ flutter:
     - Svg/up_card.svg
     - Svg/down_card.svg
     - Svg/angle_down_tool.svg
+    - Svg/product_order.svg
+    - Svg/purchase_order.svg
+    - Svg/resource_transfer_order.svg
+    - Svg/shelf_order.svg
+    - Svg/transaction_order.svg
+    - Svg/express_delivery_order.svg
+    
 
 
   fonts:

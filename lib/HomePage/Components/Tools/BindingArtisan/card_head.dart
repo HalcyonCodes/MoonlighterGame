@@ -1,11 +1,12 @@
-import 'dart:math';
+ import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
 import '../../Util/util_tools.dart';
 
 //折叠部件的头部
-class ExpansionRoleCard extends StatefulWidget {
+class HeadCard extends StatefulWidget {
   final String? roleName;
   final String? roleId;
   final String? channelName;
@@ -13,7 +14,7 @@ class ExpansionRoleCard extends StatefulWidget {
   final bool? isSelect;
   final ToolUtil util;
 
-  const ExpansionRoleCard({
+  const HeadCard({
     super.key,
     required this.channelName,
     required this.animation,
@@ -24,10 +25,10 @@ class ExpansionRoleCard extends StatefulWidget {
   });
 
   @override
-  State<ExpansionRoleCard> createState() => _ExpansionRoleCardState();
+  State<HeadCard> createState() => _HeadCardState();
 }
 
-class _ExpansionRoleCardState extends State<ExpansionRoleCard> {
+class _HeadCardState extends State<HeadCard> {
   bool? isSelect;
   
 
@@ -36,7 +37,7 @@ class _ExpansionRoleCardState extends State<ExpansionRoleCard> {
     super.initState();
     isSelect = widget.isSelect;
     //注册
-    widget.util.addListFuncSetExpansionRoleCardSelected(setIsSelect);
+    //widget.util.addListFuncSetExpansionRoleCardSelected(setIsSelect);
   }
 
   @override
@@ -117,6 +118,6 @@ class _ExpansionRoleCardState extends State<ExpansionRoleCard> {
   void dispose() {
     super.dispose();
 
-    widget.util.removeListFuncSetExpansionRoleCardSelected(setIsSelect);
+    //widget.util.removeListFuncSetExpansionRoleCardSelected(setIsSelect);
   }
 }

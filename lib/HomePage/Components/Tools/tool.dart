@@ -11,6 +11,7 @@ import './SettingRobot/setting_robot.dart';
 import './SettingRole/setting_role.dart';
 import '../Util/util_tools.dart';
 import './ItemBrowsing/Item_browsing.dart';
+import './../../Components/Tools/OrderManager/order_manager.dart';
 
 
 class Tool extends StatefulWidget {
@@ -78,7 +79,7 @@ class _ToolState extends State<Tool> {
           index == 4 ? SizedBox() : 
           index == 5 ? SettingRole(roleCount: '5'):
           index == 6 ? SettingRetainer(toolUtil: toolUtil,):
-          index == 7 ? SizedBox():
+          index == 7 ? OrderManager() :
           index == 8 ? ItemBrowsing(toolUtil: toolUtil):
           SizedBox()
 

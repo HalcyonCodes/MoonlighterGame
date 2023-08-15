@@ -36,4 +36,18 @@ class KString {
   static String roleRetainer = '角色雇员';
   static String sellItem = '在售道具';
   static String storeItem = '仓库道具';
+  static String expressDeliveryOrder = '快递订单';
+  static String productOrder = '制作订单';
+  static String purchaseOrder = '采购订单';
+  static String resourceTransferOrder = '金币订单';
+  static String shelfOrder = '上架订单';
+  static String transactionOrder = '交易订单';
+  static String itemName = '道具名称';
+  static String itemStyle = 'HQ';
+  static String itemCount = '数量';
+  static String sourceId = '来源编号';
+  static String targetId = '目标编号';
+  static String addOrder = '添加订单';
+  static String itemPrice = '单价';
+  static String itemGil = '金币';
 }
