@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
-import './expansion_retainer.dart';
+import 'expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
 
-class RetainerList extends StatefulWidget {
+//包裹所有角色-雇员手风琴的列表
+class ItemRetainerList extends StatefulWidget {
   final ToolUtil toolUtil;
 
-  const RetainerList({super.key, required this.toolUtil});
+  const ItemRetainerList({super.key, required this.toolUtil});
 
   @override
-  State<RetainerList> createState() => _RetainerListState();
+  State<ItemRetainerList> createState() => _ItemRetainerListState();
 }
 
-class _RetainerListState extends State<RetainerList> {
-  List<ExpansionRetainer>? items;
+class _ItemRetainerListState extends State<ItemRetainerList> {
+  List<ItemExpansionRetainer>? items;
 
   @override
   void initState() {
     super.initState();
     //初始化
-    widget.toolUtil.setListFuncSetExpansionRoleCardSelected([]);
-    
+    widget.toolUtil.setListFuncSetItemBrowsingSelected([]);
+    widget.toolUtil.setListFuncSetItemBrowsingRetainerCardSelected([]);
     //widget.toolUtil.setListFuncInitExpansionRoleCardSelected([]);
   }
 
@@ -28,13 +29,13 @@ class _RetainerListState extends State<RetainerList> {
   Widget build(BuildContext context) {
     //初始化数据的地方
     items = List.generate(64, (index) {
-      return ExpansionRetainer(
+      return ItemExpansionRetainer(
         roleId: 'A-333-222-111',
         roleName: '沼泽小鳄',
         roleChannel: '静语庄园',
-        util: widget.toolUtil,
+        toolUtil: widget.toolUtil,
         headTap: () {
-          ontap(index);
+          onTap(index);
         },
       );
     });
@@ -66,13 +67,13 @@ class _RetainerListState extends State<RetainerList> {
     );
   }
 
-  void ontap(index) {
+  void onTap(index) {
+    //print(widget.toolUtil.listFuncSetItemBrowsingSelected!.length);
     for (int i = 0;
-        i <= widget.toolUtil.listFuncSetExpansionRoleCardSelected!.length - 1;
+        i <= widget.toolUtil.listFuncSetItemBrowsingSelected!.length - 1;
         i++) {
-      widget.toolUtil.listFuncSetExpansionRoleCardSelected![i](false);
+      widget.toolUtil.listFuncSetItemBrowsingSelected![i](false);
     }
-    widget.toolUtil.listFuncSetExpansionRoleCardSelected![index](true);
+    widget.toolUtil.listFuncSetItemBrowsingSelected![index](true);
   }
-
 }

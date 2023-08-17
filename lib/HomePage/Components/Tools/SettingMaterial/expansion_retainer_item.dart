@@ -1,40 +1,37 @@
 import 'package:flutter/material.dart';
+import 'card_retainer_item.dart';
 import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
-import './card_body.dart';
-import './user_expansion_head.dart';
+import './uesr_expansion_head_item.dart';
 
-//整个角色雇员折叠部件
-class ExpansionArtisan extends StatefulWidget {
+//角色-雇员手风琴单元
+class ItemExpansionRetainer extends StatefulWidget {
   final String? roleChannel;
   final String? roleName;
   final String? roleId;
-  final ToolUtil util;
+  final ToolUtil toolUtil;
   final Function? headTap;
 
-  const ExpansionArtisan({
+  const ItemExpansionRetainer({
     super.key,
     required this.roleId,
     required this.roleName,
     required this.roleChannel,
-    required this.util,
+    required this.toolUtil,
     required this.headTap,
   });
 
   @override
-  State<ExpansionArtisan> createState() => _ExpansionArtisanState();
+  State<ItemExpansionRetainer> createState() => _ItemExpansionRetainerState();
 }
 
-class _ExpansionArtisanState extends State<ExpansionArtisan> {
+class _ItemExpansionRetainerState extends State<ItemExpansionRetainer> {
   Util? util = Util();
   bool? isExpande;
   String? roleName;
   String? roleId;
   String? channelName;
-
   List<Widget>? listItems;
-
-
 
   //test
   List<String> names = ['111', '222', '333', '444', '555', '666', '777', '888'];
@@ -46,22 +43,21 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
     roleName = widget.roleName;
     roleId = widget.roleId;
     channelName = widget.roleChannel;
-    
   }
 
   @override
   Widget build(BuildContext context) {
     listItems = List.generate(names.length, (index) {
-      return BodyCard(
-        key: UniqueKey(),
-        retainerId: '123',
-        retainerName: '沼泽小鳄',
-        artisanChannel: '紫水栈桥',
-        artisanId: 'A-2-2023-01-01',
-        artisanName: '亚啊呐',
-        artisanProfile: '1号雇员',
-        onTap: (){onTap(index);},
-        util: widget.util,
+      //widget.toolUtil.addIemRetainerCardIndex();
+      return ItemRetainerCard(
+        retainerName: names[index],
+        itemUpdate: '2023/8/7',
+        id: 'A-1230-B-1234',
+        profile: '第1个角色第1个雇员',
+        toolUtil: widget.toolUtil,
+        onTap: () {
+          onTap(index);
+        },
       );
     });
 
@@ -77,33 +73,31 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
         ),
       ),
       headBottomMargin: 16,
-      userHead: UserExpansionHead(
+      userHead: ItemUserExpansionHead(
         onTap: widget.headTap,
         util: util,
         channelName: channelName,
         roleName: roleName,
         roleId: roleId,
-        toolUtil: widget.util,
+        toolUtil: widget.toolUtil,
       ),
       util: util,
     );
   }
 
-
- 
-
-  void onTap(int index) {
-    for(int i = 0 ; i <= widget.util.listFuncBidingArtisanBodySelected!.length - 1 ; i ++){
-      widget.util.listFuncBidingArtisanBodySelected![i](false);
+  void onTap(index) {
+    for (int i = 0;
+        i <=
+            widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected!
+                    .length -
+                1;
+        i++) {
+      widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected![i](false);
     }
-
-    //添加viewmodel删除工匠逻辑
+    //widget.toolUtil.listFuncSetItemBrowsingRetainerCardSelected![index](true);
   }
 
-
-  void refreshUi(){
-    setState(() {
-      
-    });
+  void refreshUi() {
+    setState(() {});
   }
 }

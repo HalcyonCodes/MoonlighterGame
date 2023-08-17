@@ -58,6 +58,37 @@ class ToolUtil {
     _itemRetainerCardIndex = _itemRetainerCardIndex! + 1;
   }
 
+  //设置Tools->BidingArtisan->HeadCard选中状态
+  List<Function(bool)>? _listFuncBidingArtisanHeadSelected = [];
+  List<Function(bool)>? get listFuncBidingArtisanHeadSelected =>
+      _listFuncBidingArtisanHeadSelected;
+  int addListFuncBidingArtisanHeadSelected(Function(bool)? func) {
+    _listFuncBidingArtisanHeadSelected!.add(func!);
+    return _listFuncBidingArtisanHeadSelected!.length - 1;
+  }
 
-  
+  void setListFuncBidingArtisanHeadSelected(List<Function(bool)>? list) {
+    _listFuncBidingArtisanHeadSelected = list;
+  }
+
+  void removeListFuncBidingArtisanHeadSelected(Function(bool) i) {
+    _listFuncBidingArtisanHeadSelected!.remove(i);
+  }
+
+  //设置Tools->BidingArtisan->BodyCard选中状态
+  List<Function(bool)>? _listFuncBidingArtisanBodySelected = [];
+  List<Function(bool)>? get listFuncBidingArtisanBodySelected =>
+      _listFuncBidingArtisanBodySelected;
+  int addListFuncBidingArtisanBodySelected(Function(bool)? func) {
+    _listFuncBidingArtisanBodySelected!.add(func!);
+    return _listFuncBidingArtisanBodySelected!.length - 1;
+  }
+
+  void setListFuncBidingArtisanBodySelected(List<Function(bool)>? list) {
+    _listFuncBidingArtisanBodySelected = list;
+  }
+
+  void removeListFuncBidingArtisanBodySelected(Function(bool) i) {
+    _listFuncBidingArtisanBodySelected!.remove(i);
+  }
 }

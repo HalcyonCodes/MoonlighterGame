@@ -50,4 +50,5 @@ class KString {
   static String addOrder = '添加订单';
   static String itemPrice = '单价';
   static String itemGil = '金币';
+  static String settingArtisan = '设置工匠';
 }

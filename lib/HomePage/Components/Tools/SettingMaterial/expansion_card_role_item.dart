@@ -6,7 +6,7 @@ import '../../../../Config/index.dart';
 import '../../Util/util_tools.dart';
 
 //折叠部件的头部
-class HeadCard extends StatefulWidget {
+class ItemExpansionRoleCard extends StatefulWidget {
   final String? roleName;
   final String? roleId;
   final String? channelName;
@@ -14,7 +14,7 @@ class HeadCard extends StatefulWidget {
   final bool? isSelect;
   final ToolUtil util;
 
-  const HeadCard({
+  const ItemExpansionRoleCard({
     super.key,
     required this.channelName,
     required this.animation,
@@ -25,10 +25,10 @@ class HeadCard extends StatefulWidget {
   });
 
   @override
-  State<HeadCard> createState() => _HeadCardState();
+  State<ItemExpansionRoleCard> createState() => _ItemExpansionRoleCardState();
 }
 
-class _HeadCardState extends State<HeadCard> {
+class _ItemExpansionRoleCardState extends State<ItemExpansionRoleCard> {
   bool? isSelect;
 
   @override
@@ -36,8 +36,8 @@ class _HeadCardState extends State<HeadCard> {
     super.initState();
     isSelect = widget.isSelect;
     //注册
-    //widget.util.addListFuncSetExpansionRoleCardSelected(setIsSelect);
-    widget.util.addListFuncBidingArtisanHeadSelected(setIsSelect);
+    widget.util.addListFuncSetItemBrowsingSelected(setIsSelect);
+    //print(widget.util.listFuncSetItemBrowsingSelected!.length);
   }
 
   @override
@@ -118,7 +118,6 @@ class _HeadCardState extends State<HeadCard> {
   void dispose() {
     super.dispose();
 
-    //widget.util.removeListFuncSetExpansionRoleCardSelected(setIsSelect);
-    widget.util.removeListFuncBidingArtisanHeadSelected(setIsSelect);
+    widget.util.removeListFuncSetItemBrowsingSelected(setIsSelect);
   }
 }
