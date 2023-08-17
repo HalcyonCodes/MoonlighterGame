@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'card_retainer_item.dart';
+import './card_retainer_item.dart';
 import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
 import './uesr_expansion_head_item.dart';
@@ -87,14 +87,10 @@ class _ItemExpansionRetainerState extends State<ItemExpansionRetainer> {
 
   void onTap(index) {
     for (int i = 0;
-        i <=
-            widget.toolUtil.listFuncSettingMaterialBodySelected!.length
-                    -
-                1;
+        i <= widget.toolUtil.listFuncSellBrowsingBodySelected!.length - 1;
         i++) {
-      widget.toolUtil.listFuncSettingMaterialBodySelected![i](false);
+      widget.toolUtil.listFuncSellBrowsingBodySelected![i](false);
     }
-    
   }
 
   void refreshUi() {

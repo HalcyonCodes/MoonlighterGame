@@ -36,7 +36,7 @@ class _ItemExpansionRoleCardState extends State<ItemExpansionRoleCard> {
     super.initState();
     isSelect = widget.isSelect;
     //注册
-    widget.util.addListFuncSettingMaterialHeadSelected(setIsSelect);
+    widget.util.addListFuncSellBrowsingHeadSelected(setIsSelect);
   }
 
   @override
@@ -117,6 +117,6 @@ class _ItemExpansionRoleCardState extends State<ItemExpansionRoleCard> {
   void dispose() {
     super.dispose();
 
-    widget.util.removeListFuncSettingMaterialHeadSelected(setIsSelect);
+    widget.util.removeListFuncSellBrowsingHeadSelected(setIsSelect);
   }
 }

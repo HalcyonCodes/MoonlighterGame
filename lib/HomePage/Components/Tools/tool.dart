@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Components/Tools/SettingMaterial/setting_material.dart';
 import 'package:moonlighter/HomePage/Components/Tools/SettingRetainer/setting_retainer.dart';
 import '../../../PublicWidgets/ToolTitle/title_tool.dart';
 import '../../../Config/index.dart';
@@ -13,7 +14,9 @@ import '../Util/util_tools.dart';
 import './ItemBrowsing/Item_browsing.dart';
 import './../../Components/Tools/OrderManager/order_manager.dart';
 import './BindingArtisan/binding_artisan.dart';
-
+import './SellBrowsing/sell_browsing.dart';
+import './SettingMaterial/setting_material.dart';
+import './SettingShelf/setting_shelf.dart';
 
 class Tool extends StatefulWidget {
   const Tool({super.key});
@@ -83,6 +86,9 @@ class _ToolState extends State<Tool> {
           index == 7 ? OrderManager() :
           index == 8 ? ItemBrowsing(toolUtil: toolUtil):
           index == 9 ? BindingArtisan(util: toolUtil):
+          index == 10 ? SettingShelf(toolUtil: toolUtil):
+          index == 11 ? SellBrowsing(toolUtil: toolUtil) :
+          index == 12 ? SettingMaterial(toolUtil: toolUtil,) :
           SizedBox()
 
     

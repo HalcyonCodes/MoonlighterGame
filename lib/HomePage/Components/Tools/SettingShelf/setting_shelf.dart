@@ -4,10 +4,10 @@ import '../../../../PublicWidgets/ToolTitle/title_tool.dart';
 import './list_expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
 
-class SettingMaterial extends StatelessWidget {
+class SettingShelf extends StatelessWidget {
   final ToolUtil toolUtil;
 
-  const SettingMaterial({super.key, required this.toolUtil});
+  const SettingShelf({super.key, required this.toolUtil});
 
   @override
   Widget build(BuildContext context) {

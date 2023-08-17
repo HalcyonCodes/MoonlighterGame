@@ -43,7 +43,7 @@ class _ItemRetainerCardState extends State<ItemRetainerCard> {
     isSelect = false;
 
     //注册
-    widget.toolUtil!.addListFuncSettingMaterialBodySelected(setIsSelect);
+    widget.toolUtil!.addListFuncSellBrowsingBodySelected(setIsSelect);
   }
 
   @override
@@ -151,6 +151,6 @@ class _ItemRetainerCardState extends State<ItemRetainerCard> {
   void dispose() {
     super.dispose();
 
-    widget.toolUtil!.removeListFuncSettingMaterialBodySelected(setIsSelect);
+    widget.toolUtil!.removeListFuncSellBrowsingBodySelected(setIsSelect);
   }
 }

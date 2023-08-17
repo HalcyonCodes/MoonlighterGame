@@ -15,7 +15,7 @@ class CreateAccount extends StatelessWidget {
       children: [
          CommitTitle(iconPath: 'Svg/account_tool.svg', title: KString.createAccount),
          const SizedBox(height: 16,),
-         CreateCard(id: 'dx131324', name: 'ycy13642220203')
+         CreateCard(id: 'dx131324', name: 'test123456')
          
       ],
     );

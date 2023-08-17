@@ -91,4 +91,112 @@ class ToolUtil {
   void removeListFuncBidingArtisanBodySelected(Function(bool) i) {
     _listFuncBidingArtisanBodySelected!.remove(i);
   }
+
+  //设置Tools->SettingShelf->Body选中状态
+  List<Function(bool)>? _listFuncSettingShelfBodySelected = [];
+  List<Function(bool)>? get listFuncSettingShelfBodySelected =>
+      _listFuncSettingShelfBodySelected;
+  int addListFuncSettingShelfBodySelected(Function(bool)? func) {
+    _listFuncSettingShelfBodySelected!.add(func!);
+    return _listFuncSettingShelfBodySelected!.length - 1;
+  }
+
+  void setListFuncSettingShelfBodySelected(List<Function(bool)>? list) {
+    _listFuncSettingShelfBodySelected = list;
+  }
+
+  void removeListFuncSettingShelfBodySelected(Function(bool) i) {
+    _listFuncSettingShelfBodySelected!.remove(i);
+  }
+
+
+  //设置Tools->SettingShelf->Head选中状态
+  List<Function(bool)>? _listFuncSettingShelfHeadSelected = [];
+  List<Function(bool)>? get listFuncSettingShelfHeadSelected =>
+      _listFuncSettingShelfHeadSelected;
+  int addListFuncSettingShelfHeadSelected(Function(bool)? func) {
+    _listFuncSettingShelfHeadSelected!.add(func!);
+    return _listFuncSettingShelfHeadSelected!.length - 1;
+  }
+
+  void setListFuncSettingShelfHeadSelected(List<Function(bool)>? list) {
+    _listFuncSettingShelfHeadSelected = list;
+  }
+
+  void removeListFuncSettingShelfHeadSelected(Function(bool) i) {
+    _listFuncSettingShelfHeadSelected!.remove(i);
+  }
+
+  //设置Tools->SellBrowsing->Body选中状态
+  List<Function(bool)>? _listFuncSellBrowsingBodySelected = [];
+  List<Function(bool)>? get listFuncSellBrowsingBodySelected =>
+      _listFuncSellBrowsingBodySelected;
+  int addListFuncSellBrowsingBodySelected(Function(bool)? func) {
+    _listFuncSellBrowsingBodySelected!.add(func!);
+    return _listFuncSellBrowsingBodySelected!.length - 1;
+  }
+
+  void setListFuncSellBrowsingBodySelected(List<Function(bool)>? list) {
+    _listFuncSellBrowsingBodySelected = list;
+  }
+
+  void removeListFuncSellBrowsingBodySelected(Function(bool) i) {
+    _listFuncSellBrowsingBodySelected!.remove(i);
+  }
+
+
+  //设置Tools->SellBrowsing->Head选中状态
+  List<Function(bool)>? _listFuncSellBrowsingHeadSelected = [];
+  List<Function(bool)>? get listFuncSellBrowsingHeadSelected =>
+      _listFuncSellBrowsingHeadSelected;
+  int addListFuncSellBrowsingHeadSelected(Function(bool)? func) {
+    _listFuncSellBrowsingHeadSelected!.add(func!);
+    return _listFuncSellBrowsingHeadSelected!.length - 1;
+  }
+
+  void setListFuncSellBrowsingHeadSelected(List<Function(bool)>? list) {
+    _listFuncSellBrowsingHeadSelected = list;
+  }
+
+  void removeListFuncSellBrowsingHeadSelected(Function(bool) i) {
+    _listFuncSellBrowsingHeadSelected!.remove(i);
+  }
+  
+   //设置Tools->SettingMaterial->Body选中状态
+  List<Function(bool)>? _listFuncSettingMaterialBodySelected = [];
+  List<Function(bool)>? get listFuncSettingMaterialBodySelected =>
+      _listFuncSettingMaterialBodySelected;
+  int addListFuncSettingMaterialBodySelected(Function(bool)? func) {
+    _listFuncSettingMaterialBodySelected!.add(func!);
+    return _listFuncSettingMaterialBodySelected!.length - 1;
+  }
+
+  void setListFuncSettingMaterialBodySelected(List<Function(bool)>? list) {
+    _listFuncSettingMaterialBodySelected = list;
+  }
+
+  void removeListFuncSettingMaterialBodySelected(Function(bool) i) {
+    _listFuncSettingMaterialBodySelected!.remove(i);
+  }
+
+
+  //设置Tools->SellBrowsing->Head选中状态
+  List<Function(bool)>? _listFuncSettingMaterialHeadSelected = [];
+  List<Function(bool)>? get listFuncSettingMaterialHeadSelected =>
+      _listFuncSettingMaterialHeadSelected;
+  int addListFuncSettingMaterialHeadSelected(Function(bool)? func) {
+    _listFuncSettingMaterialHeadSelected!.add(func!);
+    return _listFuncSettingMaterialHeadSelected!.length - 1;
+  }
+
+  void setListFuncSettingMaterialHeadSelected(List<Function(bool)>? list) {
+    _listFuncSettingMaterialHeadSelected = list;
+  }
+
+  void removeListFuncSettingMaterialHeadSelected(Function(bool) i) {
+    _listFuncSettingMaterialHeadSelected!.remove(i);
+  }
+
+
+
 }

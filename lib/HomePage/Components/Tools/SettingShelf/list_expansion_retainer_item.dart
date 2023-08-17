@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
-import 'expansion_retainer_item.dart';
+import './expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
 
 //包裹所有角色-雇员手风琴的列表
@@ -20,8 +20,8 @@ class _ItemRetainerListState extends State<ItemRetainerList> {
   void initState() {
     super.initState();
     //初始化
-    widget.toolUtil.setListFuncSettingMaterialBodySelected([]);
-    widget.toolUtil.setListFuncSettingMaterialHeadSelected([]);
+    widget.toolUtil.setListFuncSettingShelfBodySelected([]);
+    widget.toolUtil.setListFuncSettingShelfHeadSelected([]);
   }
 
   @override
@@ -67,13 +67,12 @@ class _ItemRetainerListState extends State<ItemRetainerList> {
   }
 
   void onTap(index) {
-    //print(widget.toolUtil.listFuncSetItemBrowsingSelected!.length);
     for (int i = 0;
-        i <= widget.toolUtil.listFuncSettingMaterialHeadSelected!.length
-        - 1;
+        i <= widget.toolUtil.listFuncSettingShelfHeadSelected!.length - 1;
         i++) {
-      widget.toolUtil.listFuncSettingMaterialHeadSelected![i](false);
+      widget.toolUtil.listFuncSettingShelfHeadSelected![i](false);
     }
-    widget.toolUtil.listFuncSettingMaterialHeadSelected![index](true);
+
+    widget.toolUtil.listFuncSettingShelfHeadSelected![index](true);
   }
 }
