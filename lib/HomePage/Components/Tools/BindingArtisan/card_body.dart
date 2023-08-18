@@ -47,7 +47,7 @@ class _BodyCardState extends State<BodyCard> {
     super.initState();
 
     retainerName = widget.retainerName;
-    retainerId = widget.artisanId;
+    retainerId = widget.retainerId;
     artisanId = widget.artisanId;
     artisanName = widget.artisanName;
     artisanChannel = widget.artisanChannel;

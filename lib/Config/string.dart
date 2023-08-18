@@ -51,4 +51,9 @@ class KString {
   static String itemPrice = '单价';
   static String itemGil = '金币';
   static String settingArtisan = '设置工匠';
+  static String memberCount = '成员数量';
+  static String marketValue = '市值';
+  static String settingCompany = '设置公司';
+
+
 }
