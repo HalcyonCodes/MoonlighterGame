@@ -11,7 +11,7 @@ class RoleCompanyCard extends StatefulWidget {
   final String? companyName;
   final String? companyChannel;
   final String? companyProfile;
-  final Function? onTap;
+  final Function()? onTap;
   final ToolUtil util;
   final String? memberCount;
   final String? marketValue;
@@ -62,13 +62,13 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     companyProfile = widget.companyProfile;
     memberCount = widget.memberCount;
     marketValue = widget.marketValue;
-    //绑定方法
 
+    //绑定方法
     isSelect = false;
     isHasCompany = widget.companyId == null ? false : true;
 
     //注册方法
-    widget.util.addListFuncBidingArtisanBodySelected(setSelected);
+    widget.util.addListFuncSettingCompanySetSelect(setSelected);
   }
 
   @override
@@ -76,16 +76,17 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       width: MediaQuery.of(context).size.width <= 1920
-          ? (1920 - 24) / 24 * 7 
-          : (1920 - 24) / 24 * 7 ,
+          ? (1920 - 24) / 24 * 7
+          : (1920 - 24) / 24 * 7,
       child: Container(
         alignment: Alignment.topRight,
-      
-          
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: widget.onTap,
           child: Container(
             width: MediaQuery.of(context).size.width <= 1920
-                ? (1920 - 24) / 24 * 7 - 24 
-                : (1920 - 24) / 24 * 7 - 24 ,
+                ? (1920 - 24) / 24 * 7 - 24
+                : (1920 - 24) / 24 * 7 - 24,
             decoration: KDecoration.cardDecoration,
             child: Column(
               children: [
@@ -197,7 +198,9 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
                                       child: SvgPicture.asset(
                                           'Svg/company_tool.svg'),
                                     ),
-                                    const SizedBox(width: 12,),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
                                     Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -226,21 +229,16 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
                                     Container(
                                       alignment: Alignment.centerRight,
                                       height: 54,
-                                      child: 
-                                    
-                                            InkWell(
-                                              onTap: onRemoveArtisanTap,
-                                              borderRadius:
-                                                  BorderRadius.circular(99),
-                                              child: SizedBox(
-                                                height: 26,
-                                                width: 26,
-                                                child: SvgPicture.asset(
-                                                    'Svg/minus_card.svg'),
-                                              ),
-                                            ),
-                                            
-                                         
+                                      child: InkWell(
+                                        onTap: onRemoveArtisanTap,
+                                        borderRadius: BorderRadius.circular(99),
+                                        child: SizedBox(
+                                          height: 26,
+                                          width: 26,
+                                          child: SvgPicture.asset(
+                                              'Svg/minus_card.svg'),
+                                        ),
+                                      ),
                                     )
                                   ]),
                               const SizedBox(
@@ -307,11 +305,11 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
             ),
           ),
         ),
+      ),
     );
   }
 
   void onRemoveArtisanTap() {
-    widget.onTap!();
     removeArtisan();
     refreshUi();
   }
@@ -322,6 +320,8 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     companyName = null;
     companyChannel = null;
     companyProfile = null;
+    //假如修改viewmodel逻辑
+    refreshUi();
   }
 
   void refreshUi() {
@@ -341,6 +341,6 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
   @override
   void dispose() {
     super.dispose();
-    widget.util.removeListFuncBidingArtisanBodySelected(setSelected);
+    widget.util.removeListFuncSettingCompanySetSelect(setSelected);
   }
 }

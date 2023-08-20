@@ -197,6 +197,22 @@ class ToolUtil {
     _listFuncSettingMaterialHeadSelected!.remove(i);
   }
 
+  //设置Tools -> SettingCompany -> roleCompanyCard中删除公会
+  List<Function(bool)>? _listFuncSettingCompanySetSelect = [];
+  List<Function(bool)>? get listFuncSettingCompanySetSelect =>
+      _listFuncSettingCompanySetSelect;
+  int addListFuncSettingCompanySetSelect(Function(bool)? func) {
+    _listFuncSettingCompanySetSelect!.add(func!);
+    return _listFuncSettingCompanySetSelect!.length - 1;
+  }
+
+  void setListFuncSettingCompanySetSelect(List<Function(bool)>? list) {
+    _listFuncSettingCompanySetSelect = list;
+  }
+
+  void removeListFuncSettingCompanySetSelect(Function(bool) i) {
+    _listFuncSettingCompanySetSelect!.remove(i);
+  }
 
 
 }

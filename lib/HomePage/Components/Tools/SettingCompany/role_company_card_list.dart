@@ -35,13 +35,14 @@ class _RoleCompanyCardListState extends State<RoleCompanyCardList> {
         companyProfile: '互联网大厂',
         memberCount: '16',
         marketValue: '130,000,000',
-        onTap: (){},
+        onTap: () {
+          onCardTap(index);
+        },
       );
     });
 
     //注册
-    widget.util.setListFuncBidingArtisanHeadSelected([]);
-    widget.util.setListFuncBidingArtisanBodySelected([]);
+    widget.util.setListFuncSettingCompanySetSelect([]);
   }
 
   @override
@@ -67,8 +68,12 @@ class _RoleCompanyCardListState extends State<RoleCompanyCardList> {
     );
   }
 
-  void removeCompany(int index){
-    
+  void onCardTap(int index) {
+    for (int i = 0;
+        i <=  widget.util.listFuncSettingCompanySetSelect!.length - 1;
+        i++) {
+      widget.util.listFuncSettingCompanySetSelect![i](false);
+    }
+    widget.util.listFuncSettingCompanySetSelect![index](true);
   }
-
 }
