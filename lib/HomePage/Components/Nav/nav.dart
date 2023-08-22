@@ -13,8 +13,8 @@ class Nav extends StatelessWidget {
         height: MediaQuery.of(context).size.height - 24 * 2,
         width: 
         MediaQuery.of(context).size.width <= 1920 ?
-        1920 / 24 * 2 - 24 : 
-        1920 / 24 * 2 - 24
+        (1920- 24) / 24 * 2 - 24 : 
+        (1920-24) / 24 * 2 - 24
         ,
         margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         decoration: KDecoration.navDecoration,

@@ -54,6 +54,18 @@ class KString {
   static String memberCount = '成员数量';
   static String marketValue = '市值';
   static String settingCompany = '设置公司';
+  static String tagName = '标签名称';
+  static String addTag = '添加标签';
+  static String roleId = '角色编号';
+  static String roleName = '角色名称';
+  static String addRole = '添加角色';
+  static String roleChannel = '角色频道';
+  static String roleProfile = '角色简介';
+  static String roleCategory = '角色分类';
+  static String retainerId = '雇员编号';
+  static String retainerName = '雇员名称';
+  static String retainerProfile = '雇员简介';
+  static String addRetainer = '添加雇员';
 
 
 }

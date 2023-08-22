@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../Config/index.dart';
 
-class RoleCard extends StatelessWidget {
+class PickerRoleCard extends StatelessWidget {
   final String? id;
   final String? category;
   final String? name;
   final String? profile;
-  final Function()? upOnTap;
-  final Function()? downOnTap;
+  final Function()? addOnTap;
   final Function()? removeOnTap;
 
-  const RoleCard({
+  const PickerRoleCard({
     super.key,
     required this.id,
     required this.category,
     required this.name,
     required this.profile,
-    required this.downOnTap,
-    required this.upOnTap,
+    required this.addOnTap,
     required this.removeOnTap,
   });
 
@@ -93,22 +91,12 @@ class RoleCard extends StatelessWidget {
                     const SizedBox(width: 16,),
                     const Expanded(child: SizedBox()),
                     InkWell(
-                      onTap: upOnTap,
+                      onTap: addOnTap,
                       borderRadius: BorderRadius.circular(99),
                       child: SizedBox(
                         height: 26,
                         width: 26,
-                        child: SvgPicture.asset('Svg/up_card.svg'),
-                      ),
-                    ),
-                    const SizedBox(width: 16,),
-                    InkWell(
-                      onTap: downOnTap,
-                      borderRadius: BorderRadius.circular(99),
-                      child: SizedBox(
-                        height: 26,
-                        width: 26,
-                        child: SvgPicture.asset('Svg/down_card.svg'),
+                        child: SvgPicture.asset('Svg/plus_card.svg'),
                       ),
                     ),
                     const SizedBox(width: 16,),
@@ -118,7 +106,7 @@ class RoleCard extends StatelessWidget {
                       child: SizedBox(
                         height: 26,
                         width: 26,
-                        child: SvgPicture.asset('Svg/minus_card.svg'),
+                        child: SvgPicture.asset('Svg/close_card.svg'),
                       ),
                     ),
          

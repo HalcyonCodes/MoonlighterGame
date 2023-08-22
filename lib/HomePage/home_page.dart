@@ -3,11 +3,33 @@ import '../Config/index.dart';
 import './Components/Nav/nav.dart';
 import './Components/List/terminal_list.dart';
 import './Components/Tools/tool.dart';
+import './Components/Util/util_picker.dart';
+import './Components/Util/util_list.dart';
+import './Components/Util/util_tools.dart';
+import './Components/Picker/picker.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  ToolUtil? toolUtil;
+  PickerUtil? pickerUtil;
+  
+
+  @override
+  void initState() {
+    super.initState();
+    toolUtil = ToolUtil();
+    pickerUtil = PickerUtil();
+  }
+
+
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KColor.backgroundColor,
@@ -29,7 +51,10 @@ class HomePage extends StatelessWidget {
                   SizedBox(width: 24,),
                   TerminalList(),
                   SizedBox(width: 24,),
-                  Tool(),
+                  Tool(toolUtil: toolUtil!,pickerUtil: pickerUtil!,),
+                  SizedBox(width: 24,),
+                  Picker(pickerUtil: pickerUtil!,),
+
 
                 ],
               ),
