@@ -1,61 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moonlighter/Config/index.dart';
-import '../../Util/util_tools.dart';
 
-class RoleCompanyCard extends StatefulWidget {
-  final String? roleName;
-  final String? roleId;
-  final String? roleChannel;
+
+class CompanyCard extends StatefulWidget {
+
   final String? companyId;
   final String? companyName;
   final String? companyChannel;
   final String? companyProfile;
   final Function()? onTap;
-  final ToolUtil util;
+
   final String? memberCount;
   final String? marketValue;
 
-  const RoleCompanyCard(
+  const CompanyCard(
       {super.key,
-      this.roleId,
-      this.roleName,
-      this.roleChannel,
       this.companyChannel,
       this.companyId,
       this.companyName,
       this.companyProfile,
       this.onTap,
-      required this.util,
       this.memberCount,
       this.marketValue});
 
   @override
-  State<RoleCompanyCard> createState() => _RoleCompanyCardState();
+  State<CompanyCard> createState() => _CompanyCardState();
 }
 
-class _RoleCompanyCardState extends State<RoleCompanyCard> {
-  String? roleName;
-  String? roleId;
+class _CompanyCardState extends State<CompanyCard> {
+
   String? companyId;
   String? companyName;
   String? companyChannel;
   String? companyProfile;
   String? memberCount;
   String? marketValue;
-  String? roleChannel;
 
-  //标志
-  bool? isHasCompany;
-  bool? isSelect;
+
 
   @override
   void initState() {
     super.initState();
-
-    roleName = widget.roleName;
-    roleId = widget.roleId;
-    roleChannel = widget.roleChannel;
     companyId = widget.companyId;
     companyName = widget.companyName;
     companyChannel = widget.companyChannel;
@@ -63,12 +49,7 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     memberCount = widget.memberCount;
     marketValue = widget.marketValue;
 
-    //绑定方法
-    isSelect = false;
-    isHasCompany = widget.companyId == null ? false : true;
 
-    //注册方法
-    widget.util.addListFuncSettingCompanySetSelect(setSelected);
   }
 
   @override
@@ -85,79 +66,11 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
           onTap: widget.onTap,
           child: Container(
             width: MediaQuery.of(context).size.width <= 1920
-                ? (1920 - 24) / 24 * 7 - 24
-                : (1920 - 24) / 24 * 7 - 24,
+                ? (1920 - 24) / 24 * 8 - 24
+                : (1920 - 24) / 24 * 8 - 24,
             decoration: KDecoration.cardDecoration,
             child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(16),
-                        topRight: const Radius.circular(16),
-                        bottomLeft: isHasCompany == false
-                            ? const Radius.circular(16)
-                            : const Radius.circular(0),
-                        bottomRight: isHasCompany == false
-                            ? const Radius.circular(16)
-                            : const Radius.circular(0),
-                      ),
-                      color: isHasCompany == true
-                          ? KColor.primaryColor
-                          : isSelect == true
-                              ? KColor.primaryColor
-                              : KColor.containerColor),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 22,
-                          width: 22,
-                          child: SvgPicture.asset('Svg/role_tool.svg',
-                              color: isHasCompany == true || isSelect == true
-                                  ? Colors.white
-                                  : Colors.black),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        SizedBox(
-                          height: 22,
-                          child: Text(
-                            '${roleChannel!} : ${roleName!}',
-                            style: isHasCompany == true || isSelect == true
-                                ? KFont.expansionHeadSelectedStyle
-                                : KFont.expansionHeadUnSelectStyle,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ),
-                        const Expanded(
-                          child: SizedBox(),
-                        ),
-                        SizedBox(
-                          height: 22,
-                          child: Text(
-                            roleId!,
-                            style: isHasCompany == true || isSelect == true
-                                ? KFont.expansionHeadSelectedStyle
-                                : KFont.expansionHeadUnSelectStyle,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                isHasCompany != true
-                    ? const SizedBox()
-                    : SizedBox(
+              children: [ SizedBox(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 12),
@@ -230,13 +143,13 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
                                       alignment: Alignment.centerRight,
                                       height: 54,
                                       child: InkWell(
-                                        onTap: onRemoveCompanyTap,
+                                        onTap: onAddTap,
                                         borderRadius: BorderRadius.circular(99),
                                         child: SizedBox(
                                           height: 26,
                                           width: 26,
                                           child: SvgPicture.asset(
-                                              'Svg/minus_card.svg'),
+                                              'Svg/plus_card.svg'),
                                         ),
                                       ),
                                     )
@@ -309,17 +222,13 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     );
   }
 
-  void onRemoveCompanyTap() {
-    removeCompany();
+  void onAddTap() {
+    removeArtisan();
     refreshUi();
   }
 
-  void removeCompany() {
-    isHasCompany = false;
-    companyId = null;
-    companyName = null;
-    companyChannel = null;
-    companyProfile = null;
+  void removeArtisan() {
+
     //假如修改viewmodel逻辑
     refreshUi();
   }
@@ -328,19 +237,12 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
     setState(() {});
   }
 
-  void setSelected(bool i) {
-    isSelect = i;
-    refreshUi();
-  }
 
-  void bodyOnTap() {
-    widget.onTap!();
-    setSelected(true);
-  }
+
 
   @override
   void dispose() {
     super.dispose();
-    widget.util.removeListFuncSettingCompanySetSelect(setSelected);
+    
   }
 }

@@ -55,7 +55,7 @@ class _ItemPriceInputState extends State<ItemPriceInput> {
               child: TextField(
                 controller: nameCtrl,
                 maxLines: 1,
-                style: KFont.searchBarStyle,
+                style: KFont.itemListStyle,
                 autofocus: false,
                 cursorColor: Colors.black,
                 cursorWidth: 2,
@@ -87,7 +87,7 @@ class _ItemPriceInputState extends State<ItemPriceInput> {
             child: TextField(
               controller: typeCtrl,
               maxLines: 1,
-              style: KFont.searchBarStyle,
+              style: KFont.itemListStyle,
               autofocus: false,
               cursorColor: Colors.black,
               cursorWidth: 2,
@@ -116,7 +116,7 @@ class _ItemPriceInputState extends State<ItemPriceInput> {
             child: TextField(
               controller: countCtrl,
               maxLines: 1,
-              style: KFont.searchBarStyle,
+              style: KFont.itemListStyle,
               autofocus: false,
               cursorColor: Colors.black,
               cursorWidth: 2,
@@ -145,7 +145,7 @@ class _ItemPriceInputState extends State<ItemPriceInput> {
             child: TextField(
               controller: priceCtrl,
               maxLines: 1,
-              style: KFont.searchBarStyle,
+              style: KFont.itemListStyle,
               autofocus: false,
               cursorColor: Colors.black,
               cursorWidth: 2,

@@ -3,13 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
 
-class ItemInput extends StatefulWidget {
+class ShelfItemInput extends StatefulWidget {
   final String? itemName;
   final String? itemType;
   final String? itemCount;
   final Function()? delectOnTap;
 
-  const ItemInput(
+  const ShelfItemInput(
       {super.key,
       this.itemName,
       this.itemType,
@@ -17,10 +17,10 @@ class ItemInput extends StatefulWidget {
       this.delectOnTap});
 
   @override
-  State<ItemInput> createState() => _ItemInputState();
+  State<ShelfItemInput> createState() => _ShelfItemInputState();
 }
 
-class _ItemInputState extends State<ItemInput> {
+class _ShelfItemInputState extends State<ShelfItemInput> {
   TextEditingController? nameCtrl;
   TextEditingController? typeCtrl;
   TextEditingController? countCtrl;
@@ -36,7 +36,7 @@ class _ItemInputState extends State<ItemInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: (MediaQuery.of(context).size.width - 24) / 24 * 7 ,
+      width: (MediaQuery.of(context).size.width - 24) / 24 * 8 ,
       margin: const EdgeInsets.only(bottom: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -104,7 +104,7 @@ class _ItemInputState extends State<ItemInput> {
             width: 24,
           ),
           SizedBox(
-            width: 34,
+            width: 35,
             child: TextField(
               controller: countCtrl,
               maxLines: 1,

@@ -66,6 +66,7 @@ class KString {
   static String retainerName = '雇员名称';
   static String retainerProfile = '雇员简介';
   static String addRetainer = '添加雇员';
-
-
+  static String sellingItem = '在售道具';
+  static String retainer = '雇员';
+  static String copyData = '拷贝所有数据';
 }

@@ -148,4 +148,13 @@ class KFont {
       decoration: TextDecoration.none,
       height: 22 / 18);
 
+  //道具列表中的字体
+    static TextStyle itemListStyle = const TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      decoration: TextDecoration.none,
+      height: 22 / 18);
+
 }

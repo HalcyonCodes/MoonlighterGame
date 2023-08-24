@@ -45,7 +45,7 @@ class _ItemGilInputState extends State<ItemGilInput> {
               child: TextField(
                 controller: gilCtrl,
                 maxLines: 1,
-                style: KFont.searchBarStyle,
+                style: KFont.itemListStyle,
                 autofocus: false,
                 cursorColor: Colors.black,
                 cursorWidth: 2,

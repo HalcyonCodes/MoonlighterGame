@@ -8,5 +8,20 @@ class PickerUtil{
     _changePickerCurrentIndex = func;
   }
 
+  //SettingShelf中改变shelfTitle数目
+  Function? _changeSettingShelfTitleCount;
+  Function? get changeSettingShelfTitleCount => _changeSettingShelfTitleCount;
+  void setFuncChangeSettingShelfTitleCount(Function? func){
+    _changeSettingShelfTitleCount = func;
+  }
+
+  //SettingMaterial中改变MaterialTitle数目
+  Function? _changeSettingMaterialTitleCount;
+  Function? get changeSettingMaterialTitleCount => _changeSettingMaterialTitleCount;
+  void setFuncChangeSettingMaterialTitleCount(Function? func){
+    _changeSettingMaterialTitleCount = func;
+  }
+
+ 
 
 }

@@ -79,7 +79,7 @@ class _ExpressDeliveryOrderState extends State<ExpressDeliveryOrder> {
               child: TextField(
                 controller: orderIdEditCtrl,
                 maxLines: 1,
-                style: KFont.searchBarStyle,
+                style: KFont.cardTitleStyle,
                 autofocus: false,
                 cursorColor: Colors.black,
                 cursorWidth: 2,
@@ -126,7 +126,7 @@ class _ExpressDeliveryOrderState extends State<ExpressDeliveryOrder> {
                         child: TextField(
                           controller: sourceIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,
@@ -171,7 +171,7 @@ class _ExpressDeliveryOrderState extends State<ExpressDeliveryOrder> {
                         child: TextField(
                           controller: targetIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,

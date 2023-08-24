@@ -75,7 +75,7 @@ class _ResourceTransferOrderState extends State<ResourceTransferOrder> {
               child: TextField(
                 controller: orderIdEditCtrl,
                 maxLines: 1,
-                style: KFont.searchBarStyle,
+                style: KFont.cardTitleStyle,
                 autofocus: false,
                 cursorColor: Colors.black,
                 cursorWidth: 2,
@@ -122,7 +122,7 @@ class _ResourceTransferOrderState extends State<ResourceTransferOrder> {
                         child: TextField(
                           controller: sourceIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,
@@ -167,7 +167,7 @@ class _ResourceTransferOrderState extends State<ResourceTransferOrder> {
                         child: TextField(
                           controller: targetIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,

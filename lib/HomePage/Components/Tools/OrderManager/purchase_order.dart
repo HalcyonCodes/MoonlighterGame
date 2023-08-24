@@ -81,7 +81,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
               child: TextField(
                 controller: orderIdEditCtrl,
                 maxLines: 1,
-                style: KFont.searchBarStyle,
+                style: KFont.cardTitleStyle,
                 autofocus: false,
                 cursorColor: Colors.black,
                 cursorWidth: 2,
@@ -128,7 +128,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
                         child: TextField(
                           controller: sourceIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,
@@ -173,7 +173,7 @@ class _PurchaseOrderState extends State<PurchaseOrder> {
                         child: TextField(
                           controller: targetIdEditCtrl,
                           maxLines: 1,
-                          style: KFont.searchBarStyle,
+                          style: KFont.cardTitleStyle,
                           autofocus: false,
                           cursorColor: Colors.black,
                           cursorWidth: 2,
