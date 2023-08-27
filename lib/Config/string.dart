@@ -46,7 +46,9 @@ class KString {
   static String itemStyle = 'HQ';
   static String itemCount = '数量';
   static String sourceId = '来源编号';
+  static String sourceName = '来源名称';
   static String targetId = '目标编号';
+  static String targetName = '目标名称';
   static String addOrder = '添加订单';
   static String itemPrice = '单价';
   static String itemGil = '金币';
@@ -69,4 +71,16 @@ class KString {
   static String sellingItem = '在售道具';
   static String retainer = '雇员';
   static String copyData = '拷贝所有数据';
+  static String mon = 'Mon.';
+  static String tue = 'Tue.';
+  static String wed = 'Wed.';
+  static String thu = 'Thu.';
+  static String fri = 'Fri.';
+  static String sat = 'Sat.';
+  static String sun = 'Sun.';
+  static String total = '合计';
+
+
+
+
 }

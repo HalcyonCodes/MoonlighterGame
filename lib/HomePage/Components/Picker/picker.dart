@@ -8,6 +8,8 @@ import './BindingArtisan/binding_artisan.dart';
 import './SettingShelf/setting_shelf.dart';
 import './SettingMaterial/setting_material.dart';
 import './SettingCompany/setting_company.dart';
+import './SellBrowsing/sell_browsing.dart';
+import './OrderManager/order_manager.dart';
 
 import '../Util/util_picker.dart';
 
@@ -46,11 +48,11 @@ class _PickerState extends State<Picker> {
           currentIndex == 4 ? SizedBox() :
           currentIndex == 5 ? PickerSettingRole() :
           currentIndex == 6 ? PickerSettingRetainer() :
-          currentIndex == 7 ? SizedBox() :
+          currentIndex == 7 ? PickerOrderManager() :
           currentIndex == 8 ? PickerItemBrowsing() :
           currentIndex == 9 ? PickerBindingArtisan() :
           currentIndex == 10 ? PickerSettingShelf(pickerUtil: widget.pickerUtil,) :
-          currentIndex == 11 ? SizedBox() :
+          currentIndex == 11 ? PickerSellBrowsing(pickerUtil: widget.pickerUtil,) :
           currentIndex == 12 ? PickerSettingMaterial(pickerUtil: widget.pickerUtil,) :
           currentIndex == 13 ? PickerSettingCompany() :
 

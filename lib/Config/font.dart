@@ -156,5 +156,32 @@ class KFont {
       color: Colors.black,
       decoration: TextDecoration.none,
       height: 22 / 18);
+  
+  //日历中未被选中时的字体
+    static TextStyle calendarDateStyle = const TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 33,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      decoration: TextDecoration.none,
+      height: 34 / 33);
+
+  //日历中被选中时的字体
+     static TextStyle calendarDateSelectedStyle =  const TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 33,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+      decoration: TextDecoration.none,
+      height: 34 / 33);
+
+  //卡片标题主色调字体
+  static TextStyle cardPrimaryTitleStyle = TextStyle(
+      fontFamily: 'MiSans',
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: KColor.primaryColor,
+      decoration: TextDecoration.none,
+      height: 25 / 18);
 
 }

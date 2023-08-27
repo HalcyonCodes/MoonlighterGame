@@ -75,6 +75,8 @@ flutter:
     - Svg/shelf_order.svg
     - Svg/transaction_order.svg
     - Svg/express_delivery_order.svg
+    - Svg/caret_left_card.svg
+    - Svg/caret_right_card.svg
     
 
 
