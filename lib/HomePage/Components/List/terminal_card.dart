@@ -3,6 +3,8 @@ import '../../../Config/index.dart';
 import './tag_card.dart';
 import './status_card.dart';
 import '../Util/util_list.dart';
+import '../../model/ViewModel/ListViewModel/list_view_model.dart';
+import '../Util/util_tools.dart';
 
 class TerminalCard extends StatefulWidget {
   final String id;
@@ -12,6 +14,8 @@ class TerminalCard extends StatefulWidget {
   final List<String> tags;
   final String status;
   final ListUtil util;
+  final ListViewModel viewModel;
+  final ToolUtil toolUtil;
 
   const TerminalCard(
       {super.key,
@@ -21,7 +25,9 @@ class TerminalCard extends StatefulWidget {
       required this.robotCategory,
       required this.tags,
       required this.status,
-      required this.util});
+      required this.util,
+      required this.viewModel,
+      required this.toolUtil});
 
   @override
   State<TerminalCard> createState() => _TerminalCardState();
@@ -85,19 +91,19 @@ class _TerminalCardState extends State<TerminalCard> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        id!,
-                        style: isSelect == false
-                            ? KFont.cardProfileStyle
-                            : KFont.cardProfileSelectedStyle,maxLines: 1, overflow: TextOverflow.clip
-                      ),
+                      Text(id!,
+                          style: isSelect == false
+                              ? KFont.cardProfileStyle
+                              : KFont.cardProfileSelectedStyle,
+                          maxLines: 1,
+                          overflow: TextOverflow.clip),
                       const Expanded(child: SizedBox()),
-                      Text(
-                        robotCategory!,
-                        style: isSelect == false
-                            ? KFont.cardProfileStyle
-                            : KFont.cardProfileSelectedStyle,maxLines: 1, overflow: TextOverflow.clip
-                      ),
+                      Text(robotCategory!,
+                          style: isSelect == false
+                              ? KFont.cardProfileStyle
+                              : KFont.cardProfileSelectedStyle,
+                          maxLines: 1,
+                          overflow: TextOverflow.clip),
                     ],
                   ),
                 ),
@@ -106,24 +112,24 @@ class _TerminalCardState extends State<TerminalCard> {
                 ),
                 SizedBox(
                   height: 25,
-                  child: Text(
-                    name!,
-                    style: isSelect == true
-                        ? KFont.cardTitleSelectedStyle
-                        : KFont.cardTitleStyle,maxLines: 1, overflow: TextOverflow.clip
-                  ),
+                  child: Text(name!,
+                      style: isSelect == true
+                          ? KFont.cardTitleSelectedStyle
+                          : KFont.cardTitleStyle,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 SizedBox(
                   height: 17,
-                  child: Text(
-                    '创建时间： ${buildTime!}',
-                    style: isSelect == true
-                        ? KFont.cardProfileSelectedStyle
-                        : KFont.cardProfileStyle,maxLines: 1, overflow: TextOverflow.clip
-                  ),
+                  child: Text('创建时间： ${buildTime!}',
+                      style: isSelect == true
+                          ? KFont.cardProfileSelectedStyle
+                          : KFont.cardProfileStyle,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip),
                 ),
                 const SizedBox(
                   height: 20,
@@ -183,39 +189,74 @@ class _TerminalCardState extends State<TerminalCard> {
   }
 
   void onClick() {
-      isSelect == true
-          ? (() {
-              for (int i = 0;
-                  i <= widget.util.listFuncCancelSelected!.length - 1;
-                  i++) {
-                widget.util.listFuncCancelSelected![i]();
-              }
-            })()
-          : (() {
-              for (int i = 0;
-                  i <= widget.util.listFuncCancelSelected!.length - 1;
-                  i++) {
-                widget.util.listFuncCancelSelected![i]();
-              }
-              isSelect = true;
-            })();
+    isSelect == true
+        ? (() {
+            for (int i = 0;
+                i <= widget.util.listFuncCancelSelected!.length - 1;
+                i++) {
+              widget.util.listFuncCancelSelected![i]();
+            }
+            widget.toolUtil.setListSelectId(null);
+          })()
+        : (() {
+            for (int i = 0;
+                i <= widget.util.listFuncCancelSelected!.length - 1;
+                i++) {
+              widget.util.listFuncCancelSelected![i]();
+            }
+            widget.toolUtil.setListSelectId(id!);
+            isSelect = true;
+          })();
 
     refreshUi();
   }
 
-  void onPlay() {
-    status = 'play';
-    refreshUi();
+  void onPlay() async {
+    if (status != 'play') {
+      try {
+        int respondCode = await widget.viewModel.setTerimalStatus(id!, 'play');
+        if (respondCode == 200) {
+          status = 'play';
+          refreshUi();
+        } else {
+          //提示修改失败
+        }
+      } catch (e) {
+        //提示修改失败
+      }
+    }
   }
 
-  void onPause() {
-    status = 'pause';
-    refreshUi();
+  void onPause() async {
+    if (status != 'pause') {
+      try {
+        int respondCode = await widget.viewModel.setTerimalStatus(id!, 'pause');
+        if (respondCode == 200) {
+          status = 'pause';
+          refreshUi();
+        } else {
+          //提示修改失败
+        }
+      } catch (e) {
+        //提示修改失败
+      }
+    }
   }
 
-  void onStop() {
-    status = 'stop';
-    refreshUi();
+  void onStop() async {
+    if (status != 'stop') {
+      try {
+        int respondCode = await widget.viewModel.setTerimalStatus(id!, 'stop');
+        if (respondCode == 200) {
+          status = 'stop';
+          refreshUi();
+        } else {
+          //提示修改失败
+        }
+      } catch (e) {
+        //提示修改失败
+      }
+    }
   }
 
   void refreshUi() {

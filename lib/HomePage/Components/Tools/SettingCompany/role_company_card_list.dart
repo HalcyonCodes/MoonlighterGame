@@ -62,6 +62,7 @@ class _RoleCompanyCardListState extends State<RoleCompanyCardList> {
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: ListView(
+              clipBehavior: Clip.none,
               children: items!,
             ),
           )),

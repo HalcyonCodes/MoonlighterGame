@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../Config/index.dart';
 import './Components/Nav/nav.dart';
-import './Components/List/terminal_list.dart';
 import './Components/Tools/tool.dart';
 import './Components/Util/util_picker.dart';
-import './Components/Util/util_list.dart';
+import './Components/List/future_terimal_list.dart';
 import './Components/Util/util_tools.dart';
 import './Components/Picker/picker.dart';
+import './Components/Util/util_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,20 +16,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   ToolUtil? toolUtil;
   PickerUtil? pickerUtil;
-  
+  ListUtil? listUtil;
 
   @override
   void initState() {
     super.initState();
     toolUtil = ToolUtil();
     pickerUtil = PickerUtil();
+    listUtil = ListUtil();
   }
 
-
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: KColor.backgroundColor,
@@ -37,9 +36,7 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.horizontal,
         child: SizedBox(
             height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width <= 1920
-                ? 1920
-                : 1920,
+            width: MediaQuery.of(context).size.width <= 1920 ? 1920 : 1920,
             child: Padding(
               padding: const EdgeInsetsDirectional.all(24),
               child: Row(
@@ -47,19 +44,27 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Nav(selectIndex: 0),
-                  SizedBox(width: 24,),
-                  TerminalList(),
-                  SizedBox(width: 24,),
-                  Tool(toolUtil: toolUtil!,pickerUtil: pickerUtil!,),
-                  SizedBox(width: 24,),
-                  Picker(pickerUtil: pickerUtil!,),
-
-
+                  const Nav(selectIndex: 0),
+                  const SizedBox(
+                    width: 24,
+                  ),
+                  TerimalListFuture(toolUtil: toolUtil!, listUtil: listUtil!,),
+                  const SizedBox(
+                    width: 24,
+                  ),
+                  Tool(
+                    toolUtil: toolUtil!,
+                    pickerUtil: pickerUtil!,
+                  ),
+                  const SizedBox(
+                    width: 24,
+                  ),
+                  Picker(
+                    pickerUtil: pickerUtil!,
+                  ),
                 ],
               ),
-            )
-          ),
+            )),
       ),
     );
   }

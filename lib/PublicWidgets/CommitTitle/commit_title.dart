@@ -5,12 +5,12 @@ import 'cancel_button.dart';
 import 'commit_button.dart';
 
 class CommitTitle extends StatelessWidget {
-
   final String? iconPath;
   final String? title;
+  final Function()? cancel;
+  final Function()? commit;
 
-  const CommitTitle(
-      {super.key, required this.iconPath, required this.title});
+  const CommitTitle({super.key, required this.iconPath, required this.title, required this.cancel, required this.commit});
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +49,5 @@ class CommitTitle extends StatelessWidget {
         ),
       ),
     );
-
   }
-
-  void cancel(){
-
-  }
-
-  void commit(){
-
-  }
-
-
-
 }

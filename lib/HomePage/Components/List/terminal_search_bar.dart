@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../Config/index.dart';
+import '../Util/util_list.dart';
 
 class TerminalSearchBar extends StatefulWidget {
-  const TerminalSearchBar({super.key});
+  final ListUtil listUtil;
+  const TerminalSearchBar({super.key, required this.listUtil});
 
   @override
   State<TerminalSearchBar> createState() => _TerminalSearchBarState();
@@ -143,7 +145,11 @@ class _TerminalSearchBarState extends State<TerminalSearchBar> {
   }
 
   void commit(String text){
-
+    isSearchId == true ? widget.listUtil.setSearchIdString!(text) : 
+    isSearchName == true ? widget.listUtil.setSearchNameString!(text) :
+    isSearchTag == true ? widget.listUtil.setSearchTagString!(text) : (){};
+    text == '' ? widget.listUtil.refreshListNormal!() : widget.listUtil.refreshList!();
+    
   }
 
 

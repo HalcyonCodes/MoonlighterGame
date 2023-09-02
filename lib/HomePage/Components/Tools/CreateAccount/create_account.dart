@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:moonlighter/Config/index.dart';
 import './create_card.dart';
 import '../../../../PublicWidgets/CommitTitle/commit_title.dart';
+import '../../Util/util_tools.dart';
 
 class CreateAccount extends StatelessWidget {
-  const CreateAccount({super.key});
+  final ToolUtil toolUtil;
+
+  const CreateAccount({super.key, required this.toolUtil});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +16,23 @@ class CreateAccount extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-         CommitTitle(iconPath: 'Svg/account_tool.svg', title: KString.createAccount),
-         const SizedBox(height: 16,),
-         CreateCard(id: 'dx131324', name: 'test123456')
-         
+        CommitTitle(
+          cancel: cancel,
+          commit: commit,
+            iconPath: 'Svg/account_tool.svg', title: KString.createAccount),
+        const SizedBox(
+          height: 16,
+        ),
+        const CreateCard(id: '', name: '')
       ],
     );
+  }
+
+  void commit() {
+
+  }
+
+  void cancel() {
+    toolUtil.
   }
 }

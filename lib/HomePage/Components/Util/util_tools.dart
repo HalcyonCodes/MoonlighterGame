@@ -109,7 +109,6 @@ class ToolUtil {
     _listFuncSettingShelfBodySelected!.remove(i);
   }
 
-
   //设置Tools->SettingShelf->Head选中状态
   List<Function(bool)>? _listFuncSettingShelfHeadSelected = [];
   List<Function(bool)>? get listFuncSettingShelfHeadSelected =>
@@ -144,7 +143,6 @@ class ToolUtil {
     _listFuncSellBrowsingBodySelected!.remove(i);
   }
 
-
   //设置Tools->SellBrowsing->Head选中状态
   List<Function(bool)>? _listFuncSellBrowsingHeadSelected = [];
   List<Function(bool)>? get listFuncSellBrowsingHeadSelected =>
@@ -161,8 +159,8 @@ class ToolUtil {
   void removeListFuncSellBrowsingHeadSelected(Function(bool) i) {
     _listFuncSellBrowsingHeadSelected!.remove(i);
   }
-  
-   //设置Tools->SettingMaterial->Body选中状态
+
+  //设置Tools->SettingMaterial->Body选中状态
   List<Function(bool)>? _listFuncSettingMaterialBodySelected = [];
   List<Function(bool)>? get listFuncSettingMaterialBodySelected =>
       _listFuncSettingMaterialBodySelected;
@@ -178,7 +176,6 @@ class ToolUtil {
   void removeListFuncSettingMaterialBodySelected(Function(bool) i) {
     _listFuncSettingMaterialBodySelected!.remove(i);
   }
-
 
   //设置Tools->SellBrowsing->Head选中状态
   List<Function(bool)>? _listFuncSettingMaterialHeadSelected = [];
@@ -214,5 +211,19 @@ class ToolUtil {
     _listFuncSettingCompanySetSelect!.remove(i);
   }
 
+  //设置当前选中的列表item
+  String? _listSelectId;
+  String? get listSelectId => _listSelectId;
+  void setListSelectId(String? id) {
+    //test
+    //print('${id}');
+    _listSelectId = id;
+  }
 
+  //改变tool选项
+  Function(int)? _changeTool;
+  Function(int)? get changeTool => _changeTool;
+  void setFuncChangeTool(Function(int)? func) {
+    _changeTool = func;
+  }
 }
