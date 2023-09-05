@@ -17,7 +17,7 @@ class SettingRetainer extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         CommitTitle(
-            iconPath: 'Svg/retainer_tool.svg', title: KString.settingRetainer),
+            iconPath: 'Svg/retainer_tool.svg', title: KString.settingRetainer, cancel: cancel, commit: commit,),
         const SizedBox(
           height: 16,
         ),
@@ -26,5 +26,14 @@ class SettingRetainer extends StatelessWidget {
         )
       ],
     );
+  }
+
+
+  void commit(){
+
+  }
+
+  void cancel(){
+    
   }
 }

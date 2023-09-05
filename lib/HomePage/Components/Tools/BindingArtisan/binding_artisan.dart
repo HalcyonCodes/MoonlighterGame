@@ -6,7 +6,7 @@ import './list_expansion.dart';
 
 class BindingArtisan extends StatelessWidget {
   final ToolUtil util;
-  const BindingArtisan({super.key , required this.util});
+  const BindingArtisan({super.key, required this.util});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,20 @@ class BindingArtisan extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisSize: MainAxisSize.min,
       children: [
-        CommitTitle(iconPath: 'Svg/artisan_tool.svg', title: KString.settingArtisan),
-        const SizedBox(height: 16,),
-        ExpansionList(util: util,)
-
+        CommitTitle(
+            iconPath: 'Svg/artisan_tool.svg', title: KString.settingArtisan, commit: commit, cancel: cancel,
+            ),
+        const SizedBox(
+          height: 16,
+        ),
+        ExpansionList(
+          util: util,
+        )
       ],
     );
   }
+
+  void commit() {}
+
+  void cancel() {}
 }

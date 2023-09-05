@@ -31,7 +31,7 @@ class _OrderManagerState extends State<OrderManager> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        CommitTitle(iconPath: 'Svg/order_tool.svg', title: KString.addOrder),
+        CommitTitle(iconPath: 'Svg/order_tool.svg', title: KString.addOrder, commit: commit, cancel: cancel,),
         const SizedBox(
           height: 16,
         ),
@@ -124,4 +124,13 @@ class _OrderManagerState extends State<OrderManager> {
   void refreshUi() {
     setState(() {});
   }
+
+  void commit(){
+
+  }
+
+  void cancel(){
+
+  }
+
 }

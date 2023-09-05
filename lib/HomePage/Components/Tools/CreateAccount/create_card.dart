@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../Config/index.dart';
+import '../../Util/util_tools.dart';
 
 class CreateCard extends StatefulWidget {
   final String? id;
   final String? name;
-  const CreateCard({super.key, required this.id, required this.name});
+  final ToolUtil toolUtil;
+  const CreateCard(
+      {super.key,
+      required this.id,
+      required this.name,
+      required this.toolUtil});
 
   @override
   State<CreateCard> createState() => _CreateCardState();
@@ -27,6 +33,13 @@ class _CreateCardState extends State<CreateCard> {
 
     ctr1 = TextEditingController(text: id);
     ctr2 = TextEditingController(text: name);
+
+    //textCtrl初始化
+    widget.toolUtil.setListTextCtrs([]);
+
+    //注册
+    widget.toolUtil.addListTextCtrs(ctr1);
+    widget.toolUtil.addListTextCtrs(ctr2);
   }
 
   @override
@@ -107,5 +120,11 @@ class _CreateCardState extends State<CreateCard> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.toolUtil.setListTextCtrs([]);
   }
 }

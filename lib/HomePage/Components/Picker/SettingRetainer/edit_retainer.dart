@@ -13,10 +13,15 @@ class EditRetainer extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AddTitle(iconPath: 'Svg/retainer_tool.svg', title: KString.addRetainer,),
+        AddTitle(iconPath: 'Svg/retainer_tool.svg', title: KString.addRetainer, commit: commit,),
         const SizedBox(height: 16,),
+        
         EditCard()
       ],
     );
+  }
+
+  void commit(){
+    
   }
 }

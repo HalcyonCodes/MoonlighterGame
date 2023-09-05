@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../Config/index.dart';
+import '../../Util/util_picker.dart';
 
 class EditCard extends StatefulWidget {
-  const EditCard({super.key});
+  final PickerUtil pickerUtil;
+
+  const EditCard({super.key, required this.pickerUtil});
 
   @override
   State<EditCard> createState() => _EditCardState();
@@ -16,6 +19,12 @@ class _EditCardState extends State<EditCard> {
   void initState() {
     super.initState();
     ctr1 = TextEditingController();
+
+    //清空
+    widget.pickerUtil.setListTextCtrs([]);
+
+    //注册
+    widget.pickerUtil.addListTextCtrs(ctr1);
   }
 
   @override

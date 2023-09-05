@@ -27,7 +27,7 @@ class _ShelfTitleState extends State<ShelfTitle> {
   @override
   Widget build(BuildContext context) {
     return CommitTitle(
-        iconPath: 'Svg/shelf_tool.svg', title: '设置货架内容 ${itemCount!} / 20');
+        iconPath: 'Svg/shelf_tool.svg', title: '设置货架内容 ${itemCount!} / 20', cancel: cancel, commit: commit,);
   }
 
   void changeItemCount(String newItemCount) {
@@ -37,6 +37,15 @@ class _ShelfTitleState extends State<ShelfTitle> {
 
   void refreshUi() {
     setState(() {});
+  }
+
+
+  void commit(){
+
+  }
+
+  void cancel(){
+    
   }
   
   

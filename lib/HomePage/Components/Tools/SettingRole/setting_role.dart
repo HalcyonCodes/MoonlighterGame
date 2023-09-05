@@ -18,11 +18,20 @@ class SettingRole extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CommitTitle(iconPath: 'Svg/role_tool.svg', title: '${KString.settingRole}  ${roleCount!} / 8' ),
+          CommitTitle(iconPath: 'Svg/role_tool.svg', title: '${KString.settingRole}  ${roleCount!} / 8' , commit: commit, cancel: cancel,),
           const SizedBox(height: 16,),
           RoleList(),
         ],
       ),
     );
+  }
+
+
+  void commit(){
+
+  }
+
+  void cancel(){
+    
   }
 }

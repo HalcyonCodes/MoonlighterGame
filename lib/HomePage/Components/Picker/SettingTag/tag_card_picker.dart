@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../Config/index.dart';
@@ -6,9 +5,17 @@ import '../../../../Config/index.dart';
 class PickerTagCard extends StatelessWidget {
   final String? name;
   final String? date;
+  final String? id;
   final Function()? onDelectTap;
   final Function()? onAddTap;
-  const PickerTagCard({super.key, required this.name, required this.date, required this.onDelectTap, required this.onAddTap});
+
+  const PickerTagCard(
+      {super.key,
+      required this.id,
+      required this.name,
+      required this.date,
+      required this.onDelectTap,
+      required this.onAddTap});
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +38,33 @@ class PickerTagCard extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: SizedBox(
-                height: 26,
-                width: 26,
-                child: SvgPicture.asset('Svg/tag_tool.svg',color: Colors.white,)),
+                  height: 26,
+                  width: 26,
+                  child: SvgPicture.asset(
+                    'Svg/tag_tool.svg',
+                    color: Colors.white,
+                  )),
             ),
-            const SizedBox(width: 12,),
+            const SizedBox(
+              width: 12,
+            ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start, 
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name!, style: KFont.cardTitleStyle,maxLines: 1, overflow: TextOverflow.clip,),
-                const SizedBox(height: 12,),
-                Text('创建于 ${date!}', style: KFont.cardProfileStyle,maxLines: 1, overflow: TextOverflow.clip),
+                Text(
+                  name!,
+                  style: KFont.cardTitleStyle,
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Text('创建于 ${date!}',
+                    style: KFont.cardProfileStyle,
+                    maxLines: 1,
+                    overflow: TextOverflow.clip),
               ],
             ),
             const Expanded(child: SizedBox()),
@@ -53,19 +75,29 @@ class PickerTagCard extends StatelessWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(99),
                   onTap: onAddTap,
-                  child: SizedBox(height: 26, width: 26,child: SvgPicture.asset('Svg/plus_card.svg'),),
+                  child: SizedBox(
+                    height: 26,
+                    width: 26,
+                    child: SvgPicture.asset('Svg/plus_card.svg'),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(width: 16,),
+            const SizedBox(
+              width: 16,
+            ),
             Container(
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(99),
-                  onTap: onAddTap,
-                  child: SizedBox(height: 26, width: 26,child: SvgPicture.asset('Svg/close_card.svg'),),
+                  onLongPress: onDelectTap,
+                  child: SizedBox(
+                    height: 26,
+                    width: 26,
+                    child: SvgPicture.asset('Svg/close_card.svg'),
+                  ),
                 ),
               ),
             ),
@@ -74,10 +106,4 @@ class PickerTagCard extends StatelessWidget {
       ),
     );
   }
-
-  
-
-
-
-
 }

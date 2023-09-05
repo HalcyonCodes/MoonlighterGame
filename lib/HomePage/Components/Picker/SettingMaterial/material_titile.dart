@@ -27,7 +27,7 @@ class _MaterialTitleState extends State<MaterialTitle> {
   @override
   Widget build(BuildContext context) {
     return CommitTitle(
-        iconPath: 'Svg/material_tool.svg', title: '设置仓库素材内容 ${itemCount!} / 20');
+        iconPath: 'Svg/material_tool.svg', title: '设置仓库素材内容 ${itemCount!} / 20', cancel: cancel, commit: commit,);
   }
 
   void changeItemCount(String newItemCount) {
@@ -40,4 +40,11 @@ class _MaterialTitleState extends State<MaterialTitle> {
   }
   
   
+  void commit(){
+
+  }
+
+  void cancel(){
+    
+  }
 }

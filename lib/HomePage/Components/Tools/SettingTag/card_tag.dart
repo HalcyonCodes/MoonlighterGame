@@ -1,13 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../Config/index.dart';
 
 class TagCard extends StatelessWidget {
+  final String? id;
   final String? name;
   final String? date;
   final Function()? onTap;
-  const TagCard({super.key, required this.name, required this.date, required this.onTap});
+  const TagCard(
+      {super.key, required this.name, required this.date, required this.id, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +31,33 @@ class TagCard extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: SizedBox(
-                height: 26,
-                width: 26,
-                child: SvgPicture.asset('Svg/tag_tool.svg',color: Colors.white,)),
+                  height: 26,
+                  width: 26,
+                  child: SvgPicture.asset(
+                    'Svg/tag_tool.svg',
+                    color: Colors.white,
+                  )),
             ),
-            const SizedBox(width: 12,),
+            const SizedBox(
+              width: 12,
+            ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start, 
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name!, style: KFont.cardTitleStyle,maxLines: 1, overflow: TextOverflow.clip,),
-                const SizedBox(height: 12,),
-                Text('创建于 ${date!}', style: KFont.cardProfileStyle,maxLines: 1, overflow: TextOverflow.clip),
+                Text(
+                  name!,
+                  style: KFont.cardTitleStyle,
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Text('创建于 ${date!}',
+                    style: KFont.cardProfileStyle,
+                    maxLines: 1,
+                    overflow: TextOverflow.clip),
               ],
             ),
             const Expanded(child: SizedBox()),
@@ -52,7 +68,11 @@ class TagCard extends StatelessWidget {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(99),
                   onTap: onTap,
-                  child: SizedBox(height: 26, width: 26,child: SvgPicture.asset('Svg/minus_card.svg'),),
+                  child: SizedBox(
+                    height: 26,
+                    width: 26,
+                    child: SvgPicture.asset('Svg/minus_card.svg'),
+                  ),
                 ),
               ),
             )
@@ -61,10 +81,4 @@ class TagCard extends StatelessWidget {
       ),
     );
   }
-
-  
-
-
-
-
 }

@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+//import '../../model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
+import '../../model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
+
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
   List<Function(bool)>? _listFuncSetExpansionRoleCardSelected = [];
@@ -225,5 +229,23 @@ class ToolUtil {
   Function(int)? get changeTool => _changeTool;
   void setFuncChangeTool(Function(int)? func) {
     _changeTool = func;
+  }
+
+  //Tool编辑时的TextEditorController列表
+  List<TextEditingController>? _textCtrs;
+  List<TextEditingController>? get textCtrs => _textCtrs;
+  void setListTextCtrs(List<TextEditingController>? list) {
+    _textCtrs = list!;
+  }
+
+  void addListTextCtrs(TextEditingController? ctr) {
+    _textCtrs!.add(ctr!);
+  }
+
+  //SettingTag中往viewModel添加tag
+  Function(PickerTag)? _addViewModelTag;
+  Function(PickerTag)? get addViewModelTag => _addViewModelTag;
+  void setFuncAddViewModelTag(Function(PickerTag)? func) {
+    _addViewModelTag = func!;
   }
 }

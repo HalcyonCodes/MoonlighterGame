@@ -1,3 +1,6 @@
+
+import 'package:flutter/material.dart';
+
 class PickerUtil {
   //Picker中改变当前选项
   Function? _changePickerCurrentIndex;
@@ -33,4 +36,25 @@ class PickerUtil {
   void setFuncListChangeSellBrowsingCalendarSelect(List<Function>? funcs) {
     _listChangeSellBrowsingCalendarSelect = funcs;
   }
+
+  //Picker编辑时的TextEditorController列表
+  List<TextEditingController>? _textCtrs;
+  List<TextEditingController>? get textCtrs => _textCtrs;
+  void setListTextCtrs(List<TextEditingController>? list) {
+    _textCtrs = list!;
+  }
+
+  void addListTextCtrs(TextEditingController? ctr) {
+    _textCtrs!.add(ctr!);
+  }
+
+  //PickerSettingTag中刷新tagList列表
+  Function? _refreshTagList;
+  Function? get refreshTagList => _refreshTagList;
+  void setFuncRefreshTagList(Function? func) {
+    _refreshTagList = func;
+  }
+
+
+
 }

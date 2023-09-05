@@ -5,6 +5,7 @@ import './status_card.dart';
 import '../Util/util_list.dart';
 import '../../model/ViewModel/ListViewModel/list_view_model.dart';
 import '../Util/util_tools.dart';
+import '../Util/util_picker.dart';
 
 class TerminalCard extends StatefulWidget {
   final String id;
@@ -16,6 +17,7 @@ class TerminalCard extends StatefulWidget {
   final ListUtil util;
   final ListViewModel viewModel;
   final ToolUtil toolUtil;
+  final PickerUtil pickerUtil;
 
   const TerminalCard(
       {super.key,
@@ -27,7 +29,8 @@ class TerminalCard extends StatefulWidget {
       required this.status,
       required this.util,
       required this.viewModel,
-      required this.toolUtil});
+      required this.toolUtil,
+      required this.pickerUtil});
 
   @override
   State<TerminalCard> createState() => _TerminalCardState();
@@ -207,6 +210,9 @@ class _TerminalCardState extends State<TerminalCard> {
             widget.toolUtil.setListSelectId(id!);
             isSelect = true;
           })();
+
+    widget.toolUtil.changeTool!(15);
+    widget.pickerUtil.changePickerCurrentIndex!(15);
 
     refreshUi();
   }

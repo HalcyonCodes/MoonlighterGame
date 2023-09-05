@@ -15,7 +15,7 @@ class SettingRobot extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           CommitTitle(
-              iconPath: 'Svg/robot_tool.svg', title: KString.settingRobot),
+              iconPath: 'Svg/robot_tool.svg', title: KString.settingRobot, cancel: cancel, commit: commit,),
           const SizedBox(
             height: 16,
           ),
@@ -30,5 +30,14 @@ class SettingRobot extends StatelessWidget {
         ],
       ),
     );
+  }
+
+
+  void commit(){
+
+  }
+
+  void cancel(){
+    
   }
 }

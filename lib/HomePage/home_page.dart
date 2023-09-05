@@ -8,6 +8,7 @@ import './Components/Util/util_tools.dart';
 import './Components/Picker/picker.dart';
 import './Components/Util/util_list.dart';
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -48,19 +49,21 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     width: 24,
                   ),
-                  TerimalListFuture(toolUtil: toolUtil!, listUtil: listUtil!,),
+                  TerimalListFuture(toolUtil: toolUtil!, listUtil: listUtil!, pickerUtil: pickerUtil!,),
                   const SizedBox(
                     width: 24,
                   ),
                   Tool(
                     toolUtil: toolUtil!,
                     pickerUtil: pickerUtil!,
+                    listUtil: listUtil!,
                   ),
                   const SizedBox(
                     width: 24,
                   ),
                   Picker(
                     pickerUtil: pickerUtil!,
+                    toolUtil: toolUtil!,
                   ),
                 ],
               ),

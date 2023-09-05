@@ -17,11 +17,15 @@ class EditRole extends StatelessWidget {
           AddTitle(
             iconPath: 'Svg/role_tool.svg',
             title: KString.addRole,
+            commit: commit,
           ),
           const SizedBox(
             height: 16,
           ),
           EditCard(),
         ]);
+  }
+  void commit(){
+
   }
 }

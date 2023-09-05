@@ -4,13 +4,15 @@ import './terminal_card.dart';
 import '../Util/util_list.dart';
 import '../../model/ViewModel/ListViewModel/list_view_model.dart';
 import '../Util/util_tools.dart';
+import '../Util/util_picker.dart';
 
 class TerminalList extends StatefulWidget {
   final ListViewModel listViewModel;
   final ListUtil? listUtil;
   final ToolUtil? toolUtil;
+  final PickerUtil? pickerUtil;
 
-  const TerminalList({super.key, required this.listViewModel, required this.listUtil, required this.toolUtil});
+  const TerminalList({super.key, required this.listViewModel, required this.listUtil, required this.toolUtil, required this.pickerUtil});
 
   @override
   State<TerminalList> createState() => _TerminalListState();
@@ -37,6 +39,7 @@ class _TerminalListState extends State<TerminalList> {
         util: widget.listUtil!,
         viewModel: widget.listViewModel,
         toolUtil: widget.toolUtil!,
+        pickerUtil: widget.pickerUtil!,
       );
     });
 

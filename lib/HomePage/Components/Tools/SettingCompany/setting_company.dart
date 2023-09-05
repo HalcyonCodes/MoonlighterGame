@@ -16,12 +16,20 @@ class SettingCompany extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         CommitTitle(
-            iconPath: 'Svg/company_tool.svg', title: KString.settingCompany),
+            iconPath: 'Svg/company_tool.svg', title: KString.settingCompany, cancel: cancel, commit: commit,),
         const SizedBox(
           height: 16,
         ),
         RoleCompanyCardList(util: toolUtil),
       ],
     );
+  }
+
+  void commit(){
+
+  }
+
+  void cancel(){
+
   }
 }

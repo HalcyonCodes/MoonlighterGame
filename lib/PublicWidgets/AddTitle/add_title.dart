@@ -4,12 +4,11 @@ import '../../Config/index.dart';
 import 'commit_button.dart';
 
 class AddTitle extends StatelessWidget {
-
   final String? iconPath;
   final String? title;
+  final Function()? commit;
 
-  const AddTitle(
-      {super.key, required this.iconPath, required this.title});
+  const AddTitle({super.key, required this.iconPath, required this.title, required this.commit});
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +46,5 @@ class AddTitle extends StatelessWidget {
         ),
       ),
     );
-
   }
-
-  void cancel(){
-
-  }
-
-  void commit(){
-
-  }
-
-
-
 }

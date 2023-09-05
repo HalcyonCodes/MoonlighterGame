@@ -12,11 +12,13 @@ import './SellBrowsing/sell_browsing.dart';
 import './OrderManager/order_manager.dart';
 
 import '../Util/util_picker.dart';
+import '../Util/util_tools.dart';
 
 class Picker extends StatefulWidget {
   final PickerUtil pickerUtil;
+  final ToolUtil toolUtil;
 
-  const Picker({super.key, required this.pickerUtil});
+  const Picker({super.key, required this.pickerUtil, required this.toolUtil});
 
   @override
   State<Picker> createState() => _PickerState();
@@ -43,20 +45,39 @@ class _PickerState extends State<Picker> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          currentIndex == 2 ? PickerSettingTag() : 
-          currentIndex == 3 ? PickerSettingRobot() :
-          currentIndex == 4 ? SizedBox() :
-          currentIndex == 5 ? PickerSettingRole() :
-          currentIndex == 6 ? PickerSettingRetainer() :
-          currentIndex == 7 ? PickerOrderManager() :
-          currentIndex == 8 ? PickerItemBrowsing() :
-          currentIndex == 9 ? PickerBindingArtisan() :
-          currentIndex == 10 ? PickerSettingShelf(pickerUtil: widget.pickerUtil,) :
-          currentIndex == 11 ? PickerSellBrowsing(pickerUtil: widget.pickerUtil,) :
-          currentIndex == 12 ? PickerSettingMaterial(pickerUtil: widget.pickerUtil,) :
-          currentIndex == 13 ? PickerSettingCompany() :
-
-          SizedBox()
+          currentIndex == 2 && widget.toolUtil.listSelectId != null
+              ? PickerSettingTag(pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,)
+              : currentIndex == 3 && widget.toolUtil.listSelectId != null
+                  ? PickerSettingRobot()
+                  : currentIndex == 4 && widget.toolUtil.listSelectId != null
+                      ? SizedBox()
+                      : currentIndex == 5 && widget.toolUtil.listSelectId != null
+                          ? PickerSettingRole()
+                          : currentIndex == 6 && widget.toolUtil.listSelectId != null
+                              ? PickerSettingRetainer()
+                              : currentIndex == 7 && widget.toolUtil.listSelectId != null
+                                  ? PickerOrderManager()
+                                  : currentIndex == 8 && widget.toolUtil.listSelectId != null
+                                      ? PickerItemBrowsing()
+                                      : currentIndex == 9 && widget.toolUtil.listSelectId != null
+                                          ? PickerBindingArtisan()
+                                          : currentIndex == 10 && widget.toolUtil.listSelectId != null
+                                              ? PickerSettingShelf(
+                                                  pickerUtil: widget.pickerUtil,
+                                                )
+                                              : currentIndex == 11 && widget.toolUtil.listSelectId != null
+                                                  ? PickerSellBrowsing(
+                                                      pickerUtil:
+                                                          widget.pickerUtil,
+                                                    )
+                                                  : currentIndex == 12 && widget.toolUtil.listSelectId != null
+                                                      ? PickerSettingMaterial(
+                                                          pickerUtil:
+                                                              widget.pickerUtil,
+                                                        )
+                                                      : currentIndex == 13 && widget.toolUtil.listSelectId != null
+                                                          ? PickerSettingCompany()
+                                                          : SizedBox()
         ],
       ),
     );

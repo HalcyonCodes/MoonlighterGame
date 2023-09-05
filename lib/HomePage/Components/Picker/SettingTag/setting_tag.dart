@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Components/Picker/SettingTag/future_tag_list.dart';
 import './add_tag.dart';
-import './tag_list_picker.dart';
+import '../../Util/util_tools.dart';
+import '../../Util/util_picker.dart';
+import '../../../model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
 
 
 class PickerSettingTag extends StatelessWidget {
-  const PickerSettingTag({super.key});
+
+  final SettingTagPickerViewModel viewModel = SettingTagPickerViewModel();
+  final ToolUtil toolUtil;
+  final PickerUtil pickerUtil;
+
+  PickerSettingTag({super.key, required this.pickerUtil, required this.toolUtil});
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AddTag(),
-          SizedBox(
+          AddTag(pickerUtil: pickerUtil, viewModel: viewModel,),
+          const SizedBox(
             height: 32,
           ),
-          PickerTagList()
+          PickerTagListFuture(
+            pickerUtil: pickerUtil, 
+            toolUtil: toolUtil,
+            viewModel: viewModel,)
         ],
       ),
     );
