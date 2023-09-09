@@ -4,7 +4,7 @@ import '../../../../PublicWidgets/AddTitle/add_title.dart';
 import '../../../../Config/index.dart';
 import './edit_card.dart';
 import '../../Util/util_picker.dart';
-import '../../../model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
 
 class AddTag extends StatelessWidget {
   final PickerUtil pickerUtil;

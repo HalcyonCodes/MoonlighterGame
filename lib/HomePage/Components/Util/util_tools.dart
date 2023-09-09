@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import '../../model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
-import '../../model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
+import '../../Model/FromJsonModel/PickerFromJsonModel/setting_robot_from_json_model.dart';
+import '../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
 
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
@@ -248,4 +249,19 @@ class ToolUtil {
   void setFuncAddViewModelTag(Function(PickerTag)? func) {
     _addViewModelTag = func!;
   }
+
+  //SettingRobot中往toolViewModel添加robot
+  Function(PickerRobot)? _addViewModelRobot;
+  Function(PickerRobot)? get addViewModelRobot => _addViewModelRobot;
+  void setFuncAddViewModelRobot(Function(PickerRobot)? func) {
+    _addViewModelRobot = func!;
+  }
+
+  //SettingRetainer中刷新body高度
+  //Function? _refreshBodyHeight;
+  //Function? get refreshBodyHeight => _refreshBodyHeight;
+  //void setFuncRefreshBodyHeight(Function? func) {
+  //  _refreshBodyHeight = func!;
+ // }
+
 }

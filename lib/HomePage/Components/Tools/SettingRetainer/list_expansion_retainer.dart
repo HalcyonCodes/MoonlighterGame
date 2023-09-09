@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 import './expansion_retainer.dart';
 import '../../Util/util_tools.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_retainer_view_model.dart';
 
 class RetainerList extends StatefulWidget {
   final ToolUtil toolUtil;
+  final SettingRetainerViewModel viewModel;
 
-  const RetainerList({super.key, required this.toolUtil});
+  const RetainerList({super.key, required this.toolUtil, required this.viewModel});
 
   @override
   State<RetainerList> createState() => _RetainerListState();
@@ -17,22 +19,25 @@ class _RetainerListState extends State<RetainerList> {
 
   @override
   void initState() {
+
+
     super.initState();
+
     //初始化
     widget.toolUtil.setListFuncSetExpansionRoleCardSelected([]);
-    
-    //widget.toolUtil.setListFuncInitExpansionRoleCardSelected([]);
   }
 
   @override
   Widget build(BuildContext context) {
     //初始化数据的地方
-    items = List.generate(64, (index) {
+    items = List.generate(widget.viewModel.settingRetainerToolModel!.data!.roles!.length, (index) {
       return ExpansionRetainer(
-        roleId: 'A-333-222-111',
-        roleName: '沼泽小鳄',
-        roleChannel: '静语庄园',
+        roleId: widget.viewModel.settingRetainerToolModel!.data!.roles![index].roleId,
+        roleName: widget.viewModel.settingRetainerToolModel!.data!.roles![index].roleName,
+        roleChannel: widget.viewModel.settingRetainerToolModel!.data!.roles![index].roleChannel,
         util: widget.toolUtil,
+        role: widget.viewModel.settingRetainerToolModel!.data!.roles![index],
+        viewModel: widget.viewModel,
         headTap: () {
           ontap(index);
         },

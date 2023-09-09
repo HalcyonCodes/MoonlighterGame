@@ -8,7 +8,7 @@ import '../../DataModel/ToolDataModel/edit_account_data.dart' as tdata;
 
 class EditAccountToolViewModel {
   Response? response;
-  EditAccountToolModel? editAccountToolViewModel;
+  EditAccountToolModel? editAccountToolModel;
 
   EditAccountToolViewModel();
 
@@ -28,14 +28,14 @@ class EditAccountToolViewModel {
     print(accountId);
 
     response = null;
-    editAccountToolViewModel = null;
+    editAccountToolModel = null;
 
     //发起http请求获得当前account数据
     response = await Dio().get('http://localhost:4040/');
     if (response!.statusCode == HttpStatus.ok) {
       //模拟加载数据
       var data = tdata.data;
-      editAccountToolViewModel = EditAccountToolModel.fromJson(data);
+      editAccountToolModel = EditAccountToolModel.fromJson(data);
       return response!.statusCode!;
     } else {
       return response!.statusCode!;

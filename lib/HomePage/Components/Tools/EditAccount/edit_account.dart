@@ -3,7 +3,7 @@ import 'package:moonlighter/Config/index.dart';
 import 'edit_card.dart';
 import '../../../../PublicWidgets/CommitTitle/commit_title.dart';
 import '../../Util/util_tools.dart';
-import '../../../model/ViewModel/ToolViewModel/edit_account_view_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/edit_account_view_model.dart';
 import '../../Util/util_list.dart';
 
 class EditAccount extends StatelessWidget {

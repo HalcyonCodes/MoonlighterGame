@@ -3,7 +3,7 @@ import '../../../Config/index.dart';
 import './tag_card.dart';
 import './status_card.dart';
 import '../Util/util_list.dart';
-import '../../model/ViewModel/ListViewModel/list_view_model.dart';
+import '../../Model/ViewModel/ListViewModel/list_view_model.dart';
 import '../Util/util_tools.dart';
 import '../Util/util_picker.dart';
 

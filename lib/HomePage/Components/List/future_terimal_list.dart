@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './terminal_list.dart';
-import '../../model/ViewModel/ListViewModel/list_view_model.dart';
+import '../../Model/ViewModel/ListViewModel/list_view_model.dart';
 import '../Util/util_tools.dart';
 import '../Util/util_list.dart';
 import './terminal_search_bar.dart';

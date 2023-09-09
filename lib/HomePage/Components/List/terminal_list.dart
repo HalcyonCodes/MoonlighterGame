@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../ToolWidgets/rectangle_cliper.dart';
 import './terminal_card.dart';
 import '../Util/util_list.dart';
-import '../../model/ViewModel/ListViewModel/list_view_model.dart';
+import '../../Model/ViewModel/ListViewModel/list_view_model.dart';
 import '../Util/util_tools.dart';
 import '../Util/util_picker.dart';
 

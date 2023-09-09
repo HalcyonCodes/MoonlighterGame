@@ -3,9 +3,9 @@ import 'package:moonlighter/HomePage/Components/Tools/SettingTag/card_tag.dart';
 
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 
-import '../../../model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
-import '../../../model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
-import '../../../model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
+import '../../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
 import '../../Util/util_tools.dart';
 
 class TagList extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../Util/util_tools.dart';
 import '../../Util/util_picker.dart';
-import '../../../model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
 import './tag_list_picker.dart';
 
 class PickerTagListFuture extends StatefulWidget {

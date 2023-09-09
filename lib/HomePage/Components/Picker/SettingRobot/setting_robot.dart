@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import './card_list_robot.dart';
+import '../../Util/util_tools.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_robot_view_model.dart';
 
 class PickerSettingRobot extends StatelessWidget {
-  const PickerSettingRobot({super.key});
+  final SettingRobotPickerViewModel viewModel;
+  final ToolUtil toolUtil;
+  const PickerSettingRobot({super.key, required this.toolUtil, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +15,9 @@ class PickerSettingRobot extends StatelessWidget {
         width: MediaQuery.of(context).size.width <= 1920
           ? (1920 - 24) / 24 * 8 - 24
           : (1920 - 24) / 24 * 8 - 24,
-      child: PickerRobotCardList());
+      child: PickerRobotCardList(
+        toolUtil: toolUtil,
+        viewModel: viewModel,
+      ));
   }
 }

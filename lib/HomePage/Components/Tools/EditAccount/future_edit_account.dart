@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../model/ViewModel/ToolViewModel/edit_account_view_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/edit_account_view_model.dart';
 import '../../Util/util_tools.dart';
 import '../../Util/util_list.dart';
 import './edit_account.dart';
@@ -32,9 +32,9 @@ class EditAccountFuture extends StatelessWidget {
                   return EditAccount(
                       toolUtil: toolUtil,
                       listUtil: listUtil,
-                      id: viewModel.editAccountToolViewModel!.data.accountId,
+                      id: viewModel.editAccountToolModel!.data.accountId,
                       name:
-                          viewModel.editAccountToolViewModel!.data.accountName);
+                          viewModel.editAccountToolModel!.data.accountName);
               }
             })
         : SizedBox(); //提示选择选项

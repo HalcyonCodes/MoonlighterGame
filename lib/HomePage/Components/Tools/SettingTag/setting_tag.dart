@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:moonlighter/HomePage/Components/Tools/SettingTag/list_tag.dart';
 import '../../../../PublicWidgets/CommitTitle/commit_title.dart';
 import '../../../../Config/index.dart';
-import '../../../model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
 import '../../Util/util_tools.dart';
 import '../../Util/util_picker.dart';
 

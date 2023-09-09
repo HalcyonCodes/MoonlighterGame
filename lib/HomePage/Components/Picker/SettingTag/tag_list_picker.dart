@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:moonlighter/HomePage/Components/Picker/SettingTag/tag_card_picker.dart';
 import '../../.././../ToolWidgets/rectangle_cliper.dart';
-import '../../../model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
 import '../../Util/util_tools.dart';
 import '../../Util/util_picker.dart';
 

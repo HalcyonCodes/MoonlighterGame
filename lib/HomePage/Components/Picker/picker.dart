@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './SettingTag/setting_tag.dart';
-import './SettingRobot/setting_robot.dart';
+import './SettingRobot/future_setting_robot.dart';
 import './SettingRole/setting_role.dart';
 import './SettingRetainer/setting_retainer.dart';
 import './ItemBrowsing/item_browsing.dart';
@@ -48,7 +48,7 @@ class _PickerState extends State<Picker> {
           currentIndex == 2 && widget.toolUtil.listSelectId != null
               ? PickerSettingTag(pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,)
               : currentIndex == 3 && widget.toolUtil.listSelectId != null
-                  ? PickerSettingRobot()
+                  ? PickerSettingRobotFuture(toolUtil: widget.toolUtil,)
                   : currentIndex == 4 && widget.toolUtil.listSelectId != null
                       ? SizedBox()
                       : currentIndex == 5 && widget.toolUtil.listSelectId != null

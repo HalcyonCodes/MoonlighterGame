@@ -3,7 +3,7 @@ import 'package:moonlighter/HomePage/Components/Picker/SettingTag/future_tag_lis
 import './add_tag.dart';
 import '../../Util/util_tools.dart';
 import '../../Util/util_picker.dart';
-import '../../../model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_tag_view_model.dart';
 
 
 class PickerSettingTag extends StatelessWidget {

@@ -172,46 +172,46 @@ class _ToolState extends State<Tool> {
           const SizedBox(
             height: 32,
           ),
-          index == 0
+          index == 0 && widget.toolUtil.listSelectId != null
               ? CreateAccount(
                   toolUtil: widget.toolUtil, listUtil: widget.listUtil,
                 )
-              : index == 1
+              : index == 1 && widget.toolUtil.listSelectId != null
                   ? EditAccountFuture(listUtil: widget.listUtil, toolUtil: widget.toolUtil,)
-                  : index == 2
+                  : index == 2 && widget.toolUtil.listSelectId != null
                       ? SettingTagFuture(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
-                      : index == 3
-                          ? SettingRobot()
-                          : index == 4
+                      : index == 3 && widget.toolUtil.listSelectId != null
+                          ? SettingRobot(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
+                          : index == 4 && widget.toolUtil.listSelectId != null
                               ? SizedBox()
-                              : index == 5
+                              : index == 5 && widget.toolUtil.listSelectId != null
                                   ? SettingRole(roleCount: '5')
-                                  : index == 6
+                                  : index == 6 && widget.toolUtil.listSelectId != null
                                       ? SettingRetainer(
-                                          toolUtil: widget.toolUtil,
+                                          toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,
                                         )
-                                      : index == 7
+                                      : index == 7 && widget.toolUtil.listSelectId != null
                                           ? OrderManager()
-                                          : index == 8
+                                          : index == 8 && widget.toolUtil.listSelectId != null
                                               ? ItemBrowsing(
                                                   toolUtil: widget.toolUtil)
-                                              : index == 9
+                                              : index == 9 && widget.toolUtil.listSelectId != null
                                                   ? BindingArtisan(
                                                       util: widget.toolUtil)
-                                                  : index == 10
+                                                  : index == 10 && widget.toolUtil.listSelectId != null
                                                       ? SettingShelf(
                                                           toolUtil:
                                                               widget.toolUtil)
-                                                      : index == 11
+                                                      : index == 11 && widget.toolUtil.listSelectId != null
                                                           ? SellBrowsing(
                                                               toolUtil: widget
                                                                   .toolUtil)
-                                                          : index == 12
+                                                          : index == 12 && widget.toolUtil.listSelectId != null
                                                               ? SettingMaterial(
                                                                   toolUtil: widget
                                                                       .toolUtil,
                                                                 )
-                                                              : index == 13
+                                                              : index == 13 && widget.toolUtil.listSelectId != null
                                                                   ? SettingCompany(
                                                                       toolUtil:
                                                                           widget

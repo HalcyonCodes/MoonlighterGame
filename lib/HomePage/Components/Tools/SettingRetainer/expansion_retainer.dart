@@ -3,6 +3,8 @@ import 'package:moonlighter/HomePage/Components/Tools/SettingRetainer/uesr_expan
 import 'card_retainer.dart';
 import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_retainer_from_json_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_retainer_view_model.dart';
 
 //整个角色雇员折叠部件
 class ExpansionRetainer extends StatefulWidget {
@@ -11,15 +13,18 @@ class ExpansionRetainer extends StatefulWidget {
   final String? roleId;
   final ToolUtil util;
   final Function? headTap;
+  final Role role;
+  final SettingRetainerViewModel? viewModel;
 
-  const ExpansionRetainer({
-    super.key,
-    required this.roleId,
-    required this.roleName,
-    required this.roleChannel,
-    required this.util,
-    required this.headTap,
-  });
+  const ExpansionRetainer(
+      {super.key,
+      required this.roleId,
+      required this.roleName,
+      required this.roleChannel,
+      required this.util,
+      required this.headTap,
+      required this.role,
+      required this.viewModel});
 
   @override
   State<ExpansionRetainer> createState() => _ExpansionRetainerState();
@@ -34,11 +39,6 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
 
   List<Widget>? listItems;
 
-
-
-  //test
-  List<String> names = ['111', '222', '333', '444', '555', '666', '777', '888'];
-
   @override
   void initState() {
     super.initState();
@@ -46,29 +46,16 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
     roleName = widget.roleName;
     roleId = widget.roleId;
     channelName = widget.roleChannel;
+
+    //注册
+    //widget.util.setFuncRefreshBodyHeight(refreshBodyHeight);
+
     
   }
 
   @override
   Widget build(BuildContext context) {
-    listItems = List.generate(names.length, (index) {
-      return RetainerCard(
-        retainerName: names[index],
-        lastUseDate: '2023/8/7',
-        id: 'A-1230-B-1234',
-        profile: '第1个角色第1个雇员',
-        downOnTap: () {
-          onDownTap(index);
-        },
-        upOnTap: () {
-          onUpTap(index);
-        },
-        removeOnTap: () {
-          onRemoveTap(index);
-        },
-      );
-    });
-
+    buildItems();
     return WhipSword(
       headBorderRadius: BorderRadius.circular(16),
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -93,45 +80,60 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
     );
   }
 
-
   void onUpTap(int index) {
     if (index != 0) {
-      Widget temp = listItems![index - 1];
-      listItems![index - 1] = listItems![index];
-      listItems![index] = temp;
-      //test
-      String stringTemp = names![index - 1];
-      names![index - 1] = names![index];
-      names![index] = stringTemp;
-
+      widget.viewModel!.moveUpRetainer(widget.role, index);
       refreshUi();
     }
   }
 
   void onDownTap(int index) {
     if (index != listItems!.length - 1) {
-      Widget temp = listItems![index + 1];
-      listItems![index + 1] = listItems![index];
-      listItems![index] = temp;
-      //test
-      String stringTemp = names![index + 1];
-      names![index + 1] = names![index];
-      names![index] = stringTemp;
-
+      widget.viewModel!.moveDownRetainer(widget.role, index);
       refreshUi();
     }
   }
 
-  void onRemoveTap(int index) {
-    listItems!.removeAt(index);
-    names!.removeAt(index);
+  void onRemoveTap(int index) async {
+
+    widget.viewModel!.removeRetainer(widget.role, index);
+    //buildItems();
     refreshUi();
+
+    await refreshBodyHeight().then((v) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          refreshUi();
+        });
+      });
+    });
   }
 
+  void refreshUi() {
+    setState(() {});
+  }
 
-  void refreshUi(){
-    setState(() {
-      
+  Future<void> refreshBodyHeight() async {
+    await util!.refreshBodyHeight!();
+  }
+
+  void buildItems() {
+    listItems = List.generate(widget.role.retainers!.length, (index) {
+      return RetainerCard(
+        retainerName: widget.role.retainers![index].retainerName,
+        lastUseDate: widget.role.retainers![index].lastDispatchTime,
+        id: widget.role.retainers![index].retainerId,
+        profile: widget.role.retainers![index].retainerDesc,
+        downOnTap: () {
+          onDownTap(index);
+        },
+        upOnTap: () {
+          onUpTap(index);
+        },
+        removeOnTap: () {
+          onRemoveTap(index);
+        },
+      );
     });
   }
 }

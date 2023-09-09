@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './setting_tag.dart';
 import '../../Util/util_tools.dart';
-import '../../../model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_tag_view_model.dart';
 import '../../Util/util_picker.dart';
 
 class SettingTagFuture extends StatelessWidget {
