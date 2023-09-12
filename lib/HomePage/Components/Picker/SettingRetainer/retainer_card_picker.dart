@@ -109,7 +109,7 @@ class PickerRetainerCard extends StatelessWidget {
                       width: 16,
                     ),
                     InkWell(
-                      onTap: closeOnTap,
+                      onLongPress: closeOnTap,
                       borderRadius: BorderRadius.circular(99),
                       child: SizedBox(
                         height: 26,

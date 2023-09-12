@@ -5,9 +5,12 @@ import './shelf_title.dart';
 import './store_title.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 import './item_list.dart';
+import './item_list_sell.dart';
+import '../../../Model/ViewModel/PickerViewModel/item_browsing_view_model.dart';
 
 class PickerItemBrowsing extends StatelessWidget {
-  const PickerItemBrowsing({super.key});
+  final ItemBrowsingPickerViewModel viewModel;
+  const PickerItemBrowsing({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +26,13 @@ class PickerItemBrowsing extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ShelfTitle(itemCount: '12', ),
-                SizedBox(height: 16,),
-                ItemList(),
-                SizedBox(height: 32,),
-                StoreTitle(itemCount: '12'),
-                SizedBox(height: 16,),
-                ItemList(),
+                ShelfTitle(itemCount: viewModel.itemBrowsingPickerModel!.data.shelf.count, ),
+                const SizedBox(height: 16,),
+                SellItemList(viewModel: viewModel,),
+                const SizedBox(height: 32,),
+                StoreTitle(itemCount: viewModel.itemBrowsingPickerModel!.data.store.count,),
+                const SizedBox(height: 16,),
+                ItemList(viewModel: viewModel,),
               ],
             ),
           ),

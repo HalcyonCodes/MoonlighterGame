@@ -194,7 +194,8 @@ class _ToolState extends State<Tool> {
                                           ? OrderManager()
                                           : index == 8 && widget.toolUtil.listSelectId != null
                                               ? ItemBrowsing(
-                                                  toolUtil: widget.toolUtil)
+                                                  
+                                                  toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
                                               : index == 9 && widget.toolUtil.listSelectId != null
                                                   ? BindingArtisan(
                                                       util: widget.toolUtil)

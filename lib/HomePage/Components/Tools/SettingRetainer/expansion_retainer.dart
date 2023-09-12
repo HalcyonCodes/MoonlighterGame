@@ -5,6 +5,8 @@ import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
 import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_retainer_from_json_model.dart';
 import '../../../Model/ViewModel/ToolViewModel/setting_retainer_view_model.dart';
+import '../../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
+import '../../Util/util_picker.dart';
 
 //整个角色雇员折叠部件
 class ExpansionRetainer extends StatefulWidget {
@@ -15,6 +17,7 @@ class ExpansionRetainer extends StatefulWidget {
   final Function? headTap;
   final Role role;
   final SettingRetainerViewModel? viewModel;
+  final PickerUtil pickerUtil;
 
   const ExpansionRetainer(
       {super.key,
@@ -24,7 +27,9 @@ class ExpansionRetainer extends StatefulWidget {
       required this.util,
       required this.headTap,
       required this.role,
-      required this.viewModel});
+      required this.viewModel,
+      required this.pickerUtil,
+      });
 
   @override
   State<ExpansionRetainer> createState() => _ExpansionRetainerState();
@@ -49,8 +54,7 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
 
     //注册
     //widget.util.setFuncRefreshBodyHeight(refreshBodyHeight);
-
-    
+    widget.util.addListFuncInsertRetainer(insertRetainer);
   }
 
   @override
@@ -95,6 +99,12 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
   }
 
   void onRemoveTap(int index) async {
+    //将移除的插入picker里
+    PickerRetainer pRetainer = PickerRetainer();
+    pRetainer.retainerId = widget.role.retainers![index].retainerId;
+    pRetainer.retainerName = widget.role.retainers![index].retainerName;
+    pRetainer.lastDispatchTime = widget.role.retainers![index].lastDispatchTime;
+    pRetainer.retainerDesc = widget.role.retainers![index].retainerDesc;
 
     widget.viewModel!.removeRetainer(widget.role, index);
     //buildItems();
@@ -104,6 +114,9 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           refreshUi();
+
+          //将移除的插入picker里
+          widget.pickerUtil.insertRetainer!(pRetainer);
         });
       });
     });
@@ -135,5 +148,23 @@ class _ExpansionRetainerState extends State<ExpansionRetainer> {
         },
       );
     });
+  }
+
+  void insertRetainer(Retainer retainer) async {
+    widget.viewModel!.insertRetainer(widget.role, retainer);
+    refreshUi();
+    await refreshBodyHeight().then((v) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          refreshUi();
+        });
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.util.removeListFuncInsertRetainer(insertRetainer);
   }
 }

@@ -3,7 +3,7 @@ import './SettingTag/setting_tag.dart';
 import './SettingRobot/future_setting_robot.dart';
 import './SettingRole/setting_role.dart';
 import './SettingRetainer/setting_retainer.dart';
-import './ItemBrowsing/item_browsing.dart';
+import './ItemBrowsing/future_item_browsing.dart';
 import './BindingArtisan/binding_artisan.dart';
 import './SettingShelf/setting_shelf.dart';
 import './SettingMaterial/setting_material.dart';
@@ -54,11 +54,11 @@ class _PickerState extends State<Picker> {
                       : currentIndex == 5 && widget.toolUtil.listSelectId != null
                           ? PickerSettingRole()
                           : currentIndex == 6 && widget.toolUtil.listSelectId != null
-                              ? PickerSettingRetainer()
+                              ? PickerSettingRetainer(pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,)
                               : currentIndex == 7 && widget.toolUtil.listSelectId != null
                                   ? PickerOrderManager()
-                                  : currentIndex == 8 && widget.toolUtil.listSelectId != null
-                                      ? PickerItemBrowsing()
+                                  : currentIndex == 8 && widget.toolUtil.listSelectId != null && widget.toolUtil.currentRetainerId != null
+                                      ? PickerItemBrowsingFuture(toolUtil: widget.toolUtil,)
                                       : currentIndex == 9 && widget.toolUtil.listSelectId != null
                                           ? PickerBindingArtisan()
                                           : currentIndex == 10 && widget.toolUtil.listSelectId != null

@@ -35,7 +35,8 @@ class SettingRetainerViewModel {
   Future<int> updateRetainer() async {
     response = null;
 
-    var postData = SettingRetainerToJsonModel.toJsonModel(settingRetainerToolModel!);
+    var postData =
+        SettingRetainerToJsonModel.toJsonModel(settingRetainerToolModel!);
 
     //发起post请求提交修改
     response = await Dio().get('http://localhost:4040/');
@@ -56,13 +57,13 @@ class SettingRetainerViewModel {
 
   //向下移动retainer
   void moveDownRetainer(Role role, int index) {
-    
     Retainer temp = role.retainers![index];
     role.retainers!.removeAt(index);
-    role.retainers!.insert(index + 1 , temp);
-    //role.retainers!.removeAt(index - 1);
-    //交换两个元素位置
-   
+    role.retainers!.insert(index + 1, temp);
+  }
 
+  //插入雇员
+  void insertRetainer(Role role, Retainer retainer) {
+    role.retainers!.add(retainer);
   }
 }

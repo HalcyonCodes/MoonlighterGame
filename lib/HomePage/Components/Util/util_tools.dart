@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Model/FromJsonModel/ToolFromJsonModel/setting_retainer_from_json_model.dart';
 //import '../../model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_robot_from_json_model.dart';
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
+import '../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
 
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
@@ -262,6 +264,47 @@ class ToolUtil {
   //Function? get refreshBodyHeight => _refreshBodyHeight;
   //void setFuncRefreshBodyHeight(Function? func) {
   //  _refreshBodyHeight = func!;
- // }
+  // }
+
+  //设置当前选中的角色
+  int _currentRoleIndex = 0;
+  int get currentRoleIndex => _currentRoleIndex;
+  void setCurrentRoleIndex(int index) {
+    _currentRoleIndex = index;
+  }
+
+  //settingRetainer中往role里添加retainer的方法数组
+  List<Function(Retainer)>? _listFuncInsertRetainer;
+  List<Function(Retainer)>? get listFuncInsertRetainer =>
+      _listFuncInsertRetainer;
+
+  void addListFuncInsertRetainer(Function(Retainer) func) {
+    _listFuncInsertRetainer!.add(func);
+  }
+
+  void setListFuncInsertRetainer(List<Function(Retainer)>? list) {
+    _listFuncInsertRetainer = list!;
+  }
+
+  void removeListFuncInsertRetainer(Function(Retainer) func) {
+    _listFuncInsertRetainer!.remove(func);
+  }
+
+  //PickerItemBrowsingFuture中刷新数据
+  Function? _refreshPickerItemBrowsingFuture;
+  Function? get refreshPickerItemBrowsingFuture => _refreshPickerItemBrowsingFuture;
+  void setFuncRefreshPickerItemBrowsingFuture(Function? func) {
+    _refreshPickerItemBrowsingFuture = func!;
+  }
+
+
+  //当前选中的retainer的retainerId;
+  String? _currentRetainerId;
+  String? get currentRetainerId => _currentRetainerId;
+  void setCurrentRetainerId(String? retainerId) {
+    _currentRetainerId = retainerId!;
+  }
+
+
 
 }

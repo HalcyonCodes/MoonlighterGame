@@ -36,6 +36,7 @@ class SettingRetainer extends StatelessWidget {
         RetainerListFuture(
           toolUtil: toolUtil,
           viewModel: viewModel,
+          pickerUtil: pickerUtil,
         )
       ],
     );

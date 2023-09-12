@@ -55,6 +55,20 @@ class PickerUtil {
     _refreshTagList = func;
   }
 
+  //PickerSettingRetainerFuture中刷新组件
+  Function? _refreshRetainer;
+  Function? get refreshRetainer => _refreshRetainer;
+  void setFuncRefreshRetainer(Function? func) {
+    _refreshRetainer = func;
+  }
 
+  //PickerSettingRetainer中RetainerList里插入retainer
+  Function? _insertRetainer;
+  Function? get insertRetainer => _insertRetainer;
+  void setFuncInsertRetainer(Function? func) {
+    _insertRetainer = func;
+  }
+
+  
 
 }
