@@ -3,7 +3,9 @@ import 'package:moonlighter/HomePage/Model/FromJsonModel/ToolFromJsonModel/setti
 //import '../../model/FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_robot_from_json_model.dart';
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
-import '../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
+//import '../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
+import '../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart' as binding_artisan;
+
 
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
@@ -302,7 +304,22 @@ class ToolUtil {
   String? _currentRetainerId;
   String? get currentRetainerId => _currentRetainerId;
   void setCurrentRetainerId(String? retainerId) {
-    _currentRetainerId = retainerId!;
+    _currentRetainerId = retainerId;
+  }
+
+  //bindingArtisan中每个ExpanbsionArtisan中的添加artisan方法
+  List<Function(binding_artisan.Artisan)>? _listFuncInsertArtisan;
+  List<Function(binding_artisan.Artisan)>? get listFuncInsertArtisan => _listFuncInsertArtisan;
+  void addListFuncInsertArtisan(Function(binding_artisan.Artisan) func) {
+    _listFuncInsertArtisan!.add(func);
+  }
+
+  void setListFuncInsertArtisan(List<Function(binding_artisan.Artisan)>? list) {
+    _listFuncInsertArtisan = list!;
+  }
+
+  void removeListFuncInsertArtisan(Function(binding_artisan.Artisan) func) {
+    _listFuncInsertArtisan!.remove(func);
   }
 
 

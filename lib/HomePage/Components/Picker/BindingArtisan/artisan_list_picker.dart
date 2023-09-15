@@ -1,31 +1,46 @@
 import 'package:flutter/material.dart';
 import './artisan_card_picker.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
+import '../../../Model/ViewModel/PickerViewModel/binding_artisan_view_model.dart';
+import '../../Util/util_tools.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart';
 
 class PickerArtisanList extends StatefulWidget {
-  const PickerArtisanList({super.key});
+  final BindingArtisanPickerViewModel viewModel;
+  final ToolUtil toolUtil;
+
+  const PickerArtisanList({super.key, required this.viewModel, required this.toolUtil});
 
   @override
   State<PickerArtisanList> createState() => _PickerArtisanListState();
 }
 
 class _PickerArtisanListState extends State<PickerArtisanList> {
-  List<Widget>? items = [];
+  List<Widget>? items;
 
   @override
   void initState() {
     super.initState();
+    items = [];
   }
 
   @override
   Widget build(BuildContext context) {
-    items = List.generate(12, (index) {
+    items = List.generate(
+        widget.viewModel.bindingArtisanPickerModel!.data.artisans.length,
+        (index) {
       return PickerRoleCard(
-          id: 'id',
-          category: 'category',
-          name: 'name',
-          profile: 'profile',
-          addOnTap: () {});
+          id: widget.viewModel.bindingArtisanPickerModel!.data.artisans[index]
+              .artisanId,
+          category: widget.viewModel.bindingArtisanPickerModel!.data
+              .artisans[index].artisanChannel,
+          name: widget.viewModel.bindingArtisanPickerModel!.data.artisans[index]
+              .artisanName,
+          profile: widget.viewModel.bindingArtisanPickerModel!.data
+              .artisans[index].artisanDesc,
+          addOnTap: () {
+            onTap(index);
+          });
     });
 
     return SizedBox(
@@ -46,6 +61,15 @@ class _PickerArtisanListState extends State<PickerArtisanList> {
         ),
       ),
     );
+  }
 
+  void onTap(int index) {
+    Artisan artisan = Artisan();
+    artisan.artisanId = widget.viewModel.bindingArtisanPickerModel!.data.artisans[index].artisanId;
+    artisan.artisanName = widget.viewModel.bindingArtisanPickerModel!.data.artisans[index].artisanName;
+    artisan.artisanDesc = widget.viewModel.bindingArtisanPickerModel!.data.artisans[index].artisanDesc;
+    artisan.artisanChannel = widget.viewModel.bindingArtisanPickerModel!.data.artisans[index].artisanChannel;
+
+    widget.toolUtil.listFuncInsertArtisan![widget.toolUtil.currentRoleIndex](artisan);
   }
 }

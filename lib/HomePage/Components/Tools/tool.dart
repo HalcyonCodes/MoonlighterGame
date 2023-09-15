@@ -25,7 +25,11 @@ class Tool extends StatefulWidget {
   final ToolUtil toolUtil;
   final PickerUtil pickerUtil;
   final ListUtil listUtil;
-  const Tool({super.key, required this.toolUtil, required this.pickerUtil, required this.listUtil});
+  const Tool(
+      {super.key,
+      required this.toolUtil,
+      required this.pickerUtil,
+      required this.listUtil});
 
   @override
   State<Tool> createState() => _ToolState();
@@ -70,98 +74,126 @@ class _ToolState extends State<Tool> {
                   path: 'Svg/account_tool.svg',
                   name: KString.create),
               ToolButton(
-                  isSelect: index == 1 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 1 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(1);
                   },
                   path: 'Svg/edit_tool.svg',
                   name: KString.edit),
               ToolButton(
-                  isSelect: index == 2 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 2 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(2);
                   },
                   path: 'Svg/tag_tool.svg',
                   name: KString.tag),
               ToolButton(
-                  isSelect: index == 3 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 3 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(3);
                   },
                   path: 'Svg/robot_tool.svg',
                   name: KString.robot),
               ToolButton(
-                  isSelect: index == 4 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 4 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(4);
                   },
                   path: 'Svg/log_tool.svg',
                   name: KString.log),
               ToolButton(
-                  isSelect: index == 5 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 5 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(5);
                   },
                   path: 'Svg/role_tool.svg',
                   name: KString.role),
               ToolButton(
-                  isSelect: index == 6 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 6 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(6);
                   },
                   path: 'Svg/retainer_tool.svg',
                   name: KString.container),
               ToolButton(
-                  isSelect: index == 7 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 7 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(7);
                   },
                   path: 'Svg/order_tool.svg',
                   name: KString.order),
               ToolButton(
-                  isSelect: index == 8 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 8 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(8);
                   },
                   path: 'Svg/item_tool.svg',
                   name: KString.item),
               ToolButton(
-                  isSelect: index == 9 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 9 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(9);
                   },
                   path: 'Svg/artisan_tool.svg',
                   name: KString.artisan),
               ToolButton(
-                  isSelect: index == 10 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 10 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(10);
                   },
                   path: 'Svg/shelf_tool.svg',
                   name: KString.shelf),
               ToolButton(
-                  isSelect: index == 11 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 11 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(11);
                   },
                   path: 'Svg/bill_tool.svg',
                   name: KString.bill),
               ToolButton(
-                  isSelect: index == 12 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 12 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(12);
                   },
                   path: 'Svg/material_tool.svg',
                   name: KString.material),
               ToolButton(
-                  isSelect: index == 13 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 13 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onTap: () {
                     onButtonTap(13);
                   },
                   path: 'Svg/company_tool.svg',
                   name: KString.company),
               DelectButton(
-                  isSelect: index == 14 && widget.toolUtil.listSelectId != null ? true : false,
+                  isSelect: index == 14 && widget.toolUtil.listSelectId != null
+                      ? true
+                      : false,
                   onLongTap: () {
                     onButtonTap(14);
                   },
@@ -174,45 +206,82 @@ class _ToolState extends State<Tool> {
           ),
           index == 0 && widget.toolUtil.listSelectId != null
               ? CreateAccount(
-                  toolUtil: widget.toolUtil, listUtil: widget.listUtil,
+                  toolUtil: widget.toolUtil,
+                  listUtil: widget.listUtil,
                 )
               : index == 1 && widget.toolUtil.listSelectId != null
-                  ? EditAccountFuture(listUtil: widget.listUtil, toolUtil: widget.toolUtil,)
+                  ? EditAccountFuture(
+                      listUtil: widget.listUtil,
+                      toolUtil: widget.toolUtil,
+                    )
                   : index == 2 && widget.toolUtil.listSelectId != null
-                      ? SettingTagFuture(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
+                      ? SettingTagFuture(
+                          toolUtil: widget.toolUtil,
+                          pickerUtil: widget.pickerUtil,
+                        )
                       : index == 3 && widget.toolUtil.listSelectId != null
-                          ? SettingRobot(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
+                          ? SettingRobot(
+                              toolUtil: widget.toolUtil,
+                              pickerUtil: widget.pickerUtil,
+                            )
                           : index == 4 && widget.toolUtil.listSelectId != null
                               ? SizedBox()
-                              : index == 5 && widget.toolUtil.listSelectId != null
+                              : index == 5 &&
+                                      widget.toolUtil.listSelectId != null
                                   ? SettingRole(roleCount: '5')
-                                  : index == 6 && widget.toolUtil.listSelectId != null
+                                  : index == 6 &&
+                                          widget.toolUtil.listSelectId != null
                                       ? SettingRetainer(
-                                          toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,
+                                          toolUtil: widget.toolUtil,
+                                          pickerUtil: widget.pickerUtil,
                                         )
-                                      : index == 7 && widget.toolUtil.listSelectId != null
+                                      : index == 7 &&
+                                              widget.toolUtil.listSelectId !=
+                                                  null
                                           ? OrderManager()
-                                          : index == 8 && widget.toolUtil.listSelectId != null
+                                          : index == 8 &&
+                                                  widget.toolUtil
+                                                          .listSelectId !=
+                                                      null
                                               ? ItemBrowsing(
-                                                  
-                                                  toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
-                                              : index == 9 && widget.toolUtil.listSelectId != null
+                                                  toolUtil: widget.toolUtil,
+                                                  pickerUtil: widget.pickerUtil,
+                                                )
+                                              : index == 9 &&
+                                                      widget.toolUtil
+                                                              .listSelectId !=
+                                                          null
                                                   ? BindingArtisan(
-                                                      util: widget.toolUtil)
-                                                  : index == 10 && widget.toolUtil.listSelectId != null
+                                                      toolUtil: widget.toolUtil,
+                                                      pickerUtil:
+                                                          widget.pickerUtil,
+                                                    )
+                                                  : index == 10 &&
+                                                          widget.toolUtil
+                                                                  .listSelectId !=
+                                                              null
                                                       ? SettingShelf(
                                                           toolUtil:
                                                               widget.toolUtil)
-                                                      : index == 11 && widget.toolUtil.listSelectId != null
+                                                      : index == 11 &&
+                                                              widget.toolUtil
+                                                                      .listSelectId !=
+                                                                  null
                                                           ? SellBrowsing(
                                                               toolUtil: widget
                                                                   .toolUtil)
-                                                          : index == 12 && widget.toolUtil.listSelectId != null
+                                                          : index == 12 &&
+                                                                  widget.toolUtil
+                                                                          .listSelectId !=
+                                                                      null
                                                               ? SettingMaterial(
                                                                   toolUtil: widget
                                                                       .toolUtil,
                                                                 )
-                                                              : index == 13 && widget.toolUtil.listSelectId != null
+                                                              : index == 13 &&
+                                                                      widget.toolUtil
+                                                                              .listSelectId !=
+                                                                          null
                                                                   ? SettingCompany(
                                                                       toolUtil:
                                                                           widget
@@ -230,6 +299,11 @@ class _ToolState extends State<Tool> {
 
   void onButtonTap(int i) {
     index = i;
+
+    //初始化
+    widget.toolUtil.setCurrentRoleIndex(0);
+    widget.toolUtil.setCurrentRetainerId(null);
+
     refreshUi();
     widget.pickerUtil.changePickerCurrentIndex!(index);
   }

@@ -48,6 +48,7 @@ class SettingRetainer extends StatelessWidget {
       //1.提示更新成功
       //2.关闭
       toolUtil.changeTool!(15);
+      pickerUtil.changePickerCurrentIndex!(15);
     } else {
       //1.提示更新失败
     }

@@ -3,6 +3,8 @@ import 'package:whip_sword/whip_sword.dart';
 import '../../Util/util_tools.dart';
 import './card_body.dart';
 import './user_expansion_head.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/binding_artisan_view_model.dart';
 
 //整个角色雇员折叠部件
 class ExpansionArtisan extends StatefulWidget {
@@ -12,6 +14,9 @@ class ExpansionArtisan extends StatefulWidget {
   final ToolUtil util;
   final Function? headTap;
 
+  final Role? role;
+  final BindingArtisanToolViewModel? viewModel;
+
   const ExpansionArtisan({
     super.key,
     required this.roleId,
@@ -19,6 +24,8 @@ class ExpansionArtisan extends StatefulWidget {
     required this.roleChannel,
     required this.util,
     required this.headTap,
+    required this.role,
+    required this.viewModel,
   });
 
   @override
@@ -34,11 +41,6 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
 
   List<Widget>? listItems;
 
-
-
-  //test
-  List<String> names = ['111', '222', '333', '444', '555', '666', '777', '888'];
-
   @override
   void initState() {
     super.initState();
@@ -46,21 +48,28 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
     roleName = widget.roleName;
     roleId = widget.roleId;
     channelName = widget.roleChannel;
-    
+
+    //注册
+    widget.util.addListFuncInsertArtisan(insertArtisan);
   }
 
   @override
   Widget build(BuildContext context) {
-    listItems = List.generate(names.length, (index) {
+    listItems = List.generate(widget.role!.retainers.length, (index) {
       return BodyCard(
         key: UniqueKey(),
-        retainerId: '123',
-        retainerName: '沼泽小鳄',
-        artisanChannel: '紫水栈桥',
-        artisanId: 'A-2-2023-01-01',
-        artisanName: '亚啊呐',
-        artisanProfile: '1号雇员',
-        onTap: (){onTap(index);},
+        retainerId: widget.role!.retainers[index].retainerId,
+        retainerName: widget.role!.retainers[index].retainerName,
+        artisanChannel: widget.role!.retainers[index].artisan.artisanChannel,
+        artisanId: widget.role!.retainers[index].artisan.artisanId,
+        artisanName: widget.role!.retainers[index].artisan.artisanName,
+        artisanProfile: widget.role!.retainers[index].artisan.artisanDesc,
+        bodyOnTap: () {
+          bodyOnTap(index);
+        },
+        removeOnTap: () {
+          removeOnTap(index);
+        },
         util: widget.util,
       );
     });
@@ -89,21 +98,83 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
     );
   }
 
-
- 
-
-  void onTap(int index) {
-    for(int i = 0 ; i <= widget.util.listFuncBidingArtisanBodySelected!.length - 1 ; i ++){
+  void bodyOnTap(int index) {
+    for (int i = 0;
+        i <= widget.util.listFuncBidingArtisanBodySelected!.length - 1;
+        i++) {
       widget.util.listFuncBidingArtisanBodySelected![i](false);
     }
+    widget.util.setCurrentRetainerId(widget.role!.retainers[index].retainerId);
+    //获取role所在的index
+    int roleIndex = widget.viewModel!.bindingArtisanToolModel!.data.roles
+        .indexWhere((element) => element == widget.role);
+    widget.util.setCurrentRoleIndex(roleIndex);
 
-    //添加viewmodel删除工匠逻辑
+    //设置head选中状态
+    for (int i = 0;
+        i <= widget.util.listFuncBidingArtisanHeadSelected!.length - 1;
+        i++) {
+      widget.util.listFuncBidingArtisanHeadSelected![i](false);
+    }
+    widget.util.listFuncBidingArtisanHeadSelected![roleIndex](true);
   }
 
+  void removeOnTap(int index) async {
+    widget.viewModel!.removeArtisan(widget.role!.retainers[index]);
 
-  void refreshUi(){
-    setState(() {
-      
+    refreshUi();
+    await refreshBodyHeight().then((v) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          refreshUi();
+        });
+      });
     });
+  }
+
+  Future<void> refreshBodyHeight() async {
+    await util!.refreshBodyHeight!();
+  }
+
+  void refreshUi() {
+    setState(() {});
+  }
+
+  void insertArtisan(Artisan artisan) async {
+    //Retainer retainer = widget.role!.retainers.where((element) {
+    //  return element.retainerId == widget.util.currentRetainerId!;
+    // }).first;
+    if(widget.util.currentRetainerId != null){
+      bool isExpanded = false;
+    
+    Retainer? retainer = widget.role!.retainers.firstWhere(
+      (element) => element.retainerId == widget.util.currentRetainerId!,
+      orElse: () {
+        isExpanded = true;
+        return widget.role!.retainers.first;
+      }, 
+    );
+
+     
+    if (retainer.artisan.artisanId == '' && isExpanded == false) {
+      widget.viewModel!.insertArtisan(retainer, artisan);
+      refreshUi();
+      await refreshBodyHeight().then((v) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            refreshUi();
+          });
+        });
+      });
+    }
+
+    }
+    
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.util.removeListFuncInsertArtisan(insertArtisan);
   }
 }
