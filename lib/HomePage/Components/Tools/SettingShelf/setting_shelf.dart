@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../../Config/index.dart';
 import '../../../../PublicWidgets/ToolTitle/title_tool.dart';
-import './list_expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_shelf_view_model.dart';
+import './future_list_expansion_retainer_item.dart';
+import '../../Util/util_picker.dart';
 
 class SettingShelf extends StatelessWidget {
   final ToolUtil toolUtil;
+  final PickerUtil pickerUtil;
+  final SettingShelfToolViewModel viewModel = SettingShelfToolViewModel();
 
-  const SettingShelf({super.key, required this.toolUtil});
+  SettingShelf({
+    super.key,
+    required this.toolUtil,
+    required this.pickerUtil
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +29,10 @@ class SettingShelf extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        ItemRetainerList(
+        ItemRetainerListFuture(
           toolUtil: toolUtil,
+          viewModel: viewModel,
+          pickerUtil: pickerUtil,
         )
       ],
     );

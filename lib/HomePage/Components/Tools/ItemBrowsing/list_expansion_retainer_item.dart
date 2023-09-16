@@ -44,6 +44,7 @@ class _ItemRetainerListState extends State<ItemRetainerList> {
         roleName: widget.viewModel!.itemBrowsingToolModel!.data!.roles![index].roleName,
         roleChannel: widget.viewModel!.itemBrowsingToolModel!.data!.roles![index].roleChannel,
         toolUtil: widget.toolUtil,
+        viewModel: widget.viewModel,
         headTap: () {
           onTap(index);
         }, 

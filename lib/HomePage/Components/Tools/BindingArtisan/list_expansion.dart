@@ -80,16 +80,13 @@ class _ExpansionListState extends State<ExpansionList> {
     }
     widget.util.listFuncBidingArtisanHeadSelected![index](true);
     widget.util.setCurrentRoleIndex(index);
+    widget.util.setCurrentRetainerId(null);
 
     //设置所有body的选中状态
-       for (int i = 0;
+    for (int i = 0;
         i <= widget.util.listFuncBidingArtisanBodySelected!.length - 1;
         i++) {
       widget.util.listFuncBidingArtisanBodySelected![i](false);
     }
-
   }
-
-
-  
 }

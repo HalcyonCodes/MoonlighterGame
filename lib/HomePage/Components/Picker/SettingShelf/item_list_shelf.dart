@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
 import './item_input_shelf.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_shelf_view_model.dart';
+import '../../Util/util_picker.dart';
 
 class ShelfItemList extends StatefulWidget {
-  const ShelfItemList({super.key});
+  final SettingShelfPickerViewModel? viewModel;
+  final PickerUtil pickerUtil;
+
+  const ShelfItemList(
+      {super.key, required this.viewModel, required this.pickerUtil});
 
   @override
   State<ShelfItemList> createState() => _ShelfItemListState();
@@ -17,16 +23,31 @@ class _ShelfItemListState extends State<ShelfItemList> {
   void initState() {
     super.initState();
     items = [];
+
+    //初始化
+    widget.pickerUtil.setNameCtls([]);
+    widget.pickerUtil.setCountCtls([]);
+    widget.pickerUtil.setTypeCtls([]);
   }
 
   @override
   Widget build(BuildContext context) {
-    items = List.generate(5, (index) {
+    items = List.generate(
+        widget.viewModel!.settingShelfPickerModel!.data.shelf.items.length,
+        (index) {
       return ShelfItemInput(
-        itemCount: '12',
-        itemName: '纤维手套',
-        itemType: '1',
-        delectOnTap: () {},
+        key: UniqueKey(),
+        itemCount: widget.viewModel!.settingShelfPickerModel!.data.shelf
+            .items[index].itemCount,
+        itemName: widget.viewModel!.settingShelfPickerModel!.data.shelf
+            .items[index].itemName,
+        itemType: widget
+            .viewModel!.settingShelfPickerModel!.data.shelf.items[index].hq,
+        pickerUtil: widget.pickerUtil,
+        viewModel: widget.viewModel!,
+        delectOnTap: () {
+          delectOnTap(index);
+        },
       );
     });
 
@@ -83,7 +104,9 @@ class _ShelfItemListState extends State<ShelfItemList> {
               height: 22,
               width: 22,
               child: InkWell(
-                onTap: (){},
+                onTap: () {
+                  addItem();
+                },
                 child: SvgPicture.asset('Svg/plus_card.svg'),
               ),
             )
@@ -91,5 +114,19 @@ class _ShelfItemListState extends State<ShelfItemList> {
         ),
       ),
     );
+  }
+
+  void delectOnTap(int index) {
+    widget.viewModel!.settingShelfPickerModel!.data.shelf.items.removeAt(index);
+    refreshUi();
+  }
+
+  void refreshUi() {
+    setState(() {});
+  }
+
+  void addItem() {
+    widget.viewModel!.addItem();
+    refreshUi();
   }
 }

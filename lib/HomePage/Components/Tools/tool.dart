@@ -262,7 +262,8 @@ class _ToolState extends State<Tool> {
                                                               null
                                                       ? SettingShelf(
                                                           toolUtil:
-                                                              widget.toolUtil)
+                                                              widget.toolUtil, pickerUtil: widget.pickerUtil,
+                                                              )
                                                       : index == 11 &&
                                                               widget.toolUtil
                                                                       .listSelectId !=

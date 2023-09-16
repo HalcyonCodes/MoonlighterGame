@@ -64,7 +64,7 @@ class _PickerState extends State<Picker> {
                                           ? PickerBindingArtisanFuture(toolUtil: widget.toolUtil,)
                                           : currentIndex == 10 && widget.toolUtil.listSelectId != null
                                               ? PickerSettingShelf(
-                                                  pickerUtil: widget.pickerUtil,
+                                                  pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,
                                                 )
                                               : currentIndex == 11 && widget.toolUtil.listSelectId != null
                                                   ? PickerSellBrowsing(

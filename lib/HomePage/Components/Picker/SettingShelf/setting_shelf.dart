@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import './retainer_search.dart';
-import './shelf_retainer.dart';
+
 import '../../Util/util_picker.dart';
+import './future_shelf_retainer.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_shelf_view_model.dart';
+import '../../Util/util_tools.dart';
 
 class PickerSettingShelf extends StatelessWidget {
   final PickerUtil pickerUtil;
-  const PickerSettingShelf({super.key, required this.pickerUtil});
+  final ToolUtil toolUtil;
+
+  final SettingShelfPickerViewModel viewModel = SettingShelfPickerViewModel();
+  PickerSettingShelf({super.key, required this.pickerUtil, required this.toolUtil});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +20,13 @@ class PickerSettingShelf extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        RetainerSearch(),
-        SizedBox(
+        RetainerSearch(viewModel: viewModel,),
+        const SizedBox(
           height: 32,
         ),
-        RetainerShelf(
+        RetainerShelfFuture(
           pickerUtil: pickerUtil,
+          viewModel: viewModel, toolUtil: toolUtil,
         ),
       ],
     );

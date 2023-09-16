@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class PickerUtil {
@@ -26,12 +25,12 @@ class PickerUtil {
 
   //SellBrowsing中修改日历按钮选中
   List<Function>? _listChangeSellBrowsingCalendarSelect;
-  List<Function>? get listChangeSellBrowsingCalendarSelect => _listChangeSellBrowsingCalendarSelect;
-  
-  void addListChangeSellBrowsingCalendarSelect(Function? func){
+  List<Function>? get listChangeSellBrowsingCalendarSelect =>
+      _listChangeSellBrowsingCalendarSelect;
+
+  void addListChangeSellBrowsingCalendarSelect(Function? func) {
     _listChangeSellBrowsingCalendarSelect!.add(func!);
   }
-
 
   void setFuncListChangeSellBrowsingCalendarSelect(List<Function>? funcs) {
     _listChangeSellBrowsingCalendarSelect = funcs;
@@ -69,6 +68,55 @@ class PickerUtil {
     _insertRetainer = func;
   }
 
-  
+  //PickerSettingShelfFuture中刷新ui
+  Function? _refreshSettingShelfFuture;
+  Function? get refreshSettingShelfFuture => _refreshSettingShelfFuture;
+  void setFuncRefreshSettingShelfFuture(Function? func) {
+    _refreshSettingShelfFuture = func;
+  }
+
+  //SettingShelf中ShelfItemInput中的textinputCtrl集合
+  List<TextEditingController>? _nameCtls;
+  List<TextEditingController>? get nameCtls => _nameCtls;
+  void setNameCtls(List<TextEditingController>? list) {
+    _nameCtls = list!;
+  }
+
+  void addNameCtls(TextEditingController? ctr) {
+    _nameCtls!.add(ctr!);
+  }
+
+  void removeNameCtls(TextEditingController? ctr) {
+    _nameCtls!.remove(ctr!);
+  }
+
+  List<TextEditingController>? _typeCtls;
+  List<TextEditingController>? get typeCtls => _typeCtls;
+  void setTypeCtls(List<TextEditingController>? list) {
+    _typeCtls = list!;
+  }
+
+  void addTypeCtls(TextEditingController? ctr) {
+    _typeCtls!.add(ctr!);
+  }
+
+  void removeTypeCtls(TextEditingController? ctr) {
+    _typeCtls!.remove(ctr!);
+  }
+
+
+  List<TextEditingController>? _countCtls;
+  List<TextEditingController>? get countCtls => _countCtls;
+  void setCountCtls(List<TextEditingController>? list) {
+    _countCtls = list!;
+  }
+
+  void addCountCtls(TextEditingController? ctr) {
+    _countCtls!.add(ctr!);
+  }
+
+  void removeCountCtls(TextEditingController? ctr) {
+    _countCtls!.remove(ctr!);
+  }
 
 }

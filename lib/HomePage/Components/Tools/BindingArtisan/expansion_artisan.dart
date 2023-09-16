@@ -145,18 +145,18 @@ class _ExpansionArtisanState extends State<ExpansionArtisan> {
     //  return element.retainerId == widget.util.currentRetainerId!;
     // }).first;
     if(widget.util.currentRetainerId != null){
-      bool isExpanded = false;
+      bool dIsExpanded = false;
     
     Retainer? retainer = widget.role!.retainers.firstWhere(
       (element) => element.retainerId == widget.util.currentRetainerId!,
       orElse: () {
-        isExpanded = true;
+        dIsExpanded = true;
         return widget.role!.retainers.first;
       }, 
     );
 
      
-    if (retainer.artisan.artisanId == '' && isExpanded == false) {
+    if (retainer.artisan.artisanId == '' && dIsExpanded == false) {
       widget.viewModel!.insertArtisan(retainer, artisan);
       refreshUi();
       await refreshBodyHeight().then((v) {
