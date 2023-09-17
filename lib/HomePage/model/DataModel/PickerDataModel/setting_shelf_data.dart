@@ -5,7 +5,7 @@ Map<String, dynamic> data = {
     'shelf' : {
       'count' : '19',
       'retainerId' : 'a-123-123',
-      'retainerName' : '张三',
+      'retainerName' : '李四',
       'retainerChannel': '紫水栈桥',
       'retainerDesc': '张三的描述',
       'items':[

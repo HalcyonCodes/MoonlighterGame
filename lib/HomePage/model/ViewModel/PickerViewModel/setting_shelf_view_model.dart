@@ -8,7 +8,6 @@ import '../../ToJsonModel/PickerToJsonModel/setting_shelf_to_json_model.dart';
 import 'package:flutter/material.dart';
 import '../../DataModel/PickerDataModel/setting_shelf_data_copy.dart' as vdata;
 
-
 class SettingShelfPickerViewModel {
   Response? response;
   SettingShelfPickerModel? settingShelfPickerModel;
@@ -86,13 +85,30 @@ class SettingShelfPickerViewModel {
 
     //通过post向服务器发起http请求
     response = await Dio().get('http://localhost:4040/');
-    modelTemp = SettingShelfPickerModel.fromJson(datav);
+
+    if (response!.statusCode == HttpStatus.ok) {
+      //加载
+      modelTemp = SettingShelfPickerModel.fromJson(datav);
+    } else {
+      //1.提示搜索失败
+    }
 
     return response!.statusCode!;
   }
 
+  void copyModel() {
+    settingShelfPickerModel!.data.shelf.items = [];
+    for (int i = 0; i < modelTemp!.data.shelf.items.length; i++) {
+      PickerItem vItem = PickerItem();
+      vItem.itemName = modelTemp!.data.shelf.items[i].itemName;
+      vItem.hq = modelTemp!.data.shelf.items[i].hq;
+      vItem.itemCount = modelTemp!.data.shelf.items[i].itemCount;
+      settingShelfPickerModel!.data.shelf.items.add(vItem);
+    }
+  }
 
-  void copyModel(){
-    settingShelfPickerModel = modelTemp;
+  void initModel() {
+    modelTemp = null;
+    settingShelfPickerModel = null;
   }
 }

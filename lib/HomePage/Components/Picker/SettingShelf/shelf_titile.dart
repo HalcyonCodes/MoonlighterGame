@@ -62,7 +62,9 @@ class _ShelfTitleState extends State<ShelfTitle> {
       //2.关闭窗口
       widget.toolUtil.setCurrentRetainerId(null);
       widget.pickerUtil.refreshSettingShelfFuture!();
-    }else{
+      widget.pickerUtil.refreshRetainerSearch!();
+      widget.viewModel.initModel();
+    } else {
       //1.提示失败
     }
   }
@@ -70,5 +72,7 @@ class _ShelfTitleState extends State<ShelfTitle> {
   void cancel() {
     widget.toolUtil.setCurrentRetainerId(null);
     widget.pickerUtil.refreshSettingShelfFuture!();
+    widget.pickerUtil.refreshRetainerSearch!();
+    widget.viewModel.initModel();
   }
 }

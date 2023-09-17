@@ -20,7 +20,7 @@ class PickerSettingShelf extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        RetainerSearch(viewModel: viewModel,),
+        RetainerSearch(viewModel: viewModel, pickerUtil: pickerUtil, toolUtil: toolUtil,),
         const SizedBox(
           height: 32,
         ),

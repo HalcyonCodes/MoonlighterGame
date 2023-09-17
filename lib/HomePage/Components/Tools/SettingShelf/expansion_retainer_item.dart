@@ -110,6 +110,7 @@ class _ItemExpansionRetainerState extends State<ItemExpansionRetainer> {
     widget.toolUtil.listFuncSettingShelfHeadSelected![headIndex](true);
     widget.toolUtil.setCurrentRetainerId(widget.role!.retainers![index].retainerId);
     widget.pickerUtil.refreshSettingShelfFuture!();
+    widget.pickerUtil.refreshRetainerSearch!();
   }
 
   void refreshUi() {

@@ -58,6 +58,7 @@ class _ShelfItemInputState extends State<ShelfItemInput> {
             child: SizedBox(
               height: 22,
               child: TextField(
+                keyboardType: TextInputType.name,
                 controller: nameCtrl,
                 maxLines: 1,
                 style: KFont.itemListStyle,

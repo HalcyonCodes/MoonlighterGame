@@ -28,6 +28,7 @@ class _ShelfItemListState extends State<ShelfItemList> {
     widget.pickerUtil.setNameCtls([]);
     widget.pickerUtil.setCountCtls([]);
     widget.pickerUtil.setTypeCtls([]);
+    widget.pickerUtil.setFuncRefreshShelfItemList(refreshUi);
   }
 
   @override

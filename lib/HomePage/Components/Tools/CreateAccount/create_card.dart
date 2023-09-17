@@ -32,6 +32,7 @@ class _CreateCardState extends State<CreateCard> {
     id = widget.id;
 
     ctr1 = TextEditingController(text: id);
+    
     ctr2 = TextEditingController(text: name);
 
     //textCtrl初始化
@@ -72,7 +73,8 @@ class _CreateCardState extends State<CreateCard> {
                 LengthLimitingTextInputFormatter(200),
               ],
               maxLength: null,
-              onSubmitted: (text) {},
+              keyboardType: TextInputType.text,
+              //onSubmitted: (text) {},
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: '',

@@ -104,7 +104,6 @@ class PickerUtil {
     _typeCtls!.remove(ctr!);
   }
 
-
   List<TextEditingController>? _countCtls;
   List<TextEditingController>? get countCtls => _countCtls;
   void setCountCtls(List<TextEditingController>? list) {
@@ -119,4 +118,28 @@ class PickerUtil {
     _countCtls!.remove(ctr!);
   }
 
+  //settingShelf中shelfItemList中刷新list
+  Function? _refreshShelfItemList;
+  Function? get refreshShelfItemList => _refreshShelfItemList;
+  void setFuncRefreshShelfItemList(Function? func) {
+    _refreshShelfItemList = func!;
+  }
+  
+  //settingShelf中刷新retainerSearch
+  Function? _refreshRetainerSearch;
+  Function? get refreshRetainerSearch => _refreshRetainerSearch;
+  void setFuncRefreshRetainerSearch(Function? func) {
+    _refreshRetainerSearch = func!;
+  }
+
+  //settingShelf中刷新retainerList
+  Function? _refreshRetainerList;
+  Function? get refreshRetainerList => _refreshRetainerList;
+  void setFuncRefreshRetainerList(Function? func) {
+    _refreshRetainerList = func!;
+  }
+
+  //settingShelf中刷新retainerItemList
+  Function? _refreshRetainerItemList;
+  Function? get refreshRetainerItemList => _refreshRetainerItemList;
 }

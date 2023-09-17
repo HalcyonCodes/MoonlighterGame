@@ -103,7 +103,9 @@ class SearchResult extends StatelessWidget {
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
                 ),
                 child: InkWell(
-                  onLongPress: (){},
+                  onLongPress: (){
+                    onLongTap!();
+                  },
                   borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
                   child : Padding(padding: const EdgeInsets.only(bottom: 12),
                   child: Container(
