@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
 import './item_material.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_material_view_model.dart';
+import '../../Util/util_picker.dart';
 
 class MaterialItemList extends StatefulWidget {
-  const MaterialItemList({super.key});
+  final SettingMaterialPickerViewModel viewModel;
+  final PickerUtil pickerUtil;
+  const MaterialItemList(
+      {super.key, required this.viewModel, required this.pickerUtil});
 
   @override
   State<MaterialItemList> createState() => _MaterialItemListState();
@@ -17,15 +22,30 @@ class _MaterialItemListState extends State<MaterialItemList> {
   void initState() {
     super.initState();
     items = [];
+
+    //初始化
+    widget.pickerUtil.setNameCtls([]);
+    widget.pickerUtil.setCountCtls([]);
+    widget.pickerUtil.setTypeCtls([]);
+    widget.pickerUtil.setFuncRefreshShelfItemList(refreshUi);
   }
 
   @override
   Widget build(BuildContext context) {
-    items = List.generate(5, (index) {
+    items = List.generate(
+        widget.viewModel.settingMaterialPickerModel!.data.store.items.length,
+        (index) {
       return MaterialItemInput(
-        itemName: '纤维手套',
-        itemType: '1',
-        delectOnTap: () {},
+        key: UniqueKey(),
+        itemName: widget.viewModel.settingMaterialPickerModel!.data.store
+            .items[index].itemName,
+        itemType: widget
+            .viewModel.settingMaterialPickerModel!.data.store.items[index].hq,
+        delectOnTap: () {
+          delectOnTap(index);
+        },
+        pickerUtil: widget.pickerUtil,
+        viewModel: widget.viewModel,
       );
     });
 
@@ -72,7 +92,9 @@ class _MaterialItemListState extends State<MaterialItemList> {
               height: 22,
               width: 22,
               child: InkWell(
-                onTap: (){},
+                onTap: () {
+                  addItem();
+                },
                 child: SvgPicture.asset('Svg/plus_card.svg'),
               ),
             )
@@ -80,5 +102,20 @@ class _MaterialItemListState extends State<MaterialItemList> {
         ),
       ),
     );
+  }
+
+  void delectOnTap(int index) {
+    widget.viewModel.settingMaterialPickerModel!.data.store.items
+        .removeAt(index);
+    refreshUi();
+  }
+
+  void refreshUi() {
+    setState(() {});
+  }
+
+  void addItem() {
+    widget.viewModel.addItem();
+    refreshUi();
   }
 }

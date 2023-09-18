@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import './retainer_search.dart';
-import './retainer_material.dart';
+import 'future_retainer_material.dart';
 import '../../Util/util_picker.dart';
+import '../../Util/util_tools.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_material_view_model.dart';
 
 class PickerSettingMaterial extends StatelessWidget {
   final PickerUtil pickerUtil;
-  const PickerSettingMaterial({super.key, required this.pickerUtil});
+  final ToolUtil toolUtil;
+  final SettingMaterialPickerViewModel viewModel = SettingMaterialPickerViewModel();
+  PickerSettingMaterial({super.key, required this.pickerUtil, required this.toolUtil,});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +18,14 @@ class PickerSettingMaterial extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        RetainerSearch(),
-        SizedBox(
+        RetainerSearch(
+          pickerUtil: pickerUtil, toolUtil: toolUtil, viewModel: viewModel,
+        ),
+        const SizedBox(
           height: 32,
         ),
-        RetainerMaterial(
-          pickerUtil: pickerUtil,
+        RetainerMaterialFuture(
+          pickerUtil: pickerUtil, toolUtil: toolUtil, viewModel: viewModel,
         ),
       ],
     );

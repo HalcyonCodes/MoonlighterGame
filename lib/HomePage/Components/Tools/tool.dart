@@ -277,7 +277,7 @@ class _ToolState extends State<Tool> {
                                                                       null
                                                               ? SettingMaterial(
                                                                   toolUtil: widget
-                                                                      .toolUtil,
+                                                                      .toolUtil, pickerUtil: widget.pickerUtil,
                                                                 )
                                                               : index == 13 &&
                                                                       widget.toolUtil

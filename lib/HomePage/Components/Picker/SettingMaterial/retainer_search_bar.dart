@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_material_view_model.dart';
 
 class RetainerSearchBar extends StatefulWidget {
-  const RetainerSearchBar({super.key});
+  final Function? onTap;
+  final SettingMaterialPickerViewModel viewModel;
+  const RetainerSearchBar({super.key, required this.onTap, required this.viewModel});
 
   @override
   State<RetainerSearchBar> createState() => _RetainerSearchBarState();
@@ -145,5 +148,9 @@ class _RetainerSearchBarState extends State<RetainerSearchBar> {
     setState(() {});
   }
 
-  void commit(String text) {}
+  void commit(String text) async {
+    String type = currentIndex == 0 ? 'name' : 'id';
+    await widget.viewModel.search(text, type);
+    widget.onTap!();
+  }
 }
