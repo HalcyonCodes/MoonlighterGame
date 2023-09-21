@@ -36,6 +36,10 @@ class PickerUtil {
     _listChangeSellBrowsingCalendarSelect = funcs;
   }
 
+  void removeFuncListChangeSellBrowsingCalendarSelect(Function? func) {
+    _listChangeSellBrowsingCalendarSelect!.remove(func);
+  }
+
   //Picker编辑时的TextEditorController列表
   List<TextEditingController>? _textCtrs;
   List<TextEditingController>? get textCtrs => _textCtrs;
@@ -124,7 +128,7 @@ class PickerUtil {
   void setFuncRefreshShelfItemList(Function? func) {
     _refreshShelfItemList = func!;
   }
-  
+
   //settingShelf中刷新retainerSearch
   Function? _refreshRetainerSearch;
   Function? get refreshRetainerSearch => _refreshRetainerSearch;
@@ -139,7 +143,31 @@ class PickerUtil {
     _refreshRetainerList = func!;
   }
 
-  //settingShelf中刷新retainerItemList
-  Function? _refreshRetainerItemList;
-  Function? get refreshRetainerItemList => _refreshRetainerItemList;
+  //sellBrowsing中刷新SellItemListFuture
+  Function? _refreshSellItemListFuture;
+  Function? get refreshSellItemListFuture => _refreshSellItemListFuture;
+  void setFuncRefreshSellItemListFuture(Function? func) {
+    _refreshSellItemListFuture = func!;
+  }
+
+  //sellBrowsing中刷新日历所有按钮
+  Function? _refreshCalendarButton;
+  Function? get refreshCalendarButton => _refreshCalendarButton;
+  void setFuncRefreshCalendarButton(Function? func) {
+    _refreshCalendarButton = func!;
+  }
+
+  //sellBrowsing中设置日期
+  Function? _setCalendarDate;
+  Function? get setCalendarDate => _setCalendarDate;
+  void setFuncSetCalendarDate(Function? func) {
+    _setCalendarDate = func!;
+  }
+
+  //SellBrowsing中刷新calendarFuture
+  Function? _refreshCalendarFuture;
+  Function? get refreshCalendarFuture => _refreshCalendarFuture;
+  void setFuncRefreshCalendarFuture(Function? func) {
+    _refreshCalendarFuture = func!;
+  }
 }

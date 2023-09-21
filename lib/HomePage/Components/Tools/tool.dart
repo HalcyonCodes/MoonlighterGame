@@ -270,7 +270,10 @@ class _ToolState extends State<Tool> {
                                                                   null
                                                           ? SellBrowsing(
                                                               toolUtil: widget
-                                                                  .toolUtil)
+                                                                  .toolUtil,
+                                                              pickerUtil: widget.pickerUtil,
+                                                                  
+                                                                  )
                                                           : index == 12 &&
                                                                   widget.toolUtil
                                                                           .listSelectId !=

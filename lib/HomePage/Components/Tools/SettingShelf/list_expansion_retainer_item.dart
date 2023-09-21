@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 import './expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
-import '.././../../Model/ViewModel/ToolViewModel/setting_shelf_view_model.dart';
+import '../../../Model/ViewModel/ToolViewModel/setting_shelf_view_model.dart';
 import '../../Util/util_picker.dart';
 
 //包裹所有角色-雇员手风琴的列表

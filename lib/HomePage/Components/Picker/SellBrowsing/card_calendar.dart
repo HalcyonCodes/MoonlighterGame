@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import '../../../../Config/index.dart';
 import './button_calendar.dart';
 import '../../Util/util_picker.dart';
+import '../../../Model/ViewModel/PickerViewModel/sell_browsing_view_model.dart';
 
 class CalendarCard extends StatefulWidget {
   final PickerUtil pickerUtil;
-  const CalendarCard({super.key, required this.pickerUtil});
+  final SellBrowsingPickerViewModel viewModel;
+  const CalendarCard(
+      {super.key, required this.pickerUtil, required this.viewModel});
 
   @override
   State<CalendarCard> createState() => _CalendarCardState();
@@ -21,16 +24,22 @@ class _CalendarCardState extends State<CalendarCard> {
     buttons = [];
 
     widget.pickerUtil.setFuncListChangeSellBrowsingCalendarSelect([]);
+    widget.pickerUtil.setFuncRefreshCalendarButton(initButton);
+    widget.pickerUtil.setFuncSetCalendarDate(setCalendarData);
   }
 
   @override
   Widget build(BuildContext context) {
     buttons = List.generate(35, (index) {
+      int displayDate = index + 1 - widget.viewModel.firstDayOfWeek!.toInt();
       return CalendarButton(
-        date: index.toString(),
+        key: UniqueKey(),
+        date: displayDate < 0 || displayDate >= widget.viewModel.days!
+            ? ' '
+            : (displayDate + 1).toString(),
         pickerUtil: widget.pickerUtil,
         onTap: () {
-          onTap(index);
+          onTap(index, displayDate + 1);
         },
       );
     });
@@ -135,12 +144,28 @@ class _CalendarCardState extends State<CalendarCard> {
     );
   }
 
-  void onTap(int index) {
+  void onTap(int index, int date) {
     for (int i = 0;
         i <= widget.pickerUtil.listChangeSellBrowsingCalendarSelect!.length - 1;
         i++) {
       widget.pickerUtil.listChangeSellBrowsingCalendarSelect![i](false);
     }
     widget.pickerUtil.listChangeSellBrowsingCalendarSelect![index](true);
+
+    setCalendarData(date);
+
+    widget.pickerUtil.refreshSellItemListFuture!();
+  }
+
+  void initButton() {
+    for (int i = 0;
+        i <= widget.pickerUtil.listChangeSellBrowsingCalendarSelect!.length - 1;
+        i++) {
+      widget.pickerUtil.listChangeSellBrowsingCalendarSelect![i](false);
+    }
+  }
+
+  void setCalendarData(int? date) {
+    widget.viewModel.setDate(date);
   }
 }

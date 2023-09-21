@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../Config/index.dart';
@@ -6,8 +5,10 @@ import '../../../../Config/index.dart';
 class CalendarTitle extends StatefulWidget {
   final String year;
   final String month;
+  final Function? onLeftTap;
+  final Function? onRightTap;
 
-  const CalendarTitle({super.key, required this.month, required this.year});
+  const CalendarTitle({super.key, required this.month, required this.year, required this.onLeftTap, required this.onRightTap});
 
   @override
   State<CalendarTitle> createState() => _CalendarTitleState();
@@ -46,7 +47,10 @@ class _CalendarTitleState extends State<CalendarTitle> {
                   child: Container(
                 alignment: Alignment.center,
                 height: 22,
-                child: Text('${year!}年${month!}月', style: KFont.toolTitleStyle,),
+                child: Text(
+                  '${year!}年${month!}月',
+                  style: KFont.toolTitleStyle,
+                ),
               )),
               SizedBox(
                 height: 22,
@@ -60,7 +64,11 @@ class _CalendarTitleState extends State<CalendarTitle> {
         ));
   }
 
-  void onLeftTap() {}
+  void onLeftTap() {
+    widget.onLeftTap!();
+  }
 
-  void onRightTap() {}
+  void onRightTap() {
+    widget.onRightTap!();
+  }
 }

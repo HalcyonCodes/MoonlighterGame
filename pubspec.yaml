@@ -19,6 +19,8 @@ dependencies:
   accordion: ^2.5.1
   whip_sword:
     path: ../whip_sword
+  intl: ^0.17.0
+
 
 
 

@@ -69,7 +69,7 @@ class _PickerState extends State<Picker> {
                                               : currentIndex == 11 && widget.toolUtil.listSelectId != null
                                                   ? PickerSellBrowsing(
                                                       pickerUtil:
-                                                          widget.pickerUtil,
+                                                          widget.pickerUtil, toolUtil: widget.toolUtil,
                                                     )
                                                   : currentIndex == 12 && widget.toolUtil.listSelectId != null
                                                       ? PickerSettingMaterial(

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import '../../../../Config/index.dart';
 import './item_sell.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
+import '../../../Model/ViewModel/PickerViewModel/sell_browsing_view_model.dart';
 
 class SellItemList extends StatefulWidget {
-  final String total;
-  const SellItemList({super.key, required this.total});
+  final SellBrowsingPickerViewModel viewModel;
+  const SellItemList({super.key, required this.viewModel});
 
   @override
   State<SellItemList> createState() => _SellItemListState();
 }
 
 class _SellItemListState extends State<SellItemList> {
-  String? total;
 
   List<Widget>? items;
 
@@ -20,14 +20,16 @@ class _SellItemListState extends State<SellItemList> {
   void initState() {
     super.initState();
     items = [];
-    total = widget.total;
   }
 
   @override
   Widget build(BuildContext context) {
-    items = List.generate(10, (index) {
+    items = List.generate(widget.viewModel.sellBrowsingPickerModel!.data.items.length, (index) {
       return SellItem(
-          itemName: '纤维手机', itemType: '1', itemCount: '3', itemPrice: '35000');
+          itemName: widget.viewModel.sellBrowsingPickerModel!.data.items[index].itemName, 
+          itemType: widget.viewModel.sellBrowsingPickerModel!.data.items[index].hq, 
+          itemCount: widget.viewModel.sellBrowsingPickerModel!.data.items[index].itemCount, 
+          itemPrice: widget.viewModel.sellBrowsingPickerModel!.data.items[index].itemPrice);
     });
 
     return SizedBox(
@@ -95,7 +97,9 @@ class _SellItemListState extends State<SellItemList> {
                               ))
                         ],
                       ),
-                      const SizedBox(height: 4,),
+                      const SizedBox(
+                        height: 4,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +122,7 @@ class _SellItemListState extends State<SellItemList> {
                             height: 12,
                           ),
                           Text(
-                            total!,
+                            widget.viewModel.sellBrowsingPickerModel!.data.total,
                             style: KFont.itemListStyle,
                           ),
                         ],

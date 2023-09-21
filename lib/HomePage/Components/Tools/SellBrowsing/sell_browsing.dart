@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Model/ViewModel/ToolViewModel/sell_browsing_view_model.dart';
 import '../../../../Config/index.dart';
 import '../../../../PublicWidgets/ToolTitle/title_tool.dart';
-import './list_expansion_retainer_item.dart';
+import './future_list_expansion_retainer_item.dart';
 import '../../Util/util_tools.dart';
+import '../../Util/util_picker.dart';
 
 class SellBrowsing extends StatelessWidget {
   final ToolUtil toolUtil;
+  final PickerUtil pickerUtil;
+  final SellBrowsingToolViewModel viewModel = SellBrowsingToolViewModel();
 
-  const SellBrowsing({super.key, required this.toolUtil});
+  SellBrowsing({super.key, required this.toolUtil, required this.pickerUtil,});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +25,10 @@ class SellBrowsing extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        ItemRetainerList(
+        ItemRetainerListFuture(
           toolUtil: toolUtil,
+          viewModel: viewModel,
+          pickerUtil: pickerUtil,
         )
       ],
     );

@@ -31,7 +31,7 @@ class _CalendarButtonState extends State<CalendarButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
+      onTap: date == ' ' ? () {} : widget.onTap,
       child: Container(
         height: 56,
         width: 56,
@@ -55,8 +55,12 @@ class _CalendarButtonState extends State<CalendarButton> {
   }
 
   void setSelect(bool select) {
-    isSelect = select;
-    refreshUi();
+    widget.date == ' '
+        ? () {}
+        : (() {
+            isSelect = select;
+            refreshUi();
+          })();
   }
 
   void refreshUi() {
@@ -66,5 +70,6 @@ class _CalendarButtonState extends State<CalendarButton> {
   @override
   void dispose() {
     super.dispose();
+    widget.pickerUtil.removeFuncListChangeSellBrowsingCalendarSelect(setSelect);
   }
 }
