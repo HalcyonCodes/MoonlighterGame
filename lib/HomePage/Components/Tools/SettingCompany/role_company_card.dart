@@ -15,20 +15,23 @@ class RoleCompanyCard extends StatefulWidget {
   final ToolUtil util;
   final String? memberCount;
   final String? marketValue;
+  final Function? onRemove;
 
-  const RoleCompanyCard(
-      {super.key,
-      this.roleId,
-      this.roleName,
-      this.roleChannel,
-      this.companyChannel,
-      this.companyId,
-      this.companyName,
-      this.companyProfile,
-      this.onTap,
-      required this.util,
-      this.memberCount,
-      this.marketValue});
+  const RoleCompanyCard({
+    super.key,
+    this.roleId,
+    this.roleName,
+    this.roleChannel,
+    this.companyChannel,
+    this.companyId,
+    this.companyName,
+    this.companyProfile,
+    this.onTap,
+    required this.util,
+    this.memberCount,
+    this.marketValue,
+    required this.onRemove,
+  });
 
   @override
   State<RoleCompanyCard> createState() => _RoleCompanyCardState();
@@ -82,7 +85,10 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
         alignment: Alignment.topRight,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: widget.onTap,
+          onTap: () {
+            widget.onTap!();
+            setSelected(true);
+          },
           child: Container(
             width: MediaQuery.of(context).size.width <= 1920
                 ? (1920 - 24) / 24 * 7 - 24
@@ -311,17 +317,10 @@ class _RoleCompanyCardState extends State<RoleCompanyCard> {
 
   void onRemoveCompanyTap() {
     removeCompany();
-    refreshUi();
   }
 
   void removeCompany() {
-    isHasCompany = false;
-    companyId = null;
-    companyName = null;
-    companyChannel = null;
-    companyProfile = null;
-    //假如修改viewmodel逻辑
-    refreshUi();
+    widget.onRemove!();
   }
 
   void refreshUi() {

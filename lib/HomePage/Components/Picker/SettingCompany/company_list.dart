@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 import './company_card.dart';
+import '../../../Model/ViewModel/PickerViewModel/setting_company_view_model.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_company_from_json_model.dart';
+import '../../Util/util_tools.dart';
 
 class CompanyList extends StatefulWidget {
-  const CompanyList({super.key});
+  final SettingCompanyPickerViewModel viewModel;
+  final ToolUtil toolUtil;
+
+  const CompanyList(
+      {super.key, required this.toolUtil, required this.viewModel});
 
   @override
   State<CompanyList> createState() => _CompanyListState();
@@ -15,15 +22,25 @@ class _CompanyListState extends State<CompanyList> {
   @override
   void initState() {
     super.initState();
-    items = List.generate(7, (index) {
+    items = List.generate(
+        widget.viewModel.settingCompanyPickerModel!.data.companys.length,
+        (index) {
       return CompanyCard(
-        companyName: 'Company Name $index',
-        companyChannel: '魔杜纳',
-        companyId: '123',
-        companyProfile: '第一个公会',
-        memberCount: '16',
-        marketValue: '13,000,000,000',
-        onTap: () {},
+        companyName: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyName,
+        companyChannel: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyChannel,
+        companyId: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyId,
+        companyProfile: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyDesc,
+        memberCount: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyMembers,
+        marketValue: widget.viewModel.settingCompanyPickerModel!.data
+            .companys[index].companyMarkerValue,
+        onTap: () {
+          insertCompany(index);
+        },
       );
     });
   }
@@ -43,5 +60,22 @@ class _CompanyListState extends State<CompanyList> {
         ),
       ),
     );
+  }
+
+  void insertCompany(int index) {
+    Company company = Company();
+    company.companyId = widget
+        .viewModel.settingCompanyPickerModel!.data.companys[index].companyId;
+    company.companyName = widget
+        .viewModel.settingCompanyPickerModel!.data.companys[index].companyName;
+    company.companyDesc = widget
+        .viewModel.settingCompanyPickerModel!.data.companys[index].companyDesc;
+    company.companyChannel = widget.viewModel.settingCompanyPickerModel!.data
+        .companys[index].companyChannel;
+    company.companyMembers = widget.viewModel.settingCompanyPickerModel!.data
+        .companys[index].companyMembers;
+    company.companyMarkerValue = widget.viewModel.settingCompanyPickerModel!
+        .data.companys[index].companyMarkerValue;
+    widget.toolUtil.insertCompany!(widget.toolUtil.currentRoleIndex, company);
   }
 }

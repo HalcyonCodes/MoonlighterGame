@@ -289,7 +289,7 @@ class _ToolState extends State<Tool> {
                                                                   ? SettingCompany(
                                                                       toolUtil:
                                                                           widget
-                                                                              .toolUtil,
+                                                                              .toolUtil, pickerUtil: widget.pickerUtil,
                                                                     )
                                                                   : SizedBox()
         ],

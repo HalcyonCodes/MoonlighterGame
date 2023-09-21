@@ -4,8 +4,8 @@ import 'package:moonlighter/HomePage/Model/FromJsonModel/ToolFromJsonModel/setti
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_robot_from_json_model.dart';
 import '../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
 //import '../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
-import '../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart' as binding_artisan;
-
+import '../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart'
+    as binding_artisan;
 
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
@@ -294,11 +294,11 @@ class ToolUtil {
 
   //PickerItemBrowsingFuture中刷新数据
   Function? _refreshPickerItemBrowsingFuture;
-  Function? get refreshPickerItemBrowsingFuture => _refreshPickerItemBrowsingFuture;
+  Function? get refreshPickerItemBrowsingFuture =>
+      _refreshPickerItemBrowsingFuture;
   void setFuncRefreshPickerItemBrowsingFuture(Function? func) {
     _refreshPickerItemBrowsingFuture = func!;
   }
-
 
   //当前选中的retainer的retainerId;
   String? _currentRetainerId;
@@ -309,7 +309,8 @@ class ToolUtil {
 
   //bindingArtisan中每个ExpanbsionArtisan中的添加artisan方法
   List<Function(binding_artisan.Artisan)>? _listFuncInsertArtisan;
-  List<Function(binding_artisan.Artisan)>? get listFuncInsertArtisan => _listFuncInsertArtisan;
+  List<Function(binding_artisan.Artisan)>? get listFuncInsertArtisan =>
+      _listFuncInsertArtisan;
   void addListFuncInsertArtisan(Function(binding_artisan.Artisan) func) {
     _listFuncInsertArtisan!.add(func);
   }
@@ -322,6 +323,10 @@ class ToolUtil {
     _listFuncInsertArtisan!.remove(func);
   }
 
-
-
+  //settingCompany中添加company
+  Function? _insertCompany;
+  Function? get insertCompany => _insertCompany;
+  void setFuncInsertCompany(Function? func) {
+    _insertCompany = func!;
+  }
 }

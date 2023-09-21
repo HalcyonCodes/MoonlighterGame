@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import './company_list.dart';
+import 'package:moonlighter/HomePage/Components/Picker/SettingCompany/future_company_list.dart';
+import 'package:moonlighter/HomePage/Components/Util/util_tools.dart';
+import 'package:moonlighter/HomePage/Model/ViewModel/PickerViewModel/setting_company_view_model.dart';
 
 
 class PickerSettingCompany extends StatelessWidget {
-  const PickerSettingCompany({super.key});
+
+  final SettingCompanyPickerViewModel viewModel = SettingCompanyPickerViewModel();
+  final ToolUtil toolUtil;
+
+  PickerSettingCompany({super.key, required this.toolUtil});
 
   @override
   Widget build(BuildContext context) {
-    return CompanyList();
+    return CompanyListFuture(viewModel: viewModel, toolUtil: toolUtil,);
   }
 }

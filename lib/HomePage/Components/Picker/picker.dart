@@ -77,7 +77,7 @@ class _PickerState extends State<Picker> {
                                                               widget.pickerUtil, toolUtil: widget.toolUtil,
                                                         )
                                                       : currentIndex == 13 && widget.toolUtil.listSelectId != null
-                                                          ? PickerSettingCompany()
+                                                          ? PickerSettingCompany(toolUtil: widget.toolUtil,)
                                                           : SizedBox()
         ],
       ),
