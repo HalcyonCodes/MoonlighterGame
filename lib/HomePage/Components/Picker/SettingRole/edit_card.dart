@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../Config/index.dart';
+import '../../Util/util_picker.dart';
 
 class EditCard extends StatefulWidget {
-  const EditCard({super.key});
+  final PickerUtil pickerUtil;
+  const EditCard({super.key, required this.pickerUtil});
 
   @override
   State<EditCard> createState() => _EditCardState();
@@ -23,7 +25,13 @@ class _EditCardState extends State<EditCard> {
     ctr2 = TextEditingController();
     ctr3 = TextEditingController();
     ctr4 = TextEditingController();
-    ctr5 = TextEditingController(); 
+
+    widget.pickerUtil.setListTextCtrs([]);
+
+    widget.pickerUtil.addListTextCtrs(ctr1);
+    widget.pickerUtil.addListTextCtrs(ctr2);
+    widget.pickerUtil.addListTextCtrs(ctr3);
+    widget.pickerUtil.addListTextCtrs(ctr4);
   }
 
   @override
@@ -70,7 +78,9 @@ class _EditCardState extends State<EditCard> {
                 strutStyle: const StrutStyle(leading: 0),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
               KString.roleName,
               style: KFont.cardProfileStyle,
@@ -104,9 +114,11 @@ class _EditCardState extends State<EditCard> {
                 strutStyle: const StrutStyle(leading: 0),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
-              KString.roleChannel,
+              KString.roleCategory,
               style: KFont.cardProfileStyle,
             ),
             const SizedBox(
@@ -138,9 +150,11 @@ class _EditCardState extends State<EditCard> {
                 strutStyle: const StrutStyle(leading: 0),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
-              KString.roleCategory,
+              KString.roleProfile,
               style: KFont.cardProfileStyle,
             ),
             const SizedBox(
@@ -172,44 +186,15 @@ class _EditCardState extends State<EditCard> {
                 strutStyle: const StrutStyle(leading: 0),
               ),
             ),
-            const SizedBox(height: 20,),
-            Text(
-              KString.roleProfile,
-              style: KFont.cardProfileStyle,
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            SizedBox(
-              height: 22,
-              child: TextField(
-                controller: ctr5,
-                maxLines: 1,
-                style: KFont.searchBarStyle,
-                autofocus: false,
-                cursorColor: Colors.black,
-                cursorWidth: 2,
-                cursorHeight: 22,
-                inputFormatters: <TextInputFormatter>[
-                  LengthLimitingTextInputFormatter(60),
-                ],
-                maxLength: null,
-                onSubmitted: (text) {},
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: '',
-                  contentPadding: EdgeInsets.zero,
-                  hintStyle: KFont.inputTextStyle,
-                  isDense: true,
-                  hintMaxLines: 1,
-                ),
-                strutStyle: const StrutStyle(leading: 0),
-              ),
-            ),
-
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.pickerUtil.setListTextCtrs([]);
   }
 }

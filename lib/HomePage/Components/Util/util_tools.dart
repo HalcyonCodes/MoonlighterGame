@@ -6,6 +6,8 @@ import '../../Model/FromJsonModel/PickerFromJsonModel/setting_tag_from_json_mode
 //import '../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
 import '../../Model/FromJsonModel/ToolFromJsonModel/binding_artisan_from_json_model.dart'
     as binding_artisan;
+import '../../Model/FromJsonModel/ToolFromJsonModel/setting_role_from_json_model.dart'
+    as setting_role;
 
 class ToolUtil {
   //设置Tools->SettiongRetainer->ExpansionRoleCard选中状态
@@ -328,5 +330,71 @@ class ToolUtil {
   Function? get insertCompany => _insertCompany;
   void setFuncInsertCompany(Function? func) {
     _insertCompany = func!;
+  }
+
+  //设置Tools -> SettingRole -> ExpansionRole中设置head选中状态
+  List<Function(bool)>? _listFuncSettingRoleHeadSelected = [];
+  List<Function(bool)>? get listFuncSettingRoleHeadSelected =>
+      _listFuncSettingRoleHeadSelected;
+  int addListFuncSettingRoleHeadSelected(Function(bool)? func) {
+    _listFuncSettingRoleHeadSelected!.add(func!);
+    return _listFuncSettingRoleHeadSelected!.length - 1;
+  }
+
+  void setListFuncSettingRoleHeadSelected(List<Function(bool)>? list) {
+    _listFuncSettingRoleHeadSelected = list;
+  }
+
+  void removeListFuncSettingRoleHeadSelected(Function(bool) i) {
+    _listFuncSettingRoleHeadSelected!.remove(i);
+  }
+
+  //设置Tools -> SettingRole -> ExpansionRole中设置被选中的channelId
+  String? _currentChannelId;
+  String? get currentChannelId => _currentChannelId;
+  void setCurrentChannelId(String? currentChannelId) {
+    _currentChannelId = currentChannelId;
+  }
+
+  //设置Tools -> SettingRole ->ExpansionRole中 设置插入Role
+  List<Function(setting_role.Role)>? _listFuncInsertRole;
+  List<Function(setting_role.Role)>? get listFuncInsertRole =>
+      _listFuncInsertRole;
+  int addListFuncInsertRole(Function(setting_role.Role)? func) {
+    _listFuncInsertRole!.add(func!);
+    return _listFuncInsertRole!.length - 1;
+  }
+
+  void setListFuncInsertRole(List<Function(setting_role.Role)>? list) {
+    _listFuncInsertRole = list;
+  }
+
+  void removeListFuncInsertRole(Function(setting_role.Role) i) {
+    _listFuncInsertRole!.remove(i);
+  }
+
+  //设置Tools -> SettingRole ->ExpansionRole中 设置head的index
+
+  int? _currentChannelIndex;
+  int? get currentChannelIndex => _currentChannelIndex;
+  void setCurrentChannelIndex(int? i) {
+    _currentChannelIndex = i;
+  }
+
+  //设置Tools -> SettingRole -> expansion_item_channel中设置head内容增加减少1
+  List<Function(bool)>? _listFuncChangeMemberCount;
+  List<Function(bool)>? get listFuncChangeMemberCount  =>
+      _listFuncChangeMemberCount;
+  int addListFuncChangeMemberCount (Function(bool)? func) {
+    _listFuncChangeMemberCount !.add(func!);
+    return _listFuncChangeMemberCount !.length - 1;
+  }
+
+  void setListFuncChangeMemberCount (List<Function(bool)>? list) {
+    _listFuncChangeMemberCount  = list;
+  }
+
+  void removeListFuncChangeMemberCount (Function(bool) i) {
+    _listFuncChangeMemberCount !.remove(i);
   }
 }

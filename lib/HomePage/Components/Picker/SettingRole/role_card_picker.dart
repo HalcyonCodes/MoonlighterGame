@@ -101,7 +101,7 @@ class PickerRoleCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 16,),
                     InkWell(
-                      onTap: removeOnTap,
+                      onLongPress: removeOnTap,
                       borderRadius: BorderRadius.circular(99),
                       child: SizedBox(
                         height: 26,

@@ -170,4 +170,26 @@ class PickerUtil {
   void setFuncRefreshCalendarFuture(Function? func) {
     _refreshCalendarFuture = func!;
   }
+
+  //SettingRole中PickerRoleList中刷新
+  Function? _refreshPickerRoleList;
+  Function? get refreshPickerRoleList => _refreshPickerRoleList;
+  void setFuncRefreshPickerRoleList(Function? func) {
+    _refreshPickerRoleList = func!;
+  }
+
+  //SettingRole中PickerRoleList中添加role
+  Function? _insertPickerRoleListRole;
+  Function? get insertPickerRoleListRole => _insertPickerRoleListRole;
+  void setFuncInsertPickerRoleListRole(Function? func) {
+    _insertPickerRoleListRole = func!;
+  }
+
+  //SettingRole中PickerRoleList中获取toJsonModel
+  Function? _getPickerRoleListToJsonModel;
+  Function? get getPickerRoleListToJsonModel => _getPickerRoleListToJsonModel;
+  void setFuncGetPickerRoleListToJsonModel(Function? func) {
+    _getPickerRoleListToJsonModel = func!;
+  }
+
 }

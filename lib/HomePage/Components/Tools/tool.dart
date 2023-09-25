@@ -228,7 +228,7 @@ class _ToolState extends State<Tool> {
                               ? SizedBox()
                               : index == 5 &&
                                       widget.toolUtil.listSelectId != null
-                                  ? SettingRole(roleCount: '5')
+                                  ? SettingRole(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil, )
                                   : index == 6 &&
                                           widget.toolUtil.listSelectId != null
                                       ? SettingRetainer(

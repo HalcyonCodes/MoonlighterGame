@@ -53,7 +53,7 @@ class _PickerState extends State<Picker> {
                   : currentIndex == 4 && widget.toolUtil.listSelectId != null
                       ? SizedBox()
                       : currentIndex == 5 && widget.toolUtil.listSelectId != null
-                          ? PickerSettingRole()
+                          ? PickerSettingRole(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
                           : currentIndex == 6 && widget.toolUtil.listSelectId != null
                               ? PickerSettingRetainer(pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,)
                               : currentIndex == 7 && widget.toolUtil.listSelectId != null
