@@ -192,4 +192,11 @@ class PickerUtil {
     _getPickerRoleListToJsonModel = func!;
   }
 
+  //SettingTag中PickerTagList中获取toJsonModel
+  Function? _getPickerTagListToJsonModel;
+  Function? get getPickerTagListToJsonModel => _getPickerTagListToJsonModel;
+  void setFuncGetPickerTagListToJsonModel(Function? func) {
+    _getPickerTagListToJsonModel = func!;
+  }
+
 }

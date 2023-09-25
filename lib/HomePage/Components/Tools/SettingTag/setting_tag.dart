@@ -46,9 +46,13 @@ class SettingTag extends StatelessWidget {
   }
 
   void commit() async {
-    int statusCode = await viewModel.changeTags();
+    Map<String, dynamic> postJson = {};
+    postJson['toolTag'] = viewModel.toJson();
+    postJson['pickerTag'] = pickerUtil.getPickerTagListToJsonModel!();
+
+    int statusCode = await viewModel.changeTags(postJson);
     if (statusCode == HttpStatus.ok) {
-      print('成功');
+      //print('成功');
       //提示修改成功
       toolUtil.changeTool!(15);
       pickerUtil.changePickerCurrentIndex!(15);

@@ -82,7 +82,12 @@ class _TagListState extends State<TagList> {
     tag.tagId = pTag.tagId;
     tag.tagName = pTag.tagName;
     tag.tagTime = pTag.tagTime;
-    widget.viewModel.addTag(tag);
+    widget.viewModel.settingTagToolModel!.data.tags
+        .firstWhere((element) => element.tagName == pTag.tagName, orElse: () {
+      widget.viewModel.addTag(tag);
+      return Tag();
+    });
+
     refreshUi();
   }
 }

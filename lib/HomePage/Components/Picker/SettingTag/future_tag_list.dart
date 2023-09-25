@@ -24,8 +24,7 @@ class _PickerTagListFutureState extends State<PickerTagListFuture> {
   void initState() {
     super.initState();
 
-    //注册
-    widget.pickerUtil.setFuncRefreshTagList(refreshUi);
+    
   }
 
   @override

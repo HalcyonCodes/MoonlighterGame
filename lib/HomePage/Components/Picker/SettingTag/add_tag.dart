@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../../../PublicWidgets/AddTitle/add_title.dart';
 import '../../../../Config/index.dart';
@@ -36,15 +35,8 @@ class AddTag extends StatelessWidget {
   void commit() async {
     String inputText = pickerUtil.textCtrs![0].text;
     if (inputText != '') {
-      int statusCode = await viewModel.addTag(inputText);
-
-      if (statusCode == HttpStatus.ok) {
-        //1.提示添加成功
-        //2.刷新列表
-        pickerUtil.refreshTagList!();
-      }else{
-        //1.提示添加失败
-      }
+      viewModel.addTag(inputText);
     }
+    pickerUtil.refreshTagList!();
   }
 }

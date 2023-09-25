@@ -2,6 +2,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import '../../FromJsonModel/PickerFromJsonModel/setting_tag_from_json_model.dart';
 import '../../DataModel/PickerDataModel/setting_tag_data.dart' as tdata;
+import 'package:intl/intl.dart';
+import '../../ToJsonModel/PickerToJsonModel/setting_tag_to_json_model.dart';
+
 
 class SettingTagPickerViewModel {
   Response? response;
@@ -41,50 +44,25 @@ class SettingTagPickerViewModel {
     }
   }
 
-  //向服务器发起添加tag请求
-  Future<int> addTag(String tagName) async {
-    response = null;
+  //加tag
+  void addTag(String tagName) {
+    PickerTag tag = PickerTag();
+    tag.tagName = tagName;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('yyyy/M/d').format(now);
+    tag.tagTime = formattedDate;
+    tag.tagId = '';
+    settingTagPickerModel!.data.tags.add(tag);
 
-    //封装json
-    Map<String, String> postData = {};
-    postData['tagName'] = tagName;
-
-    //发起post请求
-    //response = await Dio().post("/account/create",data: {"accountId":accountId,"accountName":accountName});
-    response = await Dio().get('http://localhost:4040/');
-
-    //====test=====
-    var newData = {
-      'tagId': '456',
-      'tagName': tagName,
-      'tagTime': '2019/01/02',
-    };
-    // 获取 'tags' 数组
-    data['data']!['tags'].add(newData);
-    //====testEnd====
-
-    return response!.statusCode!;
   }
 
-  //向服务器发起删除标签请求
-  Future<int> removeTag(String tagId) async {
-    response = null;
+  //删除标签请求
+  void removeTag(String tagId) {
+    PickerTag tag =  settingTagPickerModel!.data.tags.where((element) => element.tagId == tagId).first;
+    settingTagPickerModel!.data.tags.remove(tag);
+  }
 
-    Map<String, String> postData = {};
-
-    postData['tagId'] = tagId;
-
-    //根据tagId发起post请求
-    //response = await Dio().post("/account/create",data: {"accountId":accountId,"accountName":accountName});
-    response = await Dio().get('http://localhost:4040/');
-
-
-    //====test=====
-    // 获取 'tags' 数组
-    data['data']!['tags'].removeWhere((tag) => tag['tagId'] == tagId);
-    //====testEnd====
-
-    return response!.statusCode!;
-
+    Map<String, dynamic> toJson() {
+    return SettingTagToJsonModel.toJson(settingTagPickerModel!).tags;
   }
 }

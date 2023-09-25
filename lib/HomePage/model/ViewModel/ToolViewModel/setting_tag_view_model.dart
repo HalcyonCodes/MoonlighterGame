@@ -5,13 +5,12 @@ import '../../DataModel/ToolDataModel/setting_tag_data.dart' as tdata;
 import '../../FromJsonModel/ToolFromJsonModel/setting_tag_from_json_model.dart';
 import '../../ToJsonModel/ToolToJsonModel/setting_tag_to_json_model.dart';
 
+
 class SettingTagToolViewModel {
   Response? response;
   SettingTagToolModel? settingTagToolModel;
 
   SettingTagToolViewModel();
-
-
 
   //获取tags数据
   Future<int> refresh(String accountId) async {
@@ -34,11 +33,11 @@ class SettingTagToolViewModel {
   }
 
   //向服务器发起修改tags请求
-  Future<int> changeTags() async {
+  Future<int> changeTags(Map<String, dynamic> postData) async {
     response = null;
 
     //封装json
-    var postData = SettingTagToJsonModel.toJson(settingTagToolModel!);
+    //var postData = SettingTagToJsonModel.toJson(settingTagToolModel!);
 
     //发起post请求
     //response = await Dio().post("/account/create",data: {"accountId":accountId,"accountName":accountName});
@@ -56,4 +55,9 @@ class SettingTagToolViewModel {
   void addTag(Tag tag) {
     settingTagToolModel!.data.tags.add(tag);
   }
+
+   Map<String, dynamic> toJson() {
+    return SettingTagToJsonModel.toJson(settingTagToolModel!).tags;
+  }
+
 }

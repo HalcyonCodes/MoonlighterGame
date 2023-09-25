@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:moonlighter/HomePage/Components/Picker/SettingTag/tag_card_picker.dart';
 import '../../.././../ToolWidgets/rectangle_cliper.dart';
@@ -28,6 +26,10 @@ class _PickerTagListState extends State<PickerTagList> {
   @override
   void initState() {
     super.initState();
+
+    widget.pickerUtil!.setFuncGetPickerTagListToJsonModel(getToJson);
+    //注册
+    widget.pickerUtil!.setFuncRefreshTagList(refreshUi);
   }
 
   @override
@@ -35,6 +37,7 @@ class _PickerTagListState extends State<PickerTagList> {
     items = List.generate(
         widget.viewModel!.settingTagPickerModel!.data.tags.length, (index) {
       return PickerTagCard(
+          key: UniqueKey(),
           id: widget.viewModel!.settingTagPickerModel!.data.tags[index].tagId,
           name:
               widget.viewModel!.settingTagPickerModel!.data.tags[index].tagName,
@@ -60,20 +63,21 @@ class _PickerTagListState extends State<PickerTagList> {
   }
 
   void onRemoveTap(int index) async {
-    print('remove');
-    int statusCode = await widget.viewModel!.removeTag(
+    widget.viewModel!.removeTag(
         widget.viewModel!.settingTagPickerModel!.data.tags[index].tagId);
-    if (statusCode == HttpStatus.ok) {
-      //1.提示删除成功
-      //2.刷新
-      widget.pickerUtil!.refreshTagList!();
-    } else {
-      //1.提示删除失败
-    }
+    widget.pickerUtil!.refreshTagList!();
   }
 
   void onAddTap(int index) {
     widget.toolUtil!.addViewModelTag!(
         widget.viewModel!.settingTagPickerModel!.data.tags[index]);
+  }
+
+  Map<String, dynamic> getToJson() {
+    return widget.viewModel!.toJson();
+  }
+
+  void refreshUi() {
+    setState(() {});
   }
 }
