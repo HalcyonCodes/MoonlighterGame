@@ -24,8 +24,7 @@ class _PickerRetainerListFutureState extends State<PickerRetainerListFuture> {
   void initState() {
     super.initState();
 
-    //注册
-    widget.pickerUtil.setFuncRefreshRetainer(refreshUi);
+    
   }
 
   @override

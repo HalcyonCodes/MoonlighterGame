@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:moonlighter/HomePage/Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
 import '../../../../ToolWidgets/rectangle_cliper.dart';
@@ -8,7 +6,6 @@ import '../../../Model/ViewModel/PickerViewModel/setting_retainer_view_model.dar
 import '../../Util/util_picker.dart';
 import '../../Util/util_tools.dart';
 import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_retainer_from_json_model.dart';
-
 
 class PickerRetainerList extends StatefulWidget {
   final SettingRetainerPickerViewModel viewModel;
@@ -33,6 +30,8 @@ class _PickerRetainerListState extends State<PickerRetainerList> {
 
     //注册
     widget.pickerUtil.setFuncInsertRetainer(insertRetainer);
+    widget.pickerUtil.setFuncGetPickerRetainerToJsonModel(toJson);
+    widget.pickerUtil.setFuncRefreshRetainer(refreshUi);
   }
 
   @override
@@ -90,27 +89,23 @@ class _PickerRetainerListState extends State<PickerRetainerList> {
   }
 
   void closeTap(int index) async {
-    int statusCode = await widget.viewModel.removeRetainer(widget.viewModel
-        .settingRetainerPickerModel!.data!.retainers![index].retainerId);
+    await widget.viewModel.removeRetainerFromList(
+        widget.viewModel.settingRetainerPickerModel!.data!.retainers![index]);
 
-    if (statusCode == HttpStatus.ok) {
-      //1.提示成功
-      //2.刷新ui
-      widget.pickerUtil.refreshRetainer!();
-    } else {
-      //1.提示失败
-    }
+    refreshUi();
   }
 
-
-  void refreshUi(){
-    setState(() {
-      
-    });
+  void refreshUi() {
+    setState(() {});
   }
 
-  void insertRetainer(PickerRetainer retainer){
+  void insertRetainer(PickerRetainer retainer) {
     widget.viewModel.insertRetainerToList(retainer);
     refreshUi();
+  }
+
+  Map<String, dynamic>? toJson() {
+    widget.viewModel.toJson();
+    return widget.viewModel.postData;
   }
 }

@@ -8,21 +8,6 @@ class PickerUtil {
     _changePickerCurrentIndex = func;
   }
 
-  //SettingShelf中改变shelfTitle数目
-  Function? _changeSettingShelfTitleCount;
-  Function? get changeSettingShelfTitleCount => _changeSettingShelfTitleCount;
-  void setFuncChangeSettingShelfTitleCount(Function? func) {
-    _changeSettingShelfTitleCount = func;
-  }
-
-  //SettingMaterial中改变MaterialTitle数目
-  Function? _changeSettingMaterialTitleCount;
-  Function? get changeSettingMaterialTitleCount =>
-      _changeSettingMaterialTitleCount;
-  void setFuncChangeSettingMaterialTitleCount(Function? func) {
-    _changeSettingMaterialTitleCount = func;
-  }
-
   //SellBrowsing中修改日历按钮选中
   List<Function>? _listChangeSellBrowsingCalendarSelect;
   List<Function>? get listChangeSellBrowsingCalendarSelect =>
@@ -197,6 +182,27 @@ class PickerUtil {
   Function? get getPickerTagListToJsonModel => _getPickerTagListToJsonModel;
   void setFuncGetPickerTagListToJsonModel(Function? func) {
     _getPickerTagListToJsonModel = func!;
+  }
+
+  //SettingRetainer中PickerRetainerList中获取toJsonModel
+  Function? _getPickerRetainerToJsonModel;
+  Function? get getPickerRetainerToJsonModel => _getPickerRetainerToJsonModel;
+  void setFuncGetPickerRetainerToJsonModel(Function? func) {
+    _getPickerRetainerToJsonModel = func!;
+  }
+
+  //SettingShelf中刷新title中的数字
+  Function? _refreshSettingShelfCount;
+  Function? get refreshSettingShelfCount => _refreshSettingShelfCount;
+  void setFuncRefreshSettingShelfCount(Function? func) {
+    _refreshSettingShelfCount = func!;
+  }
+
+   //SettingMaterial中刷新title中的数字
+  Function? _refreshSettingMaterialCount;
+  Function? get refreshSettingMaterialCount => _refreshSettingMaterialCount;
+  void setFuncRefreshSettingMaterialCount(Function? func) {
+    _refreshSettingMaterialCount = func!;
   }
 
 }

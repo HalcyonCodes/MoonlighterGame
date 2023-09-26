@@ -43,7 +43,13 @@ class SettingRetainer extends StatelessWidget {
   }
 
   void commit() async {
-    int statusCode = await viewModel.updateRetainer();
+    Map<String, dynamic> postData = {};
+    postData['pickerData'] = pickerUtil.getPickerRetainerToJsonModel!();
+    viewModel.toJson();
+
+    postData['toolData'] = viewModel.postData;
+
+    int statusCode = await viewModel.updateRetainer(postData);
     if (statusCode == HttpStatus.ok) {
       //1.提示更新成功
       //2.关闭

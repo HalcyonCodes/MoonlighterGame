@@ -42,7 +42,6 @@ class _RetainerMaterialState extends State<RetainerMaterial> {
               16 -
               32 -
               46 -
-              16 -
               16,
           child: ClipPath(
             clipper: RectangleClipper(),

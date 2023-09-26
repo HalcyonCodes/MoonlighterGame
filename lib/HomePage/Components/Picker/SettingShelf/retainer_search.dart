@@ -55,7 +55,7 @@ class _RetainerSearchState extends State<RetainerSearch> {
                           onLongTap: () {
                             copyItems();
                           })
-                      : const SizedBox()
+                      : const SizedBox(height: 161,)
                 ]),
           );
   }
@@ -67,5 +67,8 @@ class _RetainerSearchState extends State<RetainerSearch> {
   void copyItems() {
     widget.viewModel.copyModel();
     widget.pickerUtil.refreshShelfItemList!();
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.pickerUtil.refreshSettingShelfCount!(widget.pickerUtil.nameCtls!.length.toString());
+    });
   }
 }

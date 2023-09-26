@@ -152,5 +152,6 @@ class _RetainerSearchBarState extends State<RetainerSearchBar> {
     String type = currentIndex == 0 ? 'name' : 'id';
     await widget.viewModel.search(text, type);
     widget.onTap!();
+    
   }
 }

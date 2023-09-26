@@ -32,7 +32,8 @@ class _ShelfTitleState extends State<ShelfTitle> {
     itemCount = widget.itemCount;
 
     //注册
-    widget.pickerUtil.setFuncChangeSettingShelfTitleCount(changeItemCount);
+    widget.pickerUtil.setFuncRefreshSettingShelfCount(changeItemCount);
+
   }
 
   @override
@@ -67,6 +68,8 @@ class _ShelfTitleState extends State<ShelfTitle> {
     } else {
       //1.提示失败
     }
+    //widget.toolUtil.changeTool!(15);
+    //widget.pickerUtil.changePickerCurrentIndex!(15);
   }
 
   void cancel() {
@@ -74,5 +77,10 @@ class _ShelfTitleState extends State<ShelfTitle> {
     widget.pickerUtil.refreshSettingShelfFuture!();
     widget.pickerUtil.refreshRetainerSearch!();
     widget.viewModel.initModel();
+    //widget.toolUtil.changeTool!(15);
+    //widget.pickerUtil.changePickerCurrentIndex!(15);
   }
+
+
+
 }

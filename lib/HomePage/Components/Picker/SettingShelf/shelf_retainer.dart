@@ -33,7 +33,7 @@ class _RetainerShelfState extends State<RetainerShelf> {
           viewModel: widget.viewModel, toolUtil: widget.toolUtil,
           ),
         const SizedBox(height: 16,),
-        SizedBox(height: MediaQuery.of(context).size.height - 24 - 24 - 161 - 46 - 16 - 32 - 46 - 16 - 16,
+        SizedBox(height: MediaQuery.of(context).size.height - 24 - 24 - 161 - 46 - 16 - 32 - 46 - 16 ,
         child: ClipPath(
           clipper: RectangleClipper(),
           child: ScrollConfiguration(

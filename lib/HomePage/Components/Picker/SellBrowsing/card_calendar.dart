@@ -3,12 +3,15 @@ import '../../../../Config/index.dart';
 import './button_calendar.dart';
 import '../../Util/util_picker.dart';
 import '../../../Model/ViewModel/PickerViewModel/sell_browsing_view_model.dart';
+import '../../Util/util_tools.dart';
 
 class CalendarCard extends StatefulWidget {
   final PickerUtil pickerUtil;
+  final ToolUtil toolUtil;
+
   final SellBrowsingPickerViewModel viewModel;
   const CalendarCard(
-      {super.key, required this.pickerUtil, required this.viewModel});
+      {super.key, required this.pickerUtil, required this.viewModel, required this.toolUtil});
 
   @override
   State<CalendarCard> createState() => _CalendarCardState();
@@ -150,11 +153,13 @@ class _CalendarCardState extends State<CalendarCard> {
         i++) {
       widget.pickerUtil.listChangeSellBrowsingCalendarSelect![i](false);
     }
-    widget.pickerUtil.listChangeSellBrowsingCalendarSelect![index](true);
+    if (widget.toolUtil.currentRetainerId != null) {
+      widget.pickerUtil.listChangeSellBrowsingCalendarSelect![index](true);
 
-    setCalendarData(date);
+      setCalendarData(date);
 
-    widget.pickerUtil.refreshSellItemListFuture!();
+      widget.pickerUtil.refreshSellItemListFuture!();
+    }
   }
 
   void initButton() {

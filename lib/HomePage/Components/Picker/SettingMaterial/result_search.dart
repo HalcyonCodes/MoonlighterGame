@@ -22,7 +22,7 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      //margin: const EdgeInsets.only(bottom: 16),
       width: MediaQuery.of(context).size.width <= 1920
           ? (1920 - 24) / 24 * 8 - 24
           : (1920 - 24) / 24 * 8 - 24,

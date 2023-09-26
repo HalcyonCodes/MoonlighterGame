@@ -4,7 +4,7 @@ import '../../../../PublicWidgets/AddTitle/add_title.dart';
 import './edit_card.dart';
 import '../../Util/util_picker.dart';
 import '../../../Model/ViewModel/PickerViewModel/setting_retainer_view_model.dart';
-import 'dart:io';
+import '../../../Model/FromJsonModel/PickerFromJsonModel/setting_retainer_from_json_model.dart';
 
 class EditRetainer extends StatelessWidget {
   final PickerUtil pickerUtil;
@@ -33,17 +33,13 @@ class EditRetainer extends StatelessWidget {
   }
 
   void commit() async {
-    int statusCode = await viewModel.addRetainer(
-      pickerUtil.textCtrs![0].text,
-      pickerUtil.textCtrs![1].text,
-      pickerUtil.textCtrs![2].text,
-    );
-    if (statusCode == HttpStatus.ok) {
-      //1.提示成功
-      //2.刷新列表
-      pickerUtil.refreshRetainer!();
-    } else {
-      //1.提示失败
-    }
+    PickerRetainer retainer = PickerRetainer();
+    retainer.retainerId = pickerUtil.textCtrs![0].text;
+    retainer.retainerName = pickerUtil.textCtrs![1].text;
+    retainer.retainerDesc = pickerUtil.textCtrs![2].text;
+    retainer.lastDispatchTime = '1992/9/4';
+
+    viewModel.insertRetainerToList(retainer);
+    pickerUtil.refreshRetainer!();
   }
 }

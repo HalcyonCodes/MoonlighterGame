@@ -10,6 +10,7 @@ import '../../DataModel/ToolDataModel/setting_retainer_data.dart' as tdata;
 class SettingRetainerViewModel {
   Response? response;
   SettingRetainerToolModel? settingRetainerToolModel;
+  Map<String, dynamic>? postData;
 
   //获取所有retainer数据
   Future<int> refresh(String accountId) async {
@@ -32,11 +33,8 @@ class SettingRetainerViewModel {
   }
 
   //提交修改
-  Future<int> updateRetainer() async {
+  Future<int> updateRetainer(Map<String, dynamic> posData) async {
     response = null;
-
-    var postData =
-        SettingRetainerToJsonModel.toJsonModel(settingRetainerToolModel!);
 
     //发起post请求提交修改
     response = await Dio().get('http://localhost:4040/');
@@ -65,5 +63,10 @@ class SettingRetainerViewModel {
   //插入雇员
   void insertRetainer(Role role, Retainer retainer) {
     role.retainers!.add(retainer);
+  }
+
+  void toJson() {
+    postData = {};
+    postData = SettingRetainerToJsonModel.toJsonModel(settingRetainerToolModel!).roles;
   }
 }

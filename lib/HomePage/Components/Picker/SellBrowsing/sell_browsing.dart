@@ -22,6 +22,7 @@ class PickerSellBrowsing extends StatelessWidget {
         CalendarFuture(
           pickerUtil: pickerUtil,
           viewModel: viewModel,
+          toolUtil: toolUtil,
         ),
         const SizedBox(
           height: 32,

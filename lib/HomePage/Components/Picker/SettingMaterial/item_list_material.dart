@@ -112,6 +112,9 @@ class _MaterialItemListState extends State<MaterialItemList> {
 
   void refreshUi() {
     setState(() {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.pickerUtil.refreshSettingMaterialCount!(widget.pickerUtil.nameCtls!.length.toString());
+    });
   }
 
   void addItem() {

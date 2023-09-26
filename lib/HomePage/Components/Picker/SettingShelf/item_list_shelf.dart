@@ -123,7 +123,13 @@ class _ShelfItemListState extends State<ShelfItemList> {
   }
 
   void refreshUi() {
+    
     setState(() {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.pickerUtil.refreshSettingShelfCount!(widget.pickerUtil.nameCtls!.length.toString());
+    });
+    
+    
   }
 
   void addItem() {

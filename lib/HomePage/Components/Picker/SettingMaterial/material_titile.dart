@@ -12,7 +12,12 @@ class MaterialTitle extends StatefulWidget {
   final ToolUtil toolUtil;
   final SettingMaterialPickerViewModel viewModel;
 
-  const MaterialTitle({super.key, required this.itemCount, required this.pickerUtil, required this.viewModel, required this.toolUtil});
+  const MaterialTitle(
+      {super.key,
+      required this.itemCount,
+      required this.pickerUtil,
+      required this.viewModel,
+      required this.toolUtil});
 
   @override
   State<MaterialTitle> createState() => _MaterialTitleState();
@@ -27,13 +32,18 @@ class _MaterialTitleState extends State<MaterialTitle> {
     itemCount = widget.itemCount;
 
     //注册
-    widget.pickerUtil.setFuncChangeSettingMaterialTitleCount(changeItemCount);
+
+    widget.pickerUtil.setFuncRefreshSettingMaterialCount(changeItemCount);
   }
 
   @override
   Widget build(BuildContext context) {
     return CommitTitle(
-        iconPath: 'Svg/material_tool.svg', title: '设置仓库素材内容 ${itemCount!} / 175', cancel: cancel, commit: commit,);
+      iconPath: 'Svg/material_tool.svg',
+      title: '设置仓库素材内容 ${itemCount!} / 175',
+      cancel: cancel,
+      commit: commit,
+    );
   }
 
   void changeItemCount(String newItemCount) {
@@ -44,21 +54,25 @@ class _MaterialTitleState extends State<MaterialTitle> {
   void refreshUi() {
     setState(() {});
   }
-  
-  
- void commit() async {
+
+  void commit() async {
     int statusCode = await widget.viewModel.updateCatalog();
 
     if (statusCode == HttpStatus.ok) {
       //1.提示成功
       //2.关闭窗口
       widget.toolUtil.setCurrentRetainerId(null);
+      
       widget.pickerUtil.refreshSettingShelfFuture!();
       widget.pickerUtil.refreshRetainerSearch!();
       widget.viewModel.initModel();
+      //widget.toolUtil.changeTool!(15);
+      //widget.pickerUtil.changePickerCurrentIndex!(15);
     } else {
       //1.提示失败
     }
+
+
   }
 
   void cancel() {
@@ -66,5 +80,7 @@ class _MaterialTitleState extends State<MaterialTitle> {
     widget.pickerUtil.refreshSettingShelfFuture!();
     widget.pickerUtil.refreshRetainerSearch!();
     widget.viewModel.initModel();
+    //widget.toolUtil.changeTool!(15);
+    //widget.pickerUtil.changePickerCurrentIndex!(15);
   }
 }
