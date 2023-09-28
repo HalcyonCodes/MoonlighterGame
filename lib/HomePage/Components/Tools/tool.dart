@@ -20,6 +20,7 @@ import './SettingCompany/setting_company.dart';
 import '../Util/util_list.dart';
 import './EditAccount/future_edit_account.dart';
 import './SettingTag/future_setting_tag.dart';
+import './SettingChannel/setting_channel.dart';
 
 class Tool extends StatefulWidget {
   final ToolUtil toolUtil;
@@ -107,8 +108,8 @@ class _ToolState extends State<Tool> {
                   onTap: () {
                     onButtonTap(4);
                   },
-                  path: 'Svg/log_tool.svg',
-                  name: KString.log),
+                  path: 'Svg/channel_tool.svg',
+                  name: KString.channel),
               ToolButton(
                   isSelect: index == 5 && widget.toolUtil.listSelectId != null
                       ? true
@@ -225,7 +226,7 @@ class _ToolState extends State<Tool> {
                               pickerUtil: widget.pickerUtil,
                             )
                           : index == 4 && widget.toolUtil.listSelectId != null
-                              ? SizedBox()
+                              ? SettingChannel(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
                               : index == 5 &&
                                       widget.toolUtil.listSelectId != null
                                   ? SettingRole(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil, )

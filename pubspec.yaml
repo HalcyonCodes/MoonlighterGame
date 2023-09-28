@@ -52,6 +52,7 @@ flutter:
     - Svg/tag_tool.svg
     - Svg/robot_tool.svg
     - Svg/log_tool.svg
+    - Svg/channel_tool.svg
     - Svg/role_tool.svg
     - Svg/retainer_tool.svg
     - Svg/order_tool.svg

@@ -11,6 +11,7 @@ class KString {
   static String tag = '标签';
   static String robot = '机器人';
   static String log = '日志';
+  static String channel = '频道';
   static String role = '角色';
   static String container = '雇员';
   static String order = '订单';
@@ -79,8 +80,4 @@ class KString {
   static String sat = 'Sat.';
   static String sun = 'Sun.';
   static String total = '合计';
-
-
-
-
 }
