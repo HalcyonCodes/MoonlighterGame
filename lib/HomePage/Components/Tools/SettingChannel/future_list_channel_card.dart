@@ -27,6 +27,7 @@ class ChannelCardListFuture extends StatelessWidget {
               return ChannelCardList(
                 viewModel: viewMode,
                 pickerUtil: pickerUtil,
+                toolUtil: toolUtil,
               );
           }
         });

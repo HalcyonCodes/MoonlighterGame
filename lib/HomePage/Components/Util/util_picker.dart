@@ -198,11 +198,18 @@ class PickerUtil {
     _refreshSettingShelfCount = func!;
   }
 
-   //SettingMaterial中刷新title中的数字
+  //SettingMaterial中刷新title中的数字
   Function? _refreshSettingMaterialCount;
   Function? get refreshSettingMaterialCount => _refreshSettingMaterialCount;
   void setFuncRefreshSettingMaterialCount(Function? func) {
     _refreshSettingMaterialCount = func!;
   }
 
+  //SettingChannel中刷新channelCardListFuture
+  Function? _refreshSettingChannelCardListFuture;
+  Function? get refreshSettingChannelCardListFuture =>
+      _refreshSettingChannelCardListFuture;
+  void setFuncRefreshSettingChannelCardListFuture(Function? func) {
+    _refreshSettingChannelCardListFuture = func!;
+  }
 }

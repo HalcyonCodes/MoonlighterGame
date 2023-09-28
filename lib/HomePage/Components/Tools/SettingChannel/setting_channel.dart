@@ -39,7 +39,7 @@ class SettingChannel extends StatelessWidget {
   }
 
   void commit() async {
-    int statusCode = 200;
+    int statusCode = await viewModel.updateChannel();
     if (statusCode == HttpStatus.ok) {
       //1.提示更新成功
       print('成功');

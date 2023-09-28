@@ -55,4 +55,6 @@ class SettingCompanyToolViewModel {
   void addCompany(Role role, Company company) {
     role.company = company;
   }
+
+  
 }

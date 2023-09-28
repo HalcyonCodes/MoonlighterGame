@@ -383,20 +383,25 @@ class ToolUtil {
 
   //设置Tools -> SettingRole -> expansion_item_channel中设置head内容增加减少1
   List<Function(bool)>? _listFuncChangeMemberCount;
-  List<Function(bool)>? get listFuncChangeMemberCount  =>
+  List<Function(bool)>? get listFuncChangeMemberCount =>
       _listFuncChangeMemberCount;
-  int addListFuncChangeMemberCount (Function(bool)? func) {
-    _listFuncChangeMemberCount !.add(func!);
-    return _listFuncChangeMemberCount !.length - 1;
+  int addListFuncChangeMemberCount(Function(bool)? func) {
+    _listFuncChangeMemberCount!.add(func!);
+    return _listFuncChangeMemberCount!.length - 1;
   }
 
-  void setListFuncChangeMemberCount (List<Function(bool)>? list) {
-    _listFuncChangeMemberCount  = list;
+  void setListFuncChangeMemberCount(List<Function(bool)>? list) {
+    _listFuncChangeMemberCount = list;
   }
 
-  void removeListFuncChangeMemberCount (Function(bool) i) {
-    _listFuncChangeMemberCount !.remove(i);
+  void removeListFuncChangeMemberCount(Function(bool) i) {
+    _listFuncChangeMemberCount!.remove(i);
   }
 
-  
+  //setting_channel中加入channel卡片
+  Function? _addChannel;
+  Function? get addChannel => _addChannel;
+  void setFuncAddChannel(Function? func) {
+    _addChannel = func!;
+  }
 }

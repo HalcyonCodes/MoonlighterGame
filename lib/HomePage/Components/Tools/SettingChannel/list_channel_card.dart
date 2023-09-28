@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:moonlighter/HomePage/Components/Util/util_tools.dart';
 
 import '../../../../ToolWidgets/rectangle_cliper.dart';
 import '../../../Model/ViewModel/ToolViewModel/setting_channel_view_model.dart';
 import './channel_card.dart';
 import '../../Util/util_picker.dart';
+import '../../../Model/FromJsonModel/ToolFromJsonModel/setting_channel_from_json_model.dart';
 
 class ChannelCardList extends StatefulWidget {
   final SettingChannelToolViewModel viewModel;
   final PickerUtil pickerUtil;
+  final ToolUtil toolUtil;
   const ChannelCardList(
-      {super.key, required this.viewModel, required this.pickerUtil});
+      {super.key,
+      required this.viewModel,
+      required this.pickerUtil,
+      required this.toolUtil});
 
   @override
   State<ChannelCardList> createState() => _ChannelCardListState();
@@ -22,6 +28,8 @@ class _ChannelCardListState extends State<ChannelCardList> {
   void initState() {
     super.initState();
     items = [];
+
+    widget.toolUtil.setFuncAddChannel(addItem);
   }
 
   @override
@@ -101,5 +109,17 @@ class _ChannelCardListState extends State<ChannelCardList> {
 
   void refreshUi() {
     setState(() {});
+  }
+
+  void addItem(Channel channel) {
+    widget.viewModel.settingChannelToolModel!.data.channels.firstWhere(
+        (element) {
+      return (channel.channelName == element.channelName) &&
+          (channel.channelClassName == element.channelClassName);
+    }, orElse: () {
+      widget.viewModel.addItem(channel);
+      refreshUi();
+      return channel;
+    });
   }
 }

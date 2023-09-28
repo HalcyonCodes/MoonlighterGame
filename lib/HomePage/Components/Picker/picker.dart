@@ -11,6 +11,7 @@ import './SettingMaterial/setting_material.dart';
 import './SettingCompany/setting_company.dart';
 import './SellBrowsing/sell_browsing.dart';
 import './OrderManager/order_manager.dart';
+import './SettingChannel/setting_channel.dart';
 
 import '../Util/util_picker.dart';
 import '../Util/util_tools.dart';
@@ -51,7 +52,7 @@ class _PickerState extends State<Picker> {
               : currentIndex == 3 && widget.toolUtil.listSelectId != null
                   ? PickerSettingRobotFuture(toolUtil: widget.toolUtil,)
                   : currentIndex == 4 && widget.toolUtil.listSelectId != null
-                      ? SizedBox()
+                      ? PickerSettingChannel(pickerUtil: widget.pickerUtil, toolUtil: widget.toolUtil,)
                       : currentIndex == 5 && widget.toolUtil.listSelectId != null
                           ? PickerSettingRole(toolUtil: widget.toolUtil, pickerUtil: widget.pickerUtil,)
                           : currentIndex == 6 && widget.toolUtil.listSelectId != null

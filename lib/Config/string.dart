@@ -80,4 +80,6 @@ class KString {
   static String sat = 'Sat.';
   static String sun = 'Sun.';
   static String total = '合计';
+  static String channelClass = '频道大区';
+  static String channelName = '频道名称';
 }
